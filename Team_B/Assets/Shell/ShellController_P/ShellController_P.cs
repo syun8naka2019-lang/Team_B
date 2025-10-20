@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ShellController : MonoBehaviour
+public class ShellController_P : MonoBehaviour
 {
     public float deleteTime = 3.0f;     //íœ‚·‚éŠÔw’è
 
