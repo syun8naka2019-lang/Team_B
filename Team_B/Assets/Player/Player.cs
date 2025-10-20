@@ -29,7 +29,7 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     // プレイヤーの移動速度
-    private int moveSpeed = 5;
+    private int moveSpeed = 7;
 
     void Update()
     {
