@@ -435,11 +435,45 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 311489793}
-    m_RemovedComponents: []
+    - target: {fileID: 7501759289076292764, guid: a8a3a3f6897bda2408f19fdb1004cc3e, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 3734153119224087164}
+    - target: {fileID: 7501759289076292764, guid: a8a3a3f6897bda2408f19fdb1004cc3e, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Load
+      objectReference: {fileID: 0}
+    - target: {fileID: 7501759289076292764, guid: a8a3a3f6897bda2408f19fdb1004cc3e, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Changescene, Assembly-CSharp
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 6123916634155969052, guid: a8a3a3f6897bda2408f19fdb1004cc3e, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1659688174061695585, guid: a8a3a3f6897bda2408f19fdb1004cc3e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3734153119224087164}
   m_SourcePrefab: {fileID: 100100000, guid: a8a3a3f6897bda2408f19fdb1004cc3e, type: 3}
+--- !u!1 &3734153119224087163 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1659688174061695585, guid: a8a3a3f6897bda2408f19fdb1004cc3e, type: 3}
+  m_PrefabInstance: {fileID: 3734153119224087162}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &3734153119224087164
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3734153119224087163}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb4f82621ea330d4e9e45481878bc69b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneName: Stageselect
 --- !u!1001 &5740384648707589290
 PrefabInstance:
   m_ObjectHideFlags: 0
