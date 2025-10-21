@@ -12,7 +12,13 @@ public class Enemy_Gourmet_Controller : MonoBehaviour
     {
         transform.Translate(direction * speed * Time.deltaTime);
     }
-
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Web")
+        {
+            speed = 0.0f;
+        }
+    }
     private void OnBecameInvisible()//どのカメラにも映らないとき
     {
         Destroy(gameObject); //オブジェクトを消去

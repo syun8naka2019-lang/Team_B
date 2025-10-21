@@ -21,6 +21,14 @@ public class Enemy_RPG_Controller : MonoBehaviour
         }
     }
 
+    //ハンモック設定
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Web")
+        {
+            speed = 0.0f;
+        }
+    }
     private void OnBecameInvisible()//どのカメラにも映らないとき
     {
         Destroy(gameObject); //オブジェクトを消去
