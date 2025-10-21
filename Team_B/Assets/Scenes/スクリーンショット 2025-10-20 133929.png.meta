@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 96da73224c92f6e459c12a1ed5bd3418
+guid: 3179ae1bee4f49240985f6a1f620c6a7
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 5521159600383443581
-    second: nabetti_2_0
+      213: -1048544367953480909
+    second: "\u30B9\u30AF\u30EA\u30FC\u30F3\u30B7\u30E7\u30C3\u30C8 2025-10-20 133929_0"
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: nabetti_2_0
+      name: "\u30B9\u30AF\u30EA\u30FC\u30F3\u30B7\u30E7\u30C3\u30C8 2025-10-20 133929_0"
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 1000
-        height: 1000
+        width: 417
+        height: 234
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: d72c71977691f9c40800000000000000
-      internalID: 5521159600383443581
+      spriteID: 33375e8e372d271f0800000000000000
+      internalID: -1048544367953480909
       vertices: []
       indices: 
       edges: []
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      nabetti_2_0: 5521159600383443581
+      "\u30B9\u30AF\u30EA\u30FC\u30F3\u30B7\u30E7\u30C3\u30C8 2025-10-20 133929_0": -1048544367953480909
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
