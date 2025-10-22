@@ -11,8 +11,14 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Stageselect.unity
     guid: ec1dad8b366c4ca438c36ae4fa8e0086
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Stage1.unity
     guid: 6cbb15b3e13173a4995b1272d30492a4
+  - enabled: 1
+    path: Assets/Scenes/Stage1_backscroll.unity
+    guid: 82d7b0e652ec6fa4bb073e357c70f66a
+  - enabled: 1
+    path: Assets/Scenes/Gameover.unity
+    guid: 2fbc0bd9fb2003142b2d5b58e0a6b174
   m_configObjects: {}
   m_UseUCBPForAssetBundles: 0

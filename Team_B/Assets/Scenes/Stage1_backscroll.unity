@@ -133,7 +133,7 @@ GameObject:
   - component: {fileID: 59293117}
   m_Layer: 6
   m_Name: Breath_0
-  m_TagString: Untagged
+  m_TagString: Dead
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -550,9 +550,9 @@ GameObject:
   - component: {fileID: 651132299}
   - component: {fileID: 651132298}
   - component: {fileID: 651132300}
-  - component: {fileID: 651132297}
   - component: {fileID: 651132301}
   - component: {fileID: 651132302}
+  - component: {fileID: 651132303}
   m_Layer: 0
   m_Name: nabetti 1_0
   m_TagString: Untagged
@@ -560,6 +560,7 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+<<<<<<< HEAD
 --- !u!114 &651132297
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -572,6 +573,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 697254fa24684ea4f8e65160c3258996, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+=======
+>>>>>>> 5da1806c7698d3d1e1297721a6463b9c7686d014
 --- !u!212 &651132298
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -616,7 +619,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 863856469505098716, guid: 6829e02c4650a154e8e5d9641e9beabc, type: 3}
+  m_Sprite: {fileID: -1744675358492994505, guid: 0d95f9f60a7c7d347a7893c9c2b14585, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -624,7 +627,7 @@ SpriteRenderer:
   m_Size: {x: 2.26, y: 5.38}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!4 &651132299
@@ -636,8 +639,8 @@ Transform:
   m_GameObject: {fileID: 651132296}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.32, y: -4, z: 0}
-  m_LocalScale: {x: 0.46216643, y: 0.34962323, z: 1}
+  m_LocalPosition: {x: -0.2315, y: -4.1704, z: 0}
+  m_LocalScale: {x: 0.54053235, y: 0.28626254, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 413208034}
@@ -731,6 +734,19 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &651132303
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 651132296}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3aae8d657bb6b484b857224a3ad4a9c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneName: Gameover
 --- !u!1 &742874574
 GameObject:
   m_ObjectHideFlags: 0
@@ -746,7 +762,7 @@ GameObject:
   - component: {fileID: 742874580}
   m_Layer: 0
   m_Name: music_3_0
-  m_TagString: Web_stop
+  m_TagString: Dead
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -911,7 +927,7 @@ GameObject:
   - component: {fileID: 773388465}
   m_Layer: 0
   m_Name: PEPPER_0 (1)
-  m_TagString: Untagged
+  m_TagString: Dead
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1478,7 +1494,7 @@ GameObject:
   - component: {fileID: 1254819011}
   m_Layer: 0
   m_Name: MIC_0
-  m_TagString: Untagged
+  m_TagString: Dead
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1631,7 +1647,7 @@ GameObject:
   - component: {fileID: 1331043166}
   m_Layer: 0
   m_Name: RPG_3_0
-  m_TagString: Web_stop
+  m_TagString: Dead
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1828,7 +1844,7 @@ GameObject:
   - component: {fileID: 1452703525}
   m_Layer: 0
   m_Name: gourmet_1_0
-  m_TagString: Web_stop
+  m_TagString: Dead
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
