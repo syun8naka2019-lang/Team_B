@@ -14,7 +14,8 @@ public class WebController : MonoBehaviour
     //Update is called once per frame
     void Update()
     {
-     
+       
+
     }
     void OnTriggerEnter2D(Collider2D collision)
     {
@@ -23,6 +24,9 @@ public class WebController : MonoBehaviour
             rb.linearVelocity = new Vector2(0, 0);
             Debug.Log("正常でっせー");
         }
+
+       
+
     }
 
     private void OnBecameInvisible()//�ǂ̃J�����ɂ��f��Ȃ��Ƃ�

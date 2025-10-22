@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class Clearscene : MonoBehaviour
 {
     public string sceneName;
-    private float countdownTime = 10.0f; // カウントダウン開始時間（秒）
+    private float countdownTime = 0.0f; // カウントダウン開始時間（秒）
 
     float times = 0;
 
@@ -23,13 +23,13 @@ public class Clearscene : MonoBehaviour
         times += Time.deltaTime;
         countdownTime = times;
     
-        if (countdownTime < 10)
+        if (countdownTime < 60 ) //時間設定
         {
             Debug.Log("残り時間 (秒): " + countdownTime);
         }
         else
         {
-            countdownTime = 10.0f;
+            countdownTime = 60.0f;
             SceneManager.LoadScene(sceneName);
             Debug.Log("タイムアップ!");
 
