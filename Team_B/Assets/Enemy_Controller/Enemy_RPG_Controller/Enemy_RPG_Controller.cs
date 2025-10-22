@@ -4,33 +4,86 @@ using UnityEngine;
 
 public class Enemy_RPG_Controller : MonoBehaviour
 {
-    public float speed = 7.0f; //移動速度speed
-    public Vector2 direction = Vector2.left;//左方向に進む
-    float cout = 0;
+    public float speed = 7.0f;                // 移動速度
+    public Vector2 direction = Vector2.left;  // 初期方向（左）
+    float cout = 0;                           // 経過時間カウント
 
-    //Update is called once per frame
+    private float originalSpeed;              // 元の速度を保存
+    public bool isOnWeb = false;              // Webに触れているかどうか
+    private List<GameObject> webObjects = new List<GameObject>(); // 触れている全Web
+
+    void Start()
+    {
+        originalSpeed = speed; // 最初の速度を保存
+    }
+
     void Update()
     {
-        transform.Translate(direction * speed * Time.deltaTime);
+        // Webに捕まっていない時だけ移動
+        if (!isOnWeb)
+        {
+            transform.Translate(direction * speed * Time.deltaTime);
+        }
 
+        // 方向変更処理（テスト用）
         cout += Time.deltaTime;
-
         if (cout > 1)
         {
-            direction =new Vector2(1,-1);
+            direction = new Vector2(1, -1);
+        }
+
+        // Lキーで敵とWebを消去
+        if (isOnWeb && Input.GetKey(KeyCode.L))
+        {
+            // リストのコピーを作って、それをループする
+            List<GameObject> websToDestroy = new List<GameObject>(webObjects);
+
+            foreach (GameObject web in websToDestroy)
+            {
+                if (web != null)
+                    Destroy(web);
+            }
+
+            webObjects.Clear();  // すべて削除したあとにリストを空にする
+
+            Destroy(gameObject);
+            Debug.Log("Lキー押下 → 敵と全Webを消去");
         }
     }
 
-    //ハンモック設定
-    void OnTriggerEnter2D(Collider2D collision)
+    // Webに触れたとき
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Web")
+        if (collision.gameObject.CompareTag("Web"))
         {
-            speed = 0.0f;
+            isOnWeb = true;
+            speed = 0.0f; // 動きを止める
+            if (!webObjects.Contains(collision.gameObject))
+            {
+                webObjects.Add(collision.gameObject);
+            }
+
+            Debug.Log("Webに接触 → 敵停止");
         }
     }
-    private void OnBecameInvisible()//どのカメラにも映らないとき
+
+    // Webから離れたとき
+    private void OnTriggerExit2D(Collider2D collision)
     {
-        Destroy(gameObject); //オブジェクトを消去
+        if (collision.gameObject.CompareTag("Web"))
+        {
+            webObjects.Remove(collision.gameObject);
+            if (webObjects.Count == 0)
+            {
+                isOnWeb = false;
+                speed = originalSpeed; // 動きを再開
+                Debug.Log("Webから離れた → 再始動");
+            }
+        }
+    }
+
+    private void OnBecameInvisible()
+    {
+        Destroy(gameObject);
     }
 }

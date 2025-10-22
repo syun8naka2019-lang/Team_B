@@ -129,11 +129,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5110140880261583928, guid: fd747489f89730e45978d546b5a2e5bd, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.83
+      value: 13.04
       objectReference: {fileID: 0}
     - target: {fileID: 5110140880261583928, guid: fd747489f89730e45978d546b5a2e5bd, type: 3}
       propertyPath: m_LocalPosition.y
+<<<<<<< HEAD:Team_B/Assets/Scenes/Stage2.unity
       value: 12.5
+=======
+      value: 4.16
+>>>>>>> c9c0357ac54f78694e61d510bfa9095798a67e03:Team_B/Assets/Scenes/Stage1.unity
       objectReference: {fileID: 0}
     - target: {fileID: 5110140880261583928, guid: fd747489f89730e45978d546b5a2e5bd, type: 3}
       propertyPath: m_LocalPosition.z
