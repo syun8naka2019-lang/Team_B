@@ -19,6 +19,13 @@ public class CannonController_P : MonoBehaviour
 
     private void Update()
     {
+        // Prefabが失われていないか確認
+        if (objPrefab == null)
+        {
+            Debug.LogError("objPrefab が破壊されています！InspectorでPrefabを再設定してください。");
+            return;
+        }
+
         passedTimes += Time.deltaTime;
         if (passedTimes >= 1f)
         {
