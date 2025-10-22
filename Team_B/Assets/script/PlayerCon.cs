@@ -37,6 +37,7 @@ public class PlayerCon : MonoBehaviour
         {
             Debug.Log("ゲームオーバー");
             Destroy(this.gameObject);
+           
             SceneManager.LoadScene(sceneName);
 
         }

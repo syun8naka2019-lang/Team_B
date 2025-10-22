@@ -408,6 +408,37 @@ MonoBehaviour:
     m_MipBias: 0
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
+--- !u!1 &358725363
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 358725364}
+  m_Layer: 0
+  m_Name: Wallobject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &358725364
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 358725363}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -3.40853, y: 0.35515, z: 0}
+  m_LocalScale: {x: 3.58, y: 3.58, z: 3.58}
+  m_ConstrainProportionsScale: 1
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &413208033
 GameObject:
   m_ObjectHideFlags: 0
@@ -553,6 +584,7 @@ GameObject:
   - component: {fileID: 651132301}
   - component: {fileID: 651132302}
   - component: {fileID: 651132303}
+  - component: {fileID: 651132304}
   m_Layer: 0
   m_Name: nabetti 1_0
   m_TagString: Untagged
@@ -732,6 +764,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sceneName: Gameover
+--- !u!114 &651132304
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 651132296}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b6c61dec66e9474284614f4cba291f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneName: Clear
 --- !u!1 &742874574
 GameObject:
   m_ObjectHideFlags: 0
@@ -2162,3 +2207,4 @@ SceneRoots:
   - {fileID: 773388468}
   - {fileID: 651132299}
   - {fileID: 962501598}
+  - {fileID: 358725364}
