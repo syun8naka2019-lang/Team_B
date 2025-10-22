@@ -10,10 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 1813813853661949025}
   - component: {fileID: 2484741210702881567}
-  - component: {fileID: 2370576280550529544}
   - component: {fileID: 4989033669084313811}
   - component: {fileID: 7891915646520413909}
-  - component: {fileID: 428581902517153269}
+  - component: {fileID: 5552570485552466246}
+  - component: {fileID: 8122744975934706852}
   m_Layer: 0
   m_Name: nabetti 1_0
   m_TagString: Untagged
@@ -80,7 +80,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 863856469505098716, guid: 6829e02c4650a154e8e5d9641e9beabc, type: 3}
+  m_Sprite: {fileID: -1744675358492994505, guid: 0d95f9f60a7c7d347a7893c9c2b14585, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -91,19 +91,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &2370576280550529544
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6263961727534340757}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 697254fa24684ea4f8e65160c3258996, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sceneName: 
 --- !u!50 &4989033669084313811
 Rigidbody2D:
   serializedVersion: 5
@@ -161,7 +148,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
@@ -177,7 +164,7 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 2.26, y: 5.38}
   m_EdgeRadius: 0
---- !u!114 &428581902517153269
+--- !u!114 &5552570485552466246
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -186,7 +173,20 @@ MonoBehaviour:
   m_GameObject: {fileID: 6263961727534340757}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 697254fa24684ea4f8e65160c3258996, type: 3}
+  m_Script: {fileID: 11500000, guid: 3aae8d657bb6b484b857224a3ad4a9c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneName: Gameover
+  sceneName: 
+--- !u!114 &8122744975934706852
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6263961727534340757}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b6c61dec66e9474284614f4cba291f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneName: 
