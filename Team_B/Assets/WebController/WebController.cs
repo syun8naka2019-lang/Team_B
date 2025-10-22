@@ -4,8 +4,13 @@ using UnityEngine;
 
 public class WebController : MonoBehaviour
 {
-    public float speed = 6.0f; //ˆÚ“®‘¬“xspeed
+    public float speed = 6.0f; //ï¿½Ú“ï¿½ï¿½ï¿½ï¿½xspeed
+    private Rigidbody2D rb;
 
+    private void Start()
+    {
+        rb = GetComponent<Rigidbody2D>();
+    }
     //Update is called once per frame
     void Update()
     {
@@ -15,12 +20,13 @@ public class WebController : MonoBehaviour
     {
         if (collision.gameObject.tag== ("Web_stop"))
         {
-            speed = 0.0f;  // ‘¬“x‚ğƒ[ƒ‚É
-            Debug.Log("³í‚Éì“®");
+            rb.velocity = new Vector2(0, 0);
+            Debug.Log("æ­£å¸¸ã§ã£ã›ãƒ¼");
         }
     }
-    private void OnBecameInvisible()//‚Ç‚ÌƒJƒƒ‰‚É‚à‰f‚ç‚È‚¢‚Æ‚«
+
+    private void OnBecameInvisible()//ï¿½Ç‚ÌƒJï¿½ï¿½ï¿½ï¿½ï¿½É‚ï¿½ï¿½fï¿½ï¿½È‚ï¿½ï¿½Æ‚ï¿½
     {
-        Destroy(gameObject); //ƒIƒuƒWƒFƒNƒg‚ğÁ‹
+        Destroy(gameObject); //ï¿½Iï¿½uï¿½Wï¿½Fï¿½Nï¿½gï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     }
 }
