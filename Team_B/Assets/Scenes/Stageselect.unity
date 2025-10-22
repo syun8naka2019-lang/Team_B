@@ -265,7 +265,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb4f82621ea330d4e9e45481878bc69b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneName: Stage1_backscroll
+  sceneName: Stage2
 --- !u!1 &210134153
 GameObject:
   m_ObjectHideFlags: 0

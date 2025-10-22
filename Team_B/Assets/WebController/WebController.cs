@@ -20,7 +20,7 @@ public class WebController : MonoBehaviour
     {
         if (collision.gameObject.tag== ("Web_stop"))
         {
-            rb.velocity = new Vector2(0, 0);
+            rb.linearVelocity = new Vector2(0, 0);
             Debug.Log("正常でっせー");
         }
     }
