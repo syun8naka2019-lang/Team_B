@@ -4,6 +4,9 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
+<<<<<<< HEAD
+  m_Scenes: []
+=======
   m_Scenes:
   - enabled: 1
     path: Assets/Scenes/Title.unity
@@ -20,5 +23,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Stage1_hontou.unity
     guid: 7e1dcc94ae9b24844896de7c879f7d94
+>>>>>>> 37e0eca669b2901b89e7e89ed1326488ef992a59
   m_configObjects: {}
   m_UseUCBPForAssetBundles: 0
