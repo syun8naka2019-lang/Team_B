@@ -1,41 +1,43 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Enemy_RPG_Controller : MonoBehaviour
 {
-    public float speed = 7.0f;                // ˆÚ“®‘¬“x
-    public Vector2 direction = Vector2.left;  // ‰Šú•ûŒüi¶j
-    float cout = 0;                           // Œo‰ßŠÔƒJƒEƒ“ƒg
+    public float speed = 7.0f;                // ç§»å‹•é€Ÿåº¦
+    public Vector2 direction = Vector2.left;  // åˆæœŸæ–¹å‘ï¼ˆå·¦ï¼‰
+    float cout = 0;                           // çµŒéæ™‚é–“ã‚«ã‚¦ãƒ³ãƒˆ
 
-    private float originalSpeed;              // Œ³‚Ì‘¬“x‚ğ•Û‘¶
-    public bool isOnWeb = false;              // Web‚ÉG‚ê‚Ä‚¢‚é‚©‚Ç‚¤‚©
-    private List<GameObject> webObjects = new List<GameObject>(); // G‚ê‚Ä‚¢‚é‘SWeb
+    private float originalSpeed;              // å…ƒã®é€Ÿåº¦ã‚’ä¿å­˜
+    public bool isOnWeb = false;              // Webã«è§¦ã‚Œã¦ã„ã‚‹ã‹ã©ã†ã‹
+    private List<GameObject> webObjects = new List<GameObject>(); // è§¦ã‚Œã¦ã„ã‚‹å…¨Web
+    [Header("çˆ†ç™ºã‚¨ãƒ•ã‚§ã‚¯ãƒˆã®Prefabã‚’ç™»éŒ²ã™ã‚‹")]
+    public GameObject explosionPrefab;
 
     void Start()
     {
-        originalSpeed = speed; // Å‰‚Ì‘¬“x‚ğ•Û‘¶
+        originalSpeed = speed; // æœ€åˆã®é€Ÿåº¦ã‚’ä¿å­˜
     }
 
     void Update()
     {
-        // Web‚É•ß‚Ü‚Á‚Ä‚¢‚È‚¢‚¾‚¯ˆÚ“®
+        // Webã«æ•ã¾ã£ã¦ã„ãªã„æ™‚ã ã‘ç§»å‹•
         if (!isOnWeb)
         {
             transform.Translate(direction * speed * Time.deltaTime);
         }
 
-        // •ûŒü•ÏXˆ—iƒeƒXƒg—pj
+        // æ–¹å‘å¤‰æ›´å‡¦ç†ï¼ˆãƒ†ã‚¹ãƒˆç”¨ï¼‰
         cout += Time.deltaTime;
         if (cout > 1)
         {
             direction = new Vector2(1, -1);
         }
 
-        // LƒL[‚Å“G‚ÆWeb‚ğÁ‹
+        // Lã‚­ãƒ¼ã§æ•µã¨Webã‚’æ¶ˆå»
         if (isOnWeb && Input.GetKey(KeyCode.L))
         {
-            // ƒŠƒXƒg‚ÌƒRƒs[‚ğì‚Á‚ÄA‚»‚ê‚ğƒ‹[ƒv‚·‚é
+            // ãƒªã‚¹ãƒˆã®ã‚³ãƒ”ãƒ¼ã‚’ä½œã£ã¦ã€ãã‚Œã‚’ãƒ«ãƒ¼ãƒ—ã™ã‚‹
             List<GameObject> websToDestroy = new List<GameObject>(webObjects);
 
             foreach (GameObject web in websToDestroy)
@@ -44,30 +46,38 @@ public class Enemy_RPG_Controller : MonoBehaviour
                     Destroy(web);
             }
 
-            webObjects.Clear();  // ‚·‚×‚Äíœ‚µ‚½‚ ‚Æ‚ÉƒŠƒXƒg‚ğ‹ó‚É‚·‚é
+            webObjects.Clear();  // ã™ã¹ã¦å‰Šé™¤ã—ãŸã‚ã¨ã«ãƒªã‚¹ãƒˆã‚’ç©ºã«ã™ã‚‹
 
+            //çˆ†ç™ºã‚’å‡ºã™ï¼ˆã“ã“ã‚’è¿½åŠ ï¼ï¼‰
+            if (explosionPrefab != null)
+            {
+                Instantiate(explosionPrefab, transform.position, Quaternion.identity);
+                Debug.Log("çˆ†ç™ºç™ºç”Ÿï¼");
+            }
+
+            // æ•µã‚’å‰Šé™¤
             Destroy(gameObject);
-            Debug.Log("LƒL[‰Ÿ‰º ¨ “G‚Æ‘SWeb‚ğÁ‹");
+            Debug.Log("Lã‚­ãƒ¼æŠ¼ä¸‹ â†’ æ•µã¨å…¨Webã‚’æ¶ˆå»");
         }
     }
 
-    // Web‚ÉG‚ê‚½‚Æ‚«
+    // Webã«è§¦ã‚ŒãŸã¨ã
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Web"))
         {
             isOnWeb = true;
-            speed = 0.0f; // “®‚«‚ğ~‚ß‚é
+            speed = 0.0f; // å‹•ãã‚’æ­¢ã‚ã‚‹
             if (!webObjects.Contains(collision.gameObject))
             {
                 webObjects.Add(collision.gameObject);
             }
 
-            Debug.Log("Web‚ÉÚG ¨ “G’â~");
+            Debug.Log("Webã«æ¥è§¦ â†’ æ•µåœæ­¢");
         }
     }
 
-    // Web‚©‚ç—£‚ê‚½‚Æ‚«
+    // Webã‹ã‚‰é›¢ã‚ŒãŸã¨ã
     private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Web"))
@@ -76,8 +86,8 @@ public class Enemy_RPG_Controller : MonoBehaviour
             if (webObjects.Count == 0)
             {
                 isOnWeb = false;
-                speed = originalSpeed; // “®‚«‚ğÄŠJ
-                Debug.Log("Web‚©‚ç—£‚ê‚½ ¨ Än“®");
+                speed = originalSpeed; // å‹•ãã‚’å†é–‹
+                Debug.Log("Webã‹ã‚‰é›¢ã‚ŒãŸ â†’ å†å§‹å‹•");
             }
         }
     }
