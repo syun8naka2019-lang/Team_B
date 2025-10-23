@@ -12,8 +12,6 @@ GameObject:
   - component: {fileID: 2484741210702881567}
   - component: {fileID: 4989033669084313811}
   - component: {fileID: 7891915646520413909}
-  - component: {fileID: 5552570485552466246}
-  - component: {fileID: 8122744975934706852}
   m_Layer: 0
   m_Name: nabetti 1_0
   m_TagString: Untagged
@@ -164,29 +162,3 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 2.26, y: 5.38}
   m_EdgeRadius: 0
---- !u!114 &5552570485552466246
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6263961727534340757}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3aae8d657bb6b484b857224a3ad4a9c4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sceneName: 
---- !u!114 &8122744975934706852
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6263961727534340757}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6b6c61dec66e9474284614f4cba291f4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sceneName: 
