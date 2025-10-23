@@ -9,12 +9,23 @@ public class PlayerCon : MonoBehaviour
     public string sceneName;
     // プレイヤーの移動速度
     private int moveSpeed = 7;
-    
+
+    Animator animator;
+    public string stop0 = "gade0";
+    public string stop1 = "gade1";
+    public string stop2 = "gade2";
+    public string stop3 = "gade3";
+    public string stop4 = "gade4";
+    public string stop10 = "stopstop";
+    string nowAnime = "";
+    string oldAnime = "";
+    int cnt = 0;
 
 
     private void Start()
     {
-       
+        animator = GetComponent<Animator>();
+        
     }
     void Update()
     {
@@ -41,6 +52,27 @@ public class PlayerCon : MonoBehaviour
             SceneManager.LoadScene(sceneName);
 
         }
+        if (collision.gameObject.tag == "item")
+        {
+            cnt++;
+            if (cnt == 0)
+                nowAnime = stop10;
+            else if (cnt == 1)
+                nowAnime = stop0;
+
+
+
+
+
+
+        }
+
+
+
+
+
+
+
 
 
     }

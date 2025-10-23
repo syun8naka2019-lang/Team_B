@@ -41,8 +41,6 @@ GameObject:
   m_Component:
   - component: {fileID: 452186646851448775}
   - component: {fileID: 5897619119821299884}
-  - component: {fileID: 295275348841791310}
-  - component: {fileID: 7697091030358125206}
   m_Layer: 0
   m_Name: music_yoko
   m_TagString: Web_stop
@@ -121,32 +119,3 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &295275348841791310
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6328105079811794911}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62681e1d2d8989c4a98c34cc4e6cad78, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 1
-  direction: {x: -1, y: 0}
---- !u!114 &7697091030358125206
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6328105079811794911}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d1e82d5f60034bd4cb481719d9402734, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  objPrefab: {fileID: 3170298902949384109, guid: 1af6a3f2c4216a4468d5e4f55274c078, type: 3}
-  delayTime: 0.5
-  fireSpeed: 4
