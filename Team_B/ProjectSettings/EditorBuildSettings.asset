@@ -18,7 +18,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Stage1_backscroll.unity
     guid: 82d7b0e652ec6fa4bb073e357c70f66a
   - enabled: 1
-    path: Assets/Scenes/Stage2.unity
+    path: Assets/Scenes/Stage1.unity
     guid: dd63c427cb78df74890984f4ae13ef7f
   - enabled: 1
     path: Assets/Scenes/Gameover.unity
