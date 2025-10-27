@@ -56,13 +56,20 @@ public class PlayerCon : MonoBehaviour
         {
             cnt++;
             if (cnt == 0)
-                nowAnime = stop10;
+                nowAnime = stop3;
             else if (cnt == 1)
-                nowAnime = stop0;
-
-
-
-
+                nowAnime = stop3;
+            else if (cnt == 2)
+                nowAnime = stop1;
+            else if (cnt == 3)
+                nowAnime = stop2;
+            else if (cnt == 4)
+                nowAnime = stop3;
+            else if (cnt == 5)
+            {
+                nowAnime = stop4;
+                cnt = 0;
+            }
 
 
         }

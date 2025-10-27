@@ -23,7 +23,7 @@ public class Clearscene : MonoBehaviour
         times += Time.deltaTime;
         countdownTime = times;
     
-        if (countdownTime < 60 ) //ŽžŠÔÝ’è
+        if (countdownTime < 45 ) //ŽžŠÔÝ’è
         {
             Debug.Log("Žc‚èŽžŠÔ (•b): " + countdownTime);
         }
