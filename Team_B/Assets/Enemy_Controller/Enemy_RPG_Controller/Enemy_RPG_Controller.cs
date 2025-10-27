@@ -1,99 +1,77 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Enemy_RPG_Controller : MonoBehaviour
 {
-    public float speed = 7.0f;                // 移動速度
-    public Vector2 direction = Vector2.left;  // 初期方向（左）
-    float cout = 0;                           // 経過時間カウント
+    public float speed = 2f;                  // 落下速度
+    private bool isStopped = false;
+    private Rigidbody2D rb;
 
-    private float originalSpeed;              // 元の速度を保存
-    public bool isOnWeb = false;              // Webに触れているかどうか
-    private List<GameObject> webObjects = new List<GameObject>(); // 触れている全Web
-    [Header("爆発エフェクトのPrefabを登録する")]
-    public GameObject explosionPrefab;
+    public GameObject explosionPrefab;         // 爆発Prefab
+    public float explosionRadius = 2f;        // 爆発範囲
 
-    void Start()
+    void Awake()
     {
-        originalSpeed = speed; // 最初の速度を保存
+        rb = GetComponent<Rigidbody2D>();
+    }
+
+    void FixedUpdate()
+    {
+        if (!isStopped)
+        {
+            rb.velocity = new Vector2(0, -speed); // 下方向に移動
+        }
+        else
+        {
+            rb.velocity = Vector2.zero;
+        }
+    }
+
+    // 弾が当たったら呼ぶ
+    public void Stop()
+    {
+        if (!isStopped)
+        {
+            isStopped = true;
+            rb.velocity = Vector2.zero;
+        }
     }
 
     void Update()
     {
-        // Webに捕まっていない時だけ移動
-        if (!isOnWeb)
+        // 停まっていてLキーが押されたら爆発
+        if (isStopped && Input.GetKeyDown(KeyCode.L))
         {
-            transform.Translate(direction * speed * Time.deltaTime);
-        }
-
-        // 方向変更処理（テスト用）
-        cout += Time.deltaTime;
-        if (cout > 1)
-        {
-            direction = new Vector2(1, -1);
-        }
-
-        // Lキーで敵とWebを消去
-        if (isOnWeb && Input.GetKey(KeyCode.L))
-        {
-            // リストのコピーを作って、それをループする
-            List<GameObject> websToDestroy = new List<GameObject>(webObjects);
-
-            foreach (GameObject web in websToDestroy)
-            {
-                if (web != null)
-                    Destroy(web);
-            }
-
-            webObjects.Clear();  // すべて削除したあとにリストを空にする
-
-            //爆発を出す（ここを追加！）
-            if (explosionPrefab != null)
-            {
-                Instantiate(explosionPrefab, transform.position, Quaternion.identity);
-                Debug.Log("爆発発生！");
-            }
-
-            // 敵を削除
-            Destroy(gameObject);
-            Debug.Log("Lキー押下 → 敵と全Webを消去");
+            Explode();
         }
     }
 
-    // Webに触れたとき
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void Explode()
     {
-        if (collision.gameObject.CompareTag("Web"))
+        // 爆発Prefab生成（見た目用）
+        if (explosionPrefab != null)
         {
-            isOnWeb = true;
-            speed = 0.0f; // 動きを止める
-            if (!webObjects.Contains(collision.gameObject))
-            {
-                webObjects.Add(collision.gameObject);
-            }
-
-            Debug.Log("Webに接触 → 敵停止");
+            Instantiate(explosionPrefab, transform.position, Quaternion.identity);
         }
-    }
 
-    // Webから離れたとき
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        if (collision.gameObject.CompareTag("Web"))
+        // 範囲内のWebとEnemyを破壊
+        Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position, explosionRadius);
+        foreach (Collider2D hit in hits)
         {
-            webObjects.Remove(collision.gameObject);
-            if (webObjects.Count == 0)
+            if (hit.CompareTag("Web") || hit.CompareTag("Enemy"))
             {
-                isOnWeb = false;
-                speed = originalSpeed; // 動きを再開
-                Debug.Log("Webから離れた → 再始動");
+                Destroy(hit.gameObject);
+                Debug.Log("爆発で破壊: " + hit.name);
             }
         }
-    }
 
-    private void OnBecameInvisible()
-    {
+        // 自分も消す
         Destroy(gameObject);
+    }
+
+    // Sceneビューで爆発範囲を可視化
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, explosionRadius);
     }
 }
