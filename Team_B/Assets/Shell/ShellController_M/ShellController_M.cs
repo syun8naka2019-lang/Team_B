@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class ShellController_M : MonoBehaviour
 {
-    public float deleteTime = 3.0f;     //íœ‚·‚éŠÔw’è
+    //public float deleteTime = 3.0f;     //íœ‚·‚éŠÔw’è
 
     //Update is called once per frame
     void Start()
     {
-        Destroy(gameObject, deleteTime);     //íœİ’è
+       // Destroy(gameObject, deleteTime);     //íœİ’è
     }
 
     private void Update()

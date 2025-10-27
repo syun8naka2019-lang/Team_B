@@ -4,33 +4,49 @@ using UnityEngine;
 
 public class WebController : MonoBehaviour
 {
-    public float speed = 6.0f; //�ړ����xspeed
+    public float speed = 6f;                 // Webの移動速度
     private Rigidbody2D rb;
+    private bool hasHitEnemy = false;        // すでに敵に当たったか
+    private GameObject caughtEnemy = null;   // 捕まえた敵
 
-    private void Start()
+    void Start()
     {
         rb = GetComponent<Rigidbody2D>();
     }
-    //Update is called once per frame
+
     void Update()
     {
-       
-
-    }
-    void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.gameObject.tag== ("Web_stop"))
+        if (!hasHitEnemy)
         {
-            rb.linearVelocity = new Vector2(0, 0);
-            Debug.Log("正常でっせー");
+            // 通常は前進
+            rb.linearVelocity = transform.right * speed;
         }
+        else
+        {
+            // 敵に当たったらWebも止まる
+            rb.linearVelocity = Vector2.zero;
 
-       
-
+            // 敵を止める
+            if (caughtEnemy != null)
+            {
+                Enemy_RPG_Controller enemy = caughtEnemy.GetComponent<Enemy_RPG_Controller>();
+                if (enemy != null)
+                {
+                    enemy.StopEnemy(); // 敵の停止処理
+                }
+            }
+        }
     }
 
-    private void OnBecameInvisible()//�ǂ̃J�����ɂ��f��Ȃ��Ƃ�
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        Destroy(gameObject); //�I�u�W�F�N�g������
+        if (!hasHitEnemy && collision.CompareTag("Enemy"))
+        {
+            // 敵に当たった
+            hasHitEnemy = true;
+            caughtEnemy = collision.gameObject;
+
+            // 必要ならここでWebのアニメーション停止やエフェクト
+        }
     }
 }
