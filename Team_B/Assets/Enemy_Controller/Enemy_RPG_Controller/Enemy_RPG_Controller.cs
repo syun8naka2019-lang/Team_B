@@ -18,11 +18,11 @@ public class Enemy_RPG_Controller : MonoBehaviour
     {
         if (!isStopped)
         {
-            rb.velocity = new Vector2(0, -speed); // 下方向に移動
+            rb.linearVelocity = new Vector2(0, -speed); // 下方向に移動
         }
         else
         {
-            rb.velocity = Vector2.zero;
+            rb.linearVelocity = Vector2.zero;
         }
     }
 
@@ -32,7 +32,7 @@ public class Enemy_RPG_Controller : MonoBehaviour
         if (!isStopped)
         {
             isStopped = true;
-            rb.velocity = Vector2.zero;
+            rb.linearVelocity = Vector2.zero;
         }
     }
 

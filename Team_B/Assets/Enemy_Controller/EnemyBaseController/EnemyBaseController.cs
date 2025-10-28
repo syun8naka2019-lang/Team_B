@@ -2,22 +2,22 @@
 using UnityEngine;
 
 /// <summary>
-/// ‹¤’Ê‚Ì“GƒRƒ“ƒgƒ[ƒ‰ƒXƒNƒŠƒvƒg
-/// - ‰º•ûŒü‚É—‰º
-/// - ’eiWebj‚ª“–‚½‚Á‚½‚ç~‚Ü‚é
-/// - LƒL[‚Å”š”­‰Â”\
+/// ï¿½ï¿½ï¿½Ê‚Ì“Gï¿½Rï¿½ï¿½ï¿½gï¿½ï¿½ï¿½[ï¿½ï¿½ï¿½Xï¿½Nï¿½ï¿½ï¿½vï¿½g
+/// - ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½É—ï¿½ï¿½ï¿½
+/// - ï¿½eï¿½iWebï¿½jï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½~ï¿½Ü‚ï¿½
+/// - Lï¿½Lï¿½[ï¿½Å”ï¿½ï¿½ï¿½ï¿½Â”\
 /// </summary>
 public class EnemyBaseController : MonoBehaviour
 {
-    [Header("ˆÚ“®İ’è")]
-    public float speed = 2f;                  // —‰º‘¬“x
+    [Header("ï¿½Ú“ï¿½ï¿½İ’ï¿½")]
+    public float speed = 2f;                  // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½x
 
-    private bool isStopped = false;           // ’â~ó‘Ô‚©
-    private Rigidbody2D rb;                   // Rigidbody2DƒRƒ“ƒ|[ƒlƒ“ƒg
+    private bool isStopped = false;           // ï¿½ï¿½~ï¿½ï¿½Ô‚ï¿½
+    private Rigidbody2D rb;                   // Rigidbody2Dï¿½Rï¿½ï¿½ï¿½|ï¿½[ï¿½lï¿½ï¿½ï¿½g
 
-    [Header("”š”­İ’è")]
-    public GameObject explosionPrefab;        // ”š”­Prefab
-    public float explosionRadius = 2f;        // ”š”­”ÍˆÍi”¼Œaj
+    [Header("ï¿½ï¿½ï¿½ï¿½ï¿½İ’ï¿½")]
+    public GameObject explosionPrefab;        // ï¿½ï¿½ï¿½ï¿½Prefab
+    public float explosionRadius = 2f;        // ï¿½ï¿½ï¿½ï¿½ï¿½ÍˆÍiï¿½ï¿½ï¿½aï¿½j
 
     void Awake()
     {
@@ -26,7 +26,7 @@ public class EnemyBaseController : MonoBehaviour
 
     void FixedUpdate()
     {
-        // ’â~‚µ‚Ä‚¢‚È‚¯‚ê‚Î‰º•ûŒü‚ÉˆÚ“®
+        // ï¿½ï¿½~ï¿½ï¿½ï¿½Ä‚ï¿½ï¿½È‚ï¿½ï¿½ï¿½Î‰ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÉˆÚ“ï¿½
         if (!isStopped)
         {
             rb.velocity = new Vector2(0, -speed);
@@ -38,7 +38,7 @@ public class EnemyBaseController : MonoBehaviour
     }
 
     /// <summary>
-    /// ’e‚ª“–‚½‚Á‚½‚ÉŒÄ‚Ô
+    /// ï¿½eï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÉŒÄ‚ï¿½
     /// </summary>
     public void Stop()
     {
@@ -51,7 +51,7 @@ public class EnemyBaseController : MonoBehaviour
 
     void Update()
     {
-        // ’â~’†‚ÉLƒL[‚Å”š”­
+        // ï¿½ï¿½~ï¿½ï¿½ï¿½ï¿½Lï¿½Lï¿½[ï¿½Å”ï¿½ï¿½ï¿½
         if (isStopped && Input.GetKeyDown(KeyCode.L))
         {
             Explode();
@@ -59,35 +59,35 @@ public class EnemyBaseController : MonoBehaviour
     }
 
     /// <summary>
-    /// ”š”­ˆ—
-    /// ”ÍˆÍ“à‚ÌWeb‚ÆEnemy‚ğ”j‰ó
-    /// ©g‚à”j‰ó
+    /// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+    /// ï¿½ÍˆÍ“ï¿½ï¿½ï¿½Webï¿½ï¿½Enemyï¿½ï¿½jï¿½ï¿½
+    /// ï¿½ï¿½ï¿½gï¿½ï¿½ï¿½jï¿½ï¿½
     /// </summary>
     private void Explode()
     {
-        // Œ©‚½–Ú—p‚Ì”š”­Prefab¶¬
+        // ï¿½ï¿½ï¿½ï¿½ï¿½Ú—pï¿½Ì”ï¿½ï¿½ï¿½Prefabï¿½ï¿½ï¿½ï¿½
         if (explosionPrefab != null)
         {
             Instantiate(explosionPrefab, transform.position, Quaternion.identity);
         }
 
-        // ”š”­”ÍˆÍ“à‚ÌƒIƒuƒWƒFƒNƒg‚ğæ“¾
+        // ï¿½ï¿½ï¿½ï¿½ï¿½ÍˆÍ“ï¿½ï¿½ÌƒIï¿½uï¿½Wï¿½Fï¿½Nï¿½gï¿½ï¿½ï¿½æ“¾
         Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position, explosionRadius);
         foreach (Collider2D hit in hits)
         {
-            // Web‚Ü‚½‚ÍEnemyƒ^ƒO‚ÌƒIƒuƒWƒFƒNƒg‚ğ”j‰ó
+            // Webï¿½Ü‚ï¿½ï¿½ï¿½Enemyï¿½^ï¿½Oï¿½ÌƒIï¿½uï¿½Wï¿½Fï¿½Nï¿½gï¿½ï¿½jï¿½ï¿½
             if (hit.CompareTag("Web") || hit.CompareTag("Enemy"))
             {
                 Destroy(hit.gameObject);
-                Debug.Log("”š”­‚Å”j‰ó: " + hit.name);
+                Debug.Log("ï¿½ï¿½ï¿½ï¿½ï¿½Å”jï¿½ï¿½: " + hit.name);
             }
         }
 
-        // ©g‚à”j‰ó
+        // ï¿½ï¿½ï¿½gï¿½ï¿½ï¿½jï¿½ï¿½
         Destroy(gameObject);
     }
 
-    // Sceneƒrƒ…[‚Å”š”­”ÍˆÍ‚ğ‰Â‹‰»
+    // Sceneï¿½rï¿½ï¿½ï¿½[ï¿½Å”ï¿½ï¿½ï¿½ï¿½ÍˆÍ‚ï¿½ï¿½Âï¿½ï¿½ï¿½
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;
@@ -99,23 +99,23 @@ using System.Collections;
 using UnityEngine;
 
 /// <summary>
-/// ‹¤’Ê‚Ì“GƒRƒ“ƒgƒ[ƒ‰ƒXƒNƒŠƒvƒg
-/// - ˆÚ“®•ûŒü‚ÍInspector‚Å©—R‚Éİ’è‰Â”\
-/// - ’eiWebj‚ª“–‚½‚Á‚½‚ç~‚Ü‚é
-/// - LƒL[‚Å”š”­‰Â”\
+/// ï¿½ï¿½ï¿½Ê‚Ì“Gï¿½Rï¿½ï¿½ï¿½gï¿½ï¿½ï¿½[ï¿½ï¿½ï¿½Xï¿½Nï¿½ï¿½ï¿½vï¿½g
+/// - ï¿½Ú“ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Inspectorï¿½Åï¿½ï¿½Rï¿½Éİ’ï¿½Â”\
+/// - ï¿½eï¿½iWebï¿½jï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½~ï¿½Ü‚ï¿½
+/// - Lï¿½Lï¿½[ï¿½Å”ï¿½ï¿½ï¿½ï¿½Â”\
 /// </summary>
 public class EnemyBaseController : MonoBehaviour
 {
-    [Header("ˆÚ“®İ’è")]
-    public float speed = 2f;                      // ˆÚ“®‘¬“x
-    public Vector2 moveDirection = Vector2.down;  // Inspector‚Åİ’è‚Å‚«‚éˆÚ“®•ûŒü
+    [Header("ï¿½Ú“ï¿½ï¿½İ’ï¿½")]
+    public float speed = 2f;                      // ï¿½Ú“ï¿½ï¿½ï¿½ï¿½x
+    public Vector2 moveDirection = Vector2.down;  // Inspectorï¿½Åİ’ï¿½Å‚ï¿½ï¿½ï¿½Ú“ï¿½ï¿½ï¿½ï¿½ï¿½
 
-    private bool isStopped = false;               // “G‚ª~‚Ü‚Á‚Ä‚¢‚é‚©
-    private Rigidbody2D rb;                       // Rigidbody2DƒRƒ“ƒ|[ƒlƒ“ƒg
+    private bool isStopped = false;               // ï¿½Gï¿½ï¿½ï¿½~ï¿½Ü‚ï¿½ï¿½Ä‚ï¿½ï¿½é‚©
+    private Rigidbody2D rb;                       // Rigidbody2Dï¿½Rï¿½ï¿½ï¿½|ï¿½[ï¿½lï¿½ï¿½ï¿½g
 
-    [Header("”š”­İ’è")]
-    public GameObject explosionPrefab;            // ”š”­Prefab
-    public float explosionRadius = 2f;            // ”š”­”ÍˆÍ
+    [Header("ï¿½ï¿½ï¿½ï¿½ï¿½İ’ï¿½")]
+    public GameObject explosionPrefab;            // ï¿½ï¿½ï¿½ï¿½Prefab
+    public float explosionRadius = 2f;            // ï¿½ï¿½ï¿½ï¿½ï¿½Íˆï¿½
 
     void Awake()
     {
@@ -124,33 +124,33 @@ public class EnemyBaseController : MonoBehaviour
 
     void FixedUpdate()
     {
-        // ’â~‚µ‚Ä‚¢‚È‚¯‚ê‚Îw’è•ûŒü‚ÉˆÚ“®
+        // ï¿½ï¿½~ï¿½ï¿½ï¿½Ä‚ï¿½ï¿½È‚ï¿½ï¿½ï¿½Îwï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÉˆÚ“ï¿½
         if (!isStopped)
         {
-            rb.velocity = moveDirection.normalized * speed;
+            rb.linearVelocity = moveDirection.normalized * speed;
         }
         else
         {
-            rb.velocity = Vector2.zero;
+            rb.linearVelocity = Vector2.zero;
         }
     }
 
     /// <summary>
-    /// ’e‚ª“–‚½‚Á‚½‚Æ‚«‚ÉŒÄ‚Ô
-    /// “G‚ğ’â~‚³‚¹‚é
+    /// ï¿½eï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ‚ï¿½ï¿½ÉŒÄ‚ï¿½
+    /// ï¿½Gï¿½ï¿½ï¿½~ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     /// </summary>
     public void Stop()
     {
         if (!isStopped)
         {
             isStopped = true;
-            rb.velocity = Vector2.zero;
+            rb.linearVelocity = Vector2.zero;
         }
     }
 
     void Update()
     {
-        // ’â~’†‚ÉLƒL[‚Å”š”­
+        // ï¿½ï¿½~ï¿½ï¿½ï¿½ï¿½Lï¿½Lï¿½[ï¿½Å”ï¿½ï¿½ï¿½
         if (isStopped && Input.GetKeyDown(KeyCode.L))
         {
             Explode();
@@ -158,34 +158,34 @@ public class EnemyBaseController : MonoBehaviour
     }
 
     /// <summary>
-    /// ”š”­ˆ—
-    /// ”ÍˆÍ“à‚ÌWeb‚ÆEnemy‚ğ”j‰ó
-    /// ©g‚à”j‰ó
+    /// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+    /// ï¿½ÍˆÍ“ï¿½ï¿½ï¿½Webï¿½ï¿½Enemyï¿½ï¿½jï¿½ï¿½
+    /// ï¿½ï¿½ï¿½gï¿½ï¿½ï¿½jï¿½ï¿½
     /// </summary>
     private void Explode()
     {
-        // Œ©‚½–Ú—p‚Ì”š”­Prefab¶¬
+        // ï¿½ï¿½ï¿½ï¿½ï¿½Ú—pï¿½Ì”ï¿½ï¿½ï¿½Prefabï¿½ï¿½ï¿½ï¿½
         if (explosionPrefab != null)
         {
             Instantiate(explosionPrefab, transform.position, Quaternion.identity);
         }
 
-        // ”š”­”ÍˆÍ“à‚ÌCollider2D‚ğæ“¾
+        // ï¿½ï¿½ï¿½ï¿½ï¿½ÍˆÍ“ï¿½ï¿½ï¿½Collider2Dï¿½ï¿½ï¿½æ“¾
         Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position, explosionRadius);
         foreach (Collider2D hit in hits)
         {
             if (hit.CompareTag("Web") || hit.CompareTag("Enemy"))
             {
                 Destroy(hit.gameObject);
-                Debug.Log("”š”­‚Å”j‰ó: " + hit.name);
+                Debug.Log("ï¿½ï¿½ï¿½ï¿½ï¿½Å”jï¿½ï¿½: " + hit.name);
             }
         }
 
-        // ©g‚à”j‰ó
+        // ï¿½ï¿½ï¿½gï¿½ï¿½ï¿½jï¿½ï¿½
         Destroy(gameObject);
     }
 
-    // Sceneƒrƒ…[‚Å”š”­”ÍˆÍ‚ğ‰Â‹‰»
+    // Sceneï¿½rï¿½ï¿½ï¿½[ï¿½Å”ï¿½ï¿½ï¿½ï¿½ÍˆÍ‚ï¿½ï¿½Âï¿½ï¿½ï¿½
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;
