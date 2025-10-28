@@ -384,6 +384,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 6328105079811794911, guid: a4a4acfa0bcb562429a31fc095065955, type: 3}
       insertIndex: -1
       addedObject: {fileID: 187126193}
+    - targetCorrespondingSourceObject: {fileID: 6328105079811794911, guid: a4a4acfa0bcb562429a31fc095065955, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 187126196}
   m_SourcePrefab: {fileID: 100100000, guid: a4a4acfa0bcb562429a31fc095065955, type: 3}
 --- !u!1 &187126188 stripped
 GameObject:
@@ -418,7 +421,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 1
-  direction: {x: -1, y: 0}
+  explosionPrefab: {fileID: 0}
+  explosionRadius: 2
 --- !u!61 &187126193
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -465,6 +469,33 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 3.82, y: 2.551785}
   m_EdgeRadius: 0
+--- !u!50 &187126196
+Rigidbody2D:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 187126188}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1001 &199011170
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -483,11 +514,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 452186646851448775, guid: a4a4acfa0bcb562429a31fc095065955, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.2
+      value: 2.99
       objectReference: {fileID: 0}
     - target: {fileID: 452186646851448775, guid: a4a4acfa0bcb562429a31fc095065955, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 4.26
+      value: 1.87
       objectReference: {fileID: 0}
     - target: {fileID: 452186646851448775, guid: a4a4acfa0bcb562429a31fc095065955, type: 3}
       propertyPath: m_LocalPosition.z
@@ -550,10 +581,10 @@ PrefabInstance:
       addedObject: {fileID: 1972748538}
     - targetCorrespondingSourceObject: {fileID: 6328105079811794911, guid: a4a4acfa0bcb562429a31fc095065955, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1972748537}
+      addedObject: {fileID: 1972748541}
     - targetCorrespondingSourceObject: {fileID: 6328105079811794911, guid: a4a4acfa0bcb562429a31fc095065955, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1972748541}
+      addedObject: {fileID: 1972748544}
   m_SourcePrefab: {fileID: 100100000, guid: a4a4acfa0bcb562429a31fc095065955, type: 3}
 --- !u!1 &256414801
 GameObject:
@@ -567,6 +598,7 @@ GameObject:
   - component: {fileID: 256414803}
   - component: {fileID: 256414802}
   - component: {fileID: 256414805}
+  - component: {fileID: 256414806}
   m_Layer: 0
   m_Name: music_1_0 (2)
   m_TagString: Web_stop
@@ -587,7 +619,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 1
-  direction: {x: 0, y: -1}
+  explosionPrefab: {fileID: 0}
+  explosionRadius: 2
 --- !u!212 &256414803
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -704,6 +737,33 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 4.42, y: 5.81}
   m_EdgeRadius: 0
+--- !u!50 &256414806
+Rigidbody2D:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 256414801}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1001 &284606485
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -843,6 +903,33 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 4.51, y: 5.05}
   m_EdgeRadius: 0
+--- !u!50 &289850918
+Rigidbody2D:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 289850910}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &379014314 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7559601641096968251, guid: fbe136725fda49e4ca76509d1a62058f, type: 3}
@@ -894,6 +981,33 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1.6969347, y: 1.7161098}
   m_EdgeRadius: 0
+--- !u!50 &379014322
+Rigidbody2D:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 379014314}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1001 &541776544
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -973,6 +1087,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 7559601641096968251, guid: fbe136725fda49e4ca76509d1a62058f, type: 3}
       insertIndex: -1
       addedObject: {fileID: 550877779}
+    - targetCorrespondingSourceObject: {fileID: 7559601641096968251, guid: fbe136725fda49e4ca76509d1a62058f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 550877782}
   m_SourcePrefab: {fileID: 100100000, guid: fbe136725fda49e4ca76509d1a62058f, type: 3}
 --- !u!1 &550877774 stripped
 GameObject:
@@ -1038,7 +1155,35 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 1
-  direction: {x: 0, y: -1}
+  explosionPrefab: {fileID: 0}
+  explosionRadius: 2
+--- !u!50 &550877782
+Rigidbody2D:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 550877774}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1001 &622685509
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1065,11 +1210,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6282329115402190047, guid: fbe136725fda49e4ca76509d1a62058f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -8.49
+      value: 1.8
       objectReference: {fileID: 0}
     - target: {fileID: 6282329115402190047, guid: fbe136725fda49e4ca76509d1a62058f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 18.02
+      value: 17.6
       objectReference: {fileID: 0}
     - target: {fileID: 6282329115402190047, guid: fbe136725fda49e4ca76509d1a62058f, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1118,6 +1263,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 7559601641096968251, guid: fbe136725fda49e4ca76509d1a62058f, type: 3}
       insertIndex: -1
       addedObject: {fileID: 289850914}
+    - targetCorrespondingSourceObject: {fileID: 7559601641096968251, guid: fbe136725fda49e4ca76509d1a62058f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 289850918}
   m_SourcePrefab: {fileID: 100100000, guid: fbe136725fda49e4ca76509d1a62058f, type: 3}
 --- !u!1 &648989269 stripped
 GameObject:
@@ -1137,7 +1285,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 1
-  direction: {x: -1, y: 0}
+  explosionPrefab: {fileID: 0}
+  explosionRadius: 2
 --- !u!114 &648989271
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1199,6 +1348,33 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 3.82, y: 1.9423003}
   m_EdgeRadius: 0
+--- !u!50 &648989277
+Rigidbody2D:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 648989269}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1001 &858023764
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1288,6 +1464,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 6328105079811794911, guid: a4a4acfa0bcb562429a31fc095065955, type: 3}
       insertIndex: -1
       addedObject: {fileID: 901223762}
+    - targetCorrespondingSourceObject: {fileID: 6328105079811794911, guid: a4a4acfa0bcb562429a31fc095065955, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 901223765}
   m_SourcePrefab: {fileID: 100100000, guid: a4a4acfa0bcb562429a31fc095065955, type: 3}
 --- !u!1 &901223757 stripped
 GameObject:
@@ -1307,7 +1486,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 1
-  direction: {x: -1, y: 0}
+  explosionPrefab: {fileID: 0}
+  explosionRadius: 2
 --- !u!114 &901223759
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1369,6 +1549,33 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 3.82, y: 1.5611161}
   m_EdgeRadius: 0
+--- !u!50 &901223765
+Rigidbody2D:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 901223757}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &907517686
 GameObject:
   m_ObjectHideFlags: 0
@@ -1855,11 +2062,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6282329115402190047, guid: fbe136725fda49e4ca76509d1a62058f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -4.08
+      value: 0.71
       objectReference: {fileID: 0}
     - target: {fileID: 6282329115402190047, guid: fbe136725fda49e4ca76509d1a62058f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 5.57
+      value: 3.49
       objectReference: {fileID: 0}
     - target: {fileID: 6282329115402190047, guid: fbe136725fda49e4ca76509d1a62058f, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1908,6 +2115,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 7559601641096968251, guid: fbe136725fda49e4ca76509d1a62058f, type: 3}
       insertIndex: -1
       addedObject: {fileID: 379014318}
+    - targetCorrespondingSourceObject: {fileID: 7559601641096968251, guid: fbe136725fda49e4ca76509d1a62058f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 379014322}
   m_SourcePrefab: {fileID: 100100000, guid: fbe136725fda49e4ca76509d1a62058f, type: 3}
 --- !u!1001 &1335785119
 PrefabInstance:
@@ -2021,6 +2231,7 @@ GameObject:
   - component: {fileID: 1507250440}
   - component: {fileID: 1507250439}
   - component: {fileID: 1507250442}
+  - component: {fileID: 1507250443}
   m_Layer: 0
   m_Name: music_1_0 (1)
   m_TagString: Web_stop
@@ -2041,7 +2252,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 1
-  direction: {x: 0, y: -1}
+  explosionPrefab: {fileID: 0}
+  explosionRadius: 2
 --- !u!212 &1507250440
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2158,6 +2370,33 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 4.42, y: 5.81}
   m_EdgeRadius: 0
+--- !u!50 &1507250443
+Rigidbody2D:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1507250438}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1001 &1693637117
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2408,6 +2647,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 6328105079811794911, guid: a4a4acfa0bcb562429a31fc095065955, type: 3}
       insertIndex: -1
       addedObject: {fileID: 648989274}
+    - targetCorrespondingSourceObject: {fileID: 6328105079811794911, guid: a4a4acfa0bcb562429a31fc095065955, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 648989277}
   m_SourcePrefab: {fileID: 100100000, guid: a4a4acfa0bcb562429a31fc095065955, type: 3}
 --- !u!1001 &1766277408
 PrefabInstance:
@@ -2479,6 +2721,7 @@ GameObject:
   - component: {fileID: 1785012381}
   - component: {fileID: 1785012380}
   - component: {fileID: 1785012383}
+  - component: {fileID: 1785012384}
   m_Layer: 0
   m_Name: music_1_0
   m_TagString: Web_stop
@@ -2499,7 +2742,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 1
-  direction: {x: 0, y: -1}
+  explosionPrefab: {fileID: 0}
+  explosionRadius: 2
 --- !u!212 &1785012381
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2616,6 +2860,33 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 4.42, y: 1.4314058}
   m_EdgeRadius: 0
+--- !u!50 &1785012384
+Rigidbody2D:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1785012379}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &1790918380
 GameObject:
   m_ObjectHideFlags: 0
@@ -2628,6 +2899,7 @@ GameObject:
   - component: {fileID: 1790918383}
   - component: {fileID: 1790918382}
   - component: {fileID: 1790918381}
+  - component: {fileID: 1790918385}
   m_Layer: 0
   m_Name: music_1_0 (3)
   m_TagString: Web_stop
@@ -2694,7 +2966,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 1
-  direction: {x: 0, y: -1}
+  explosionPrefab: {fileID: 0}
+  explosionRadius: 2
 --- !u!212 &1790918383
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2765,6 +3038,33 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!50 &1790918385
+Rigidbody2D:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1790918380}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1001 &1800466084
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3104,29 +3404,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 1970978448}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b26c06002635ba4468c161e7f50cb569, type: 3}
+  m_Script: {fileID: 11500000, guid: 3822fc1c29ba4124a8895bdf35c64289, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 6
+  speed: 4
 --- !u!1 &1972748536 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6328105079811794911, guid: a4a4acfa0bcb562429a31fc095065955, type: 3}
   m_PrefabInstance: {fileID: 199011170}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1972748537
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1972748536}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62681e1d2d8989c4a98c34cc4e6cad78, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 1
-  direction: {x: -1, y: 0}
 --- !u!114 &1972748538
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3188,6 +3474,20 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 3.82, y: 2.2923088}
   m_EdgeRadius: 0
+--- !u!114 &1972748544
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1972748536}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e00ac02549753b4c84f6a7441b44fd3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 1
+  direction: {x: -1, y: 0}
 --- !u!1001 &2081024118
 PrefabInstance:
   m_ObjectHideFlags: 0
