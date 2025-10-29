@@ -52,6 +52,13 @@ public class PlayerCon : MonoBehaviour
             SceneManager.LoadScene(sceneName);
 
         }
+        else if(collision.gameObject.tag == "Enemy")
+        {
+            Debug.Log("ゲームオーバー");
+            Destroy(this.gameObject);
+
+            SceneManager.LoadScene(sceneName);
+        }
         if (collision.gameObject.tag == "item")
         {
             cnt++;
