@@ -1,121 +1,24 @@
-/*using System.Collections;
-using UnityEngine;
-
-/// <summary>
-/// ���ʂ̓G�R���g���[���X�N���v�g
-/// - �������ɗ���
-/// - �e�iWeb�j������������~�܂�
-/// - L�L�[�Ŕ����\
-/// </summary>
-public class EnemyBaseController : MonoBehaviour
-{
-    [Header("�ړ��ݒ�")]
-    public float speed = 2f;                  // �������x
-
-    private bool isStopped = false;           // ��~��Ԃ�
-    private Rigidbody2D rb;                   // Rigidbody2D�R���|�[�l���g
-
-    [Header("�����ݒ�")]
-    public GameObject explosionPrefab;        // ����Prefab
-    public float explosionRadius = 2f;        // �����͈́i���a�j
-
-    void Awake()
-    {
-        rb = GetComponent<Rigidbody2D>();
-    }
-
-    void FixedUpdate()
-    {
-        // ��~���Ă��Ȃ���Ή������Ɉړ�
-        if (!isStopped)
-        {
-            rb.velocity = new Vector2(0, -speed);
-        }
-        else
-        {
-            rb.velocity = Vector2.zero;
-        }
-    }
-
-    /// <summary>
-    /// �e�������������ɌĂ�
-    /// </summary>
-    public void Stop()
-    {
-        if (!isStopped)
-        {
-            isStopped = true;
-            rb.velocity = Vector2.zero;
-        }
-    }
-
-    void Update()
-    {
-        // ��~����L�L�[�Ŕ���
-        if (isStopped && Input.GetKeyDown(KeyCode.L))
-        {
-            Explode();
-        }
-    }
-
-    /// <summary>
-    /// ��������
-    /// �͈͓���Web��Enemy��j��
-    /// ���g���j��
-    /// </summary>
-    private void Explode()
-    {
-        // �����ڗp�̔���Prefab����
-        if (explosionPrefab != null)
-        {
-            Instantiate(explosionPrefab, transform.position, Quaternion.identity);
-        }
-
-        // �����͈͓��̃I�u�W�F�N�g���擾
-        Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position, explosionRadius);
-        foreach (Collider2D hit in hits)
-        {
-            // Web�܂���Enemy�^�O�̃I�u�W�F�N�g��j��
-            if (hit.CompareTag("Web") || hit.CompareTag("Enemy"))
-            {
-                Destroy(hit.gameObject);
-                Debug.Log("�����Ŕj��: " + hit.name);
-            }
-        }
-
-        // ���g���j��
-        Destroy(gameObject);
-    }
-
-    // Scene�r���[�Ŕ����͈͂�����
-    private void OnDrawGizmosSelected()
-    {
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, explosionRadius);
-    }
-}*/
-
 using System.Collections;
 using UnityEngine;
 
 /// <summary>
-/// ���ʂ̓G�R���g���[���X�N���v�g
-/// - �ړ�������Inspector�Ŏ��R�ɐݒ�\
-/// - �e�iWeb�j������������~�܂�
-/// - L�L�[�Ŕ����\
+/// 共通の敵コントローラスクリプト
+/// - 移動方向はInspectorで自由に設定可能
+/// - 弾（Web）が当たったら止まる
+/// - Lキーで爆発可能
 /// </summary>
 public class EnemyBaseController : MonoBehaviour
 {
-    [Header("�ړ��ݒ�")]
-    public float speed = 2f;                      // �ړ����x
-    public Vector2 moveDirection = Vector2.down;  // Inspector�Őݒ�ł���ړ�����
+    [Header("移動設定")]
+    public float speed = 2f;                      // 移動速度
+    public Vector2 moveDirection = Vector2.down;  // Inspectorで設定できる移動方向
 
-    private bool isStopped = false;               // �G���~�܂��Ă��邩
-    private Rigidbody2D rb;                       // Rigidbody2D�R���|�[�l���g
+    private bool isStopped = false;               // 敵が止まっているか
+    private Rigidbody2D rb;                       // Rigidbody2Dコンポーネント
 
-    [Header("�����ݒ�")]
-    public GameObject explosionPrefab;            // ����Prefab
-    public float explosionRadius = 2f;            // �����͈�
+    [Header("爆発設定")]
+    public GameObject explosionPrefab;            // 爆発Prefab
+    public float explosionRadius = 2f;            // 爆発範囲
 
     void Awake()
     {
@@ -124,33 +27,33 @@ public class EnemyBaseController : MonoBehaviour
 
     void FixedUpdate()
     {
-        // ��~���Ă��Ȃ���Ύw������Ɉړ�
+        // 停止していなければ指定方向に移動
         if (!isStopped)
         {
-            rb.linearVelocity = moveDirection.normalized * speed;
+            rb.velocity = moveDirection.normalized * speed;
         }
         else
         {
-            rb.linearVelocity = Vector2.zero;
+            rb.velocity = Vector2.zero;
         }
     }
 
     /// <summary>
-    /// �e�����������Ƃ��ɌĂ�
-    /// �G���~������
+    /// 弾が当たったときに呼ぶ
+    /// 敵を停止させる
     /// </summary>
     public void Stop()
     {
         if (!isStopped)
         {
             isStopped = true;
-            rb.linearVelocity = Vector2.zero;
+            rb.velocity = Vector2.zero;
         }
     }
 
     void Update()
     {
-        // ��~����L�L�[�Ŕ���
+        // 停止中にLキーで爆発
         if (isStopped && Input.GetKeyDown(KeyCode.L))
         {
             Explode();
@@ -158,34 +61,34 @@ public class EnemyBaseController : MonoBehaviour
     }
 
     /// <summary>
-    /// ��������
-    /// �͈͓���Web��Enemy��j��
-    /// ���g���j��
+    /// 爆発処理
+    /// 範囲内のWebとEnemyを破壊
+    /// 自身も破壊
     /// </summary>
     private void Explode()
     {
-        // �����ڗp�̔���Prefab����
+        // 見た目用の爆発Prefab生成
         if (explosionPrefab != null)
         {
             Instantiate(explosionPrefab, transform.position, Quaternion.identity);
         }
 
-        // �����͈͓���Collider2D���擾
+        // 爆発範囲内のCollider2Dを取得
         Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position, explosionRadius);
         foreach (Collider2D hit in hits)
         {
             if (hit.CompareTag("Web") || hit.CompareTag("Enemy"))
             {
                 Destroy(hit.gameObject);
-                Debug.Log("�����Ŕj��: " + hit.name);
+                Debug.Log("爆発で破壊: " + hit.name);
             }
         }
 
-        // ���g���j��
+        // 自身も破壊
         Destroy(gameObject);
     }
 
-    // Scene�r���[�Ŕ����͈͂�����
+    // Sceneビューで爆発範囲を可視化
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;
