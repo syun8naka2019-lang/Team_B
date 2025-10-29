@@ -4,6 +4,9 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
+<<<<<<< HEAD
+  m_Scenes: []
+=======
   m_Scenes:
   - enabled: 1
     path: Assets/Scenes/Title.unity
@@ -20,5 +23,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Gameover.unity
     guid: 2fbc0bd9fb2003142b2d5b58e0a6b174
+>>>>>>> 8609f26d8b7c9f5963a9ea1070c49f66bf813d85
   m_configObjects: {}
   m_UseUCBPForAssetBundles: 0
