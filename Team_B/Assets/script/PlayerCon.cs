@@ -25,7 +25,9 @@ public class PlayerCon : MonoBehaviour
     private void Start()
     {
         animator = GetComponent<Animator>();
-        
+        nowAnime = stop10;
+        oldAnime = stop10;
+       
     }
     void Update()
     {
@@ -52,28 +54,14 @@ public class PlayerCon : MonoBehaviour
             SceneManager.LoadScene(sceneName);
 
         }
+
         if (collision.gameObject.tag == "item")
         {
-            cnt++;
-            if (cnt == 0)
-                nowAnime = stop10;
-            else if (cnt == 1)
-                nowAnime = stop0;
-
-
-
-
-
+            
+                nowAnime = stop1;
+            animator.Play(nowAnime);
 
         }
-
-
-
-
-
-
-
-
 
     }
     public void Goal()
