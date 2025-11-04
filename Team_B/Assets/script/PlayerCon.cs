@@ -54,12 +54,41 @@ public class PlayerCon : MonoBehaviour
             SceneManager.LoadScene(sceneName);
 
         }
+<<<<<<< HEAD
 
         if (collision.gameObject.tag == "item")
         {
             
                 nowAnime = stop1;
             animator.Play(nowAnime);
+=======
+        else if(collision.gameObject.tag == "Enemy")
+        {
+            Debug.Log("ゲームオーバー");
+            Destroy(this.gameObject);
+
+            SceneManager.LoadScene(sceneName);
+        }
+        if (collision.gameObject.tag == "item")
+        {
+            cnt++;
+            if (cnt == 0)
+                nowAnime = stop3;
+            else if (cnt == 1)
+                nowAnime = stop3;
+            else if (cnt == 2)
+                nowAnime = stop1;
+            else if (cnt == 3)
+                nowAnime = stop2;
+            else if (cnt == 4)
+                nowAnime = stop3;
+            else if (cnt == 5)
+            {
+                nowAnime = stop4;
+                cnt = 0;
+            }
+
+>>>>>>> 2d91bbd9660a7a16feb0dc40004433c5ec5ce343
 
         }
 

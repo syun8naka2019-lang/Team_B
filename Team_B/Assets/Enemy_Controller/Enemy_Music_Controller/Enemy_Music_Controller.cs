@@ -1,26 +1,92 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Enemy_Music_Controller : MonoBehaviour
 {
-    public float speed = 3.0f; //ˆÚ“®‘¬“xspeed
-    public Vector2 direction = Vector2.left;//¶•ûŒü‚Éi‚Ş
+    [Header("ï¿½Ú“ï¿½ï¿½İ’ï¿½")]
+    public float speed = 2f;                  // ï¿½Gï¿½Ì—ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½x
 
-    //Update is called once per frame
-    void Update()
+    private bool isStopped = false;           // ï¿½Gï¿½ï¿½ï¿½~ï¿½Ü‚ï¿½ï¿½Ä‚ï¿½ï¿½é‚©ï¿½Ç‚ï¿½ï¿½ï¿½
+    private Rigidbody2D rb;                   // Rigidbody2Dï¿½Rï¿½ï¿½ï¿½|ï¿½[ï¿½lï¿½ï¿½ï¿½g
+
+    [Header("ï¿½ï¿½ï¿½ï¿½ï¿½İ’ï¿½")]
+    public GameObject explosionPrefab;        // ï¿½ï¿½ï¿½ï¿½Prefab
+    public float explosionRadius = 2f;        // ï¿½ï¿½ï¿½ï¿½ï¿½ÍˆÍiï¿½ï¿½ï¿½aï¿½j
+
+    void Awake()
     {
-        transform.Translate(direction * speed * Time.deltaTime);
+        // Rigidbody2Dï¿½æ“¾
+        rb = GetComponent<Rigidbody2D>();
     }
-    void OnTriggerEnter2D(Collider2D collision)
+
+    void FixedUpdate()
     {
-        if (collision.gameObject.tag == "Web")
+        if (!isStopped)
         {
-            speed = 0.0f;
+            // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÉˆÚ“ï¿½
+            rb.linearVelocity = new Vector2(0, -speed);
+        }
+        else
+        {
+            // ï¿½ï¿½~ï¿½ï¿½ï¿½Í‘ï¿½ï¿½x0
+            rb.linearVelocity = Vector2.zero;
         }
     }
-    private void OnBecameInvisible()//‚Ç‚ÌƒJƒƒ‰‚É‚à‰f‚ç‚È‚¢‚Æ‚«
+
+    /// <summary>
+    /// ï¿½eï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ‚ï¿½ï¿½ÉŒÄ‚ï¿½
+    /// ï¿½Gï¿½ï¿½ï¿½~ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+    /// </summary>
+    public void Stop()
     {
-        Destroy(gameObject); //ƒIƒuƒWƒFƒNƒg‚ğÁ‹
+        if (!isStopped)
+        {
+            isStopped = true;
+            rb.linearVelocity = Vector2.zero;
+        }
+    }
+
+    void Update()
+    {
+        // ï¿½ï¿½~ï¿½ï¿½ï¿½ï¿½Lï¿½Lï¿½[ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ê‚½ï¿½ç”šï¿½ï¿½
+        if (isStopped && Input.GetKeyDown(KeyCode.L))
+        {
+            Explode();
+        }
+    }
+
+    /// <summary>
+    /// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+    /// ï¿½ÍˆÍ“ï¿½ï¿½Ì“Gï¿½ï¿½eï¿½ï¿½jï¿½ó‚µAï¿½ï¿½ï¿½gï¿½ï¿½ï¿½jï¿½ó‚·‚ï¿½
+    /// </summary>
+    private void Explode()
+    {
+        // ï¿½ï¿½ï¿½ï¿½ï¿½Ú—pï¿½Ì”ï¿½ï¿½ï¿½Prefabï¿½ï¿½ï¿½ï¿½
+        if (explosionPrefab != null)
+        {
+            Instantiate(explosionPrefab, transform.position, Quaternion.identity);
+        }
+
+        // ï¿½ï¿½ï¿½ï¿½ï¿½ÍˆÍ“ï¿½ï¿½ï¿½Collider2Dï¿½ï¿½ï¿½æ“¾
+        Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position, explosionRadius);
+        foreach (Collider2D hit in hits)
+        {
+            // Webï¿½Ü‚ï¿½ï¿½ï¿½Enemyï¿½^ï¿½Oï¿½ÌƒIï¿½uï¿½Wï¿½Fï¿½Nï¿½gï¿½ï¿½jï¿½ï¿½
+            if (hit.CompareTag("Web") || hit.CompareTag("Enemy"))
+            {
+                Destroy(hit.gameObject);
+                Debug.Log("ï¿½ï¿½ï¿½ï¿½ï¿½Å”jï¿½ï¿½: " + hit.name);
+            }
+        }
+
+        // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½jï¿½ï¿½
+        Destroy(gameObject);
+    }
+
+    // Sceneï¿½rï¿½ï¿½ï¿½[ï¿½Å”ï¿½ï¿½ï¿½ï¿½ÍˆÍ‚ï¿½ï¿½Âï¿½ï¿½ï¿½
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, explosionRadius);
     }
 }
