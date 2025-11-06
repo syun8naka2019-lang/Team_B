@@ -9,6 +9,8 @@ TagManager:
   - Dead
   - item
   - Enemy
+  - BOSS
+  - shougaibutu
   layers:
   - Default
   - TransparentFX

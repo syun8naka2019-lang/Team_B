@@ -4,18 +4,18 @@ public class EnemyPassWall : MonoBehaviour
 {
     private void OnTriggerEnter2D(Collider2D other)
     {
-        // Enemyƒ^ƒO‚ğ‚ÂƒIƒuƒWƒFƒNƒg‚Í’Ê‰ß
+        // Enemyï¿½^ï¿½Oï¿½ï¿½ï¿½ï¿½ï¿½ÂƒIï¿½uï¿½Wï¿½Fï¿½Nï¿½gï¿½Í’Ê‰ï¿½
         if (other.CompareTag("Enemy"))
         {
-            // ‰½‚à‚µ‚È‚¢i’Ê‚è”²‚¯OKj
+            // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È‚ï¿½ï¿½iï¿½Ê‚è”²ï¿½ï¿½OKï¿½j
         }
         else
         {
-            // ‚»‚êˆÈŠO‚Í~‚ß‚½‚¢ê‡ ¨ “–‚½‚Á‚½ƒIƒuƒWƒFƒNƒg‚ğ~‚ß‚é or ƒoƒEƒ“ƒh
+            // ï¿½ï¿½ï¿½ï¿½ÈŠOï¿½Í~ï¿½ß‚ï¿½ï¿½ï¿½ï¿½ê‡ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Iï¿½uï¿½Wï¿½Fï¿½Nï¿½gï¿½ï¿½ï¿½~ï¿½ß‚ï¿½ or ï¿½oï¿½Eï¿½ï¿½ï¿½h
             Rigidbody2D rb = other.attachedRigidbody;
             if (rb != null)
             {
-                rb.velocity = Vector2.zero;
+                rb.linearVelocity = Vector2.zero;
             }
         }
     }
