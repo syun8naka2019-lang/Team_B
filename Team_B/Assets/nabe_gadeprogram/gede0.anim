@@ -60,9 +60,13 @@ AnimationClip:
     m_HasAdditiveReferencePose: 0
 <<<<<<< HEAD
     m_LoopTime: 0
+=======
+<<<<<<< HEAD
+    m_LoopTime: 0
     m_LoopBlend: 1
 =======
     m_LoopTime: 1
+>>>>>>> bf759ae5f70893a8834f584a9893baea227bf02e
     m_LoopBlend: 0
 >>>>>>> 2d91bbd9660a7a16feb0dc40004433c5ec5ce343
     m_LoopBlendOrientation: 0
