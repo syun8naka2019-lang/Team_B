@@ -54,14 +54,14 @@ public class PlayerCon : MonoBehaviour
             SceneManager.LoadScene(sceneName);
 
         }
-<<<<<<< HEAD
+/*<<<<<<< HEAD
 
         if (collision.gameObject.tag == "item")
         {
             
                 nowAnime = stop1;
             animator.Play(nowAnime);
-=======
+=======*/
         else if(collision.gameObject.tag == "Enemy")
         {
             Debug.Log("ゲームオーバー");
@@ -87,8 +87,6 @@ public class PlayerCon : MonoBehaviour
                 nowAnime = stop4;
                 cnt = 0;
             }
-
->>>>>>> 2d91bbd9660a7a16feb0dc40004433c5ec5ce343
 
         }
 
