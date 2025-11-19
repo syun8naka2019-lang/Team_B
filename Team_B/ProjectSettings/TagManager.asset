@@ -9,7 +9,12 @@ TagManager:
   - Dead
   - item
   - Enemy
+<<<<<<< HEAD
   - nabe
+=======
+  - BOSS
+  - shougaibutu
+>>>>>>> 5cd53f27439e8d2c9edca2dfd05cc662b0127680
   layers:
   - Default
   - TransparentFX
@@ -19,8 +24,8 @@ TagManager:
   - UI
   - Enemy
   - EnemyPassWall
-  - 
-  - 
+  - WebEnemy
+  - InactiveWeb
   - 
   - 
   - 

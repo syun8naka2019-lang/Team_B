@@ -7,46 +7,32 @@ public class PlayerCon : MonoBehaviour
 {
     public static string gameState = "playing";
     public string sceneName;
-    // プレイヤーの移動速度
-    private int moveSpeed = 7;
 
-    Animator animator;
-    public string stop0 = "gade0";
-    public string stop1 = "gade1";
-    public string stop2 = "gade2";
-    public string stop3 = "gade3";
-    public string stop4 = "gade4";
-    public string stop10 = "stopstop";
-    string nowAnime = "";
-    string oldAnime = "";
-    int cnt = 0;
-
+    private PlayerStatus status;
 
     private void Start()
     {
-        animator = GetComponent<Animator>();
-        nowAnime = stop10;
-        oldAnime = stop10;
-       
+        status = GetComponent<PlayerStatus>();
     }
+
     void Update()
     {
         Move();
     }
 
-    private void FixedUpdate()
+    private void Move()
     {
-        
-    }
+        float x = Input.GetAxis("Horizontal") * status.moveSpeed;
+        float y = Input.GetAxis("Vertical") * status.moveSpeed;
 
+        transform.position += new Vector3(x, y, 0) * Time.deltaTime;
+    }
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-
-        Debug.Log("ゲームオーバー");
-
-        if (collision.gameObject.tag == "Dead")
+        if (collision.CompareTag("Dead") || collision.CompareTag("Enemy"))
         {
+<<<<<<< HEAD
             Debug.Log("ゲームオーバー");
             Destroy(this.gameObject);
            
@@ -123,7 +109,11 @@ public class PlayerCon : MonoBehaviour
 
         // 取得した入力値をプレイヤーの位置に反映させる
         transform.position += new Vector3(x, y, 0) * Time.deltaTime;
+=======
+            Destroy(gameObject);
+            SceneManager.LoadScene(sceneName);
+        }
+>>>>>>> 5cd53f27439e8d2c9edca2dfd05cc662b0127680
     }
 
 }
-

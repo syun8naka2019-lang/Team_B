@@ -1,25 +1,23 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class ShellController_M : MonoBehaviour
 {
-    public float deleteTime = 3.0f;     //íœ‚·‚éŠÔw’è
+    public float deleteTime = 3.0f;     //å‰Šé™¤ã™ã‚‹æ™‚é–“æŒ‡å®š
 
     //Update is called once per frame
     void Start()
     {
-        Destroy(gameObject, deleteTime);     //íœİ’è
+        Destroy(gameObject, deleteTime);     //å‰Šé™¤è¨­å®š
     }
 
     private void Update()
     {
 
     }
-
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnBecameInvisible()//ï¿½Ç‚ÌƒJï¿½ï¿½ï¿½ï¿½ï¿½É‚ï¿½fï¿½ï¿½È‚ï¿½ï¿½Æ‚ï¿½
     {
-        Destroy(gameObject); //ƒIƒuƒWƒFƒNƒg‚ğÁ‹
+        Destroy(gameObject); //ï¿½Iï¿½uï¿½Wï¿½Fï¿½Nï¿½gï¿½ï¿½ï¿½ï¿½ï¿½
     }
-
 }
