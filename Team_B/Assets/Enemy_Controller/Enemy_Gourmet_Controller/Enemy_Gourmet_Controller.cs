@@ -9,7 +9,7 @@ public class Enemy_Gourmet_Controller : MonoBehaviour
 
     //Update is called once per frame
     void Update()
-    {
+    { 
         transform.Translate(direction * speed * Time.deltaTime);
     }
     void OnTriggerEnter2D(Collider2D collision)

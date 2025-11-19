@@ -9,6 +9,7 @@ TagManager:
   - Dead
   - item
   - Enemy
+  - nabe
   layers:
   - Default
   - TransparentFX

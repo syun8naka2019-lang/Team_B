@@ -100,6 +100,7 @@ public class WebController : MonoBehaviour
     private Rigidbody2D rb;                // Rigidbody2D
     private bool isStopped = false;        // 弾が止まったか
     private bool hasHitEnemy = false;      // 1回ヒット済みか
+ 
 
     void Awake()
     {
@@ -114,9 +115,9 @@ public class WebController : MonoBehaviour
             transform.Translate(Vector2.up * speed * Time.deltaTime);
         }
     }
-
+      
     void OnCollisionEnter2D(Collision2D collision)
-    {
+        {
         CheckHitEnemy(collision.gameObject);
     }
 

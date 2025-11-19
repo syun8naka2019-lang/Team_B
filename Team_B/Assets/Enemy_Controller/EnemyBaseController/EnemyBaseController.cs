@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 /// <summary>
 /// 共通の敵コントローラスクリプト
@@ -30,11 +31,11 @@ public class EnemyBaseController : MonoBehaviour
         // 停止していなければ指定方向に移動
         if (!isStopped)
         {
-            rb.velocity = moveDirection.normalized * speed;
+            rb.linearVelocity = moveDirection.normalized * speed;
         }
         else
         {
-            rb.velocity = Vector2.zero;
+            rb.linearVelocity = Vector2.zero;
         }
     }
 
@@ -47,7 +48,7 @@ public class EnemyBaseController : MonoBehaviour
         if (!isStopped)
         {
             isStopped = true;
-            rb.velocity = Vector2.zero;
+            rb.linearVelocity = Vector2.zero;
         }
     }
 
@@ -94,4 +95,7 @@ public class EnemyBaseController : MonoBehaviour
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, explosionRadius);
     }
-}
+   
+
+    }
+

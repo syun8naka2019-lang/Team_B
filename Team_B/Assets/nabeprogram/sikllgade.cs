@@ -11,7 +11,7 @@ public class skillgade : MonoBehaviour
     private int moveSpeed = 7;
 
     Animator animator;
-    public string stop0 = "gade0";
+  
     public string stop1 = "gade1";
     public string stop2 = "gade2";
     public string stop3 = "gade3";
