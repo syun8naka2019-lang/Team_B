@@ -82,7 +82,7 @@ public class WebController : MonoBehaviour
     }
 }*/
 
-
+/*
 using System.Collections.Generic;
 using UnityEngine;
 using System.Collections;
@@ -100,6 +100,7 @@ public class WebController : MonoBehaviour
     private Rigidbody2D rb;                // Rigidbody2D
     private bool isStopped = false;        // 弾が止まったか
     private bool hasHitEnemy = false;      // 1回ヒット済みか
+ 
 
     [Header("弾の寿命")]
     public float lifeTime = 3f;
@@ -122,9 +123,9 @@ public class WebController : MonoBehaviour
             transform.Translate(Vector2.up * speed * Time.deltaTime);
         }
     }
-
+      
     void OnCollisionEnter2D(Collision2D collision)
-    {
+        {
         CheckHitEnemy(collision.gameObject);
         
     
@@ -173,6 +174,7 @@ public class WebController : MonoBehaviour
             rb.linearVelocity = Vector2.zero;
         }
     }
+<<<<<<< HEAD
 
 
     void Start()
@@ -205,3 +207,97 @@ public class WebController : MonoBehaviour
   
       
 }
+=======
+}*/
+
+using UnityEngine;
+
+/// <summary>
+/// 弾（Web）のコントローラ
+/// - 上方向に移動
+/// - 敵に当たったら止まる
+/// - 一度敵を捕まえたら他の敵とは反応しない
+/// - Colliderは残したまま、Layerを変更して制御
+/// </summary>
+public class WebController : MonoBehaviour
+{
+    [Header("移動設定")]
+    public float speed = 10f;              // 弾の速度
+
+    private Rigidbody2D rb;                // Rigidbody2D参照
+    private bool isStopped = false;        // Webが停止しているか
+    private bool hasCapturedEnemy = false; // 敵を捕まえたかどうか
+    private int originalLayer;             // 元のLayerを保存
+    private int inactiveLayer;             // 捕まえた後のLayer（敵と当たらない）
+
+    void Awake()
+    {
+        rb = GetComponent<Rigidbody2D>();
+        originalLayer = gameObject.layer;
+        inactiveLayer = LayerMask.NameToLayer("InactiveWeb"); // 新しいレイヤーを作っておく
+    }
+
+    void Update()
+    {
+        // 停止していなければ上方向に移動
+        if (!isStopped)
+        {
+            transform.Translate(Vector2.up * speed * Time.deltaTime);
+        }
+    }
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        CheckHitEnemy(other.gameObject);
+    }
+
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        CheckHitEnemy(collision.gameObject);
+    }
+
+    private void CheckHitEnemy(GameObject obj)
+    {
+        // すでに敵を捕まえていたら無視
+        if (hasCapturedEnemy)
+            return;
+
+        if (obj.CompareTag("Enemy"))
+        {
+            hasCapturedEnemy = true; // 捕まえた
+            Stop();
+
+            // WebのLayerを切り替える（敵とはもう衝突しない）
+            if (inactiveLayer != -1)
+                gameObject.layer = inactiveLayer;
+
+            // 敵の動きを止める
+            EnemyBaseController enemy = obj.GetComponent<EnemyBaseController>();
+            if (enemy != null)
+                enemy.Stop();
+
+            Debug.Log($"Web {gameObject.name} が敵 {obj.name} を捕まえました（Layer変更で他の敵を無視）");
+        }
+    }
+
+    /// <summary>
+    /// Webを停止
+    /// </summary>
+    public void Stop()
+    {
+        isStopped = true;
+        if (rb != null)
+            rb.linearVelocity = Vector2.zero;
+    }
+
+    /// <summary>
+    /// 再利用したい時（敵が消えたなど）にLayerを戻す
+    /// </summary>
+    public void Release()
+    {
+        hasCapturedEnemy = false;
+        isStopped = false;
+        gameObject.layer = originalLayer;
+    }
+}
+>>>>>>> 0ef132ce225af06552d0bc802f3ac1f540cd7a66

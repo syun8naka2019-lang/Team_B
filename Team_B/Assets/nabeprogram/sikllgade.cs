@@ -3,32 +3,47 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class PlayerCon : MonoBehaviour
+public class skillgade : MonoBehaviour
 {
     public static string gameState = "playing";
     public string sceneName;
     // プレイヤーの移動速度
     private int moveSpeed = 7;
 
-    
+    Animator animator;
+  
+    public string stop1 = "gade1";
+    public string stop2 = "gade2";
+    public string stop3 = "gade3";
+    public string stop4 = "gade4";
+    public string stop10 = "stopstop";
+    string nowAnime = "";
+    string oldAnime = "";
+    int cnt = 0;
 
 
     private void Start()
     {
+<<<<<<< HEAD:Team_B/Assets/script/PlayerCon.cs
 
     
        
+=======
+        animator = GetComponent<Animator>();
+        nowAnime = stop10;
+        oldAnime = stop10;
+>>>>>>> 0ef132ce225af06552d0bc802f3ac1f540cd7a66:Team_B/Assets/nabeprogram/sikllgade.cs
 
     }
       private void Update()
     {
-      
+
         Move();
     }
 
     private void FixedUpdate()
     {
-        
+
     }
 
 
@@ -46,6 +61,7 @@ public class PlayerCon : MonoBehaviour
 
         }
 
+<<<<<<< HEAD:Team_B/Assets/script/PlayerCon.cs
         else if (collision.gameObject.tag == "Enemy")
         {
             Debug.Log("ゲームオーバー");
@@ -59,6 +75,13 @@ public class PlayerCon : MonoBehaviour
 
 
 
+=======
+        if (collision.gameObject.tag == "item")
+        {
+
+            nowAnime = stop1;
+            animator.Play(nowAnime);
+>>>>>>> 0ef132ce225af06552d0bc802f3ac1f540cd7a66:Team_B/Assets/nabeprogram/sikllgade.cs
 
         }
 
@@ -67,7 +90,7 @@ public class PlayerCon : MonoBehaviour
     public void Goal()
     {
         gameState = "gameclear";
-       
+
 
 
     }
@@ -75,16 +98,16 @@ public class PlayerCon : MonoBehaviour
     public void GameOver()
     {
         gameState = "gameover";
-       
+
         GetComponent<CapsuleCollider2D>().enabled = false;
-            //シーンを読み込む
-  
+        //シーンを読み込む
 
-    
-    // rbody.AddForce(new Vector2(0, 5), ForceMode2D.Impulse);
 
-     }
- 
+
+        // rbody.AddForce(new Vector2(0, 5), ForceMode2D.Impulse);
+
+    }
+
     // プレイヤーを移動させる
     private void Move()
     {

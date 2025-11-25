@@ -4,14 +4,20 @@
 TagManager:
   serializedVersion: 3
   tags:
+  - Dead
+  - Enemy
+  - nabe
   - Web
   - Web_stop
+<<<<<<< HEAD
   - Dead
   - item
   - Enemy
   - BOSS
   - shougaibutu
   - sho
+=======
+>>>>>>> 0ef132ce225af06552d0bc802f3ac1f540cd7a66
   layers:
   - Default
   - TransparentFX
@@ -19,11 +25,19 @@ TagManager:
   - 
   - Water
   - UI
+<<<<<<< HEAD
   - Enemy
   - EnemyPassWall
   - shougaibutu
   - sho
   - Web
+=======
+  - Player1
+  - 
+  - 
+  - 
+  - 
+>>>>>>> 0ef132ce225af06552d0bc802f3ac1f540cd7a66
   - 
   - 
   - 

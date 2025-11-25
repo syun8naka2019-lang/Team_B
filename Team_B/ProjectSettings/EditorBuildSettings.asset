@@ -12,6 +12,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Stageselect.unity
     guid: ec1dad8b366c4ca438c36ae4fa8e0086
   - enabled: 1
+<<<<<<< HEAD
     path: Assets/StagePre010/nakaStage1.unity
     guid: 3aca161a88baced4fb6df3c2d5a7875d
   - enabled: 1
@@ -20,6 +21,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/st3.unity
     guid: 7d39297d21943d84c93d01f24fb28454
+=======
+    path: Assets/Scenes/yamasa.unity
+    guid: 1700784bf268ede4f9cab7a2fdd1dc23
+>>>>>>> 0ef132ce225af06552d0bc802f3ac1f540cd7a66
   - enabled: 1
     path: Assets/Scenes/Clear.unity
     guid: 3029925b4bc805f40b08196616583a80
