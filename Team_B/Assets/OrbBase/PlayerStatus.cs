@@ -25,9 +25,9 @@ public class PlayerStatus : MonoBehaviour
     }
 
     // HP‰ñ•œ
-    public void Heal(int amount)
+    public void Heal(int currentHp)
     {
-        hp += amount;
+        hp += currentHp;
         Debug.Log("HP: " + hp);
     }
 

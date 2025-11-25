@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -7,36 +5,30 @@ public class Clearchange : MonoBehaviour
 {
     public string sceneName;
 
-    int hp = 3;
-    
+    int hp = 10;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-       
-    }
-
-    // Update is called once per frame
-   
     void Update()
     {
         if (hp <= 0)
         {
             Destroy(gameObject);
-            SceneManager.LoadScene(sceneName);
 
+            if (Application.CanStreamedLevelBeLoaded(sceneName))
+            {
+                SceneManager.LoadScene(sceneName);
+            }
+            else
+            {
+                Debug.LogError($"Scene '{sceneName}' ‚ª Build Settings ‚É“o˜^‚³‚ê‚Ä‚¢‚Ü‚¹‚ñB");
+            }
         }
-
-
     }
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Web")
+        if (collision.CompareTag("Web"))
         {
             hp--;
         }
-      
     }
-
 }

@@ -4,7 +4,6 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-<<<<<<< HEAD
   m_Scenes:
   - enabled: 1
     path: Assets/Scenes/Title.unity
@@ -15,8 +14,11 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/yamasa.unity
     guid: 1700784bf268ede4f9cab7a2fdd1dc23
-=======
-  m_Scenes: []
->>>>>>> 5cd53f27439e8d2c9edca2dfd05cc662b0127680
+  - enabled: 1
+    path: Assets/Scenes/Clear.unity
+    guid: 3029925b4bc805f40b08196616583a80
+  - enabled: 1
+    path: Assets/Scenes/Gameover.unity
+    guid: 2fbc0bd9fb2003142b2d5b58e0a6b174
   m_configObjects: {}
   m_UseUCBPForAssetBundles: 0

@@ -20,7 +20,7 @@ public class EnemyBaseController : MonoBehaviour
     public GameObject greenOrbPrefab;
     public GameObject blueOrbPrefab;
 
-    public int redRate = 70;   // 赤が出やすい
+    public int redRate = 70;
     public int greenRate = 20;
     public int blueRate = 10;
 
@@ -32,7 +32,6 @@ public class EnemyBaseController : MonoBehaviour
     void FixedUpdate()
     {
         if (!isStopped)
-<<<<<<< HEAD
         {
             rb.linearVelocity = moveDirection.normalized * speed;
         }
@@ -40,11 +39,6 @@ public class EnemyBaseController : MonoBehaviour
         {
             rb.linearVelocity = Vector2.zero;
         }
-=======
-            rb.velocity = moveDirection.normalized * speed;
-        else
-            rb.velocity = Vector2.zero;
->>>>>>> 5cd53f27439e8d2c9edca2dfd05cc662b0127680
     }
 
     public void Stop()
@@ -64,16 +58,14 @@ public class EnemyBaseController : MonoBehaviour
         }
     }
 
-    // ★★★ ここがオーブ生成付きの爆発処理 ★★★
+    // 爆発処理
     private void Explode()
     {
-        // 爆発アニメ
         if (explosionPrefab != null)
         {
             Instantiate(explosionPrefab, transform.position, Quaternion.identity);
         }
 
-        // 爆発範囲のオブジェクトを破壊
         Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position, explosionRadius);
         foreach (Collider2D hit in hits)
         {
@@ -83,14 +75,12 @@ public class EnemyBaseController : MonoBehaviour
             }
         }
 
-        // ★ オーブを落とす ★
         SpawnOrb();
 
-        // 自身を破壊
         Destroy(gameObject);
     }
 
-    // ★★★ ランダムでオーブを1個落とす処理 ★★★
+    // ランダムオーブ生成
     private void SpawnOrb()
     {
         int r = Random.Range(0, 100);
@@ -109,16 +99,9 @@ public class EnemyBaseController : MonoBehaviour
             Instantiate(orb, transform.position + Vector3.up * 1f, Quaternion.identity);
         }
     }
-<<<<<<< HEAD
-   
-
-    }
-
-=======
 
     private void OnBecameInvisible()
     {
         Destroy(gameObject);
     }
 }
->>>>>>> 5cd53f27439e8d2c9edca2dfd05cc662b0127680
