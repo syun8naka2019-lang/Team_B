@@ -92,8 +92,4 @@ public class RPG_con : MonoBehaviour
         }
     }
 
-    private void OnBecameInvisible()
-    {
-        Destroy(gameObject);
-    }
 }

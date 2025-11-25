@@ -15,17 +15,12 @@ public class PlayerCon : MonoBehaviour
 
     private void Start()
     {
-<<<<<<< HEAD
-        
-        
-=======
-        animator = GetComponent<Animator>();
-        nowAnime = stop10;
-        oldAnime = stop10;
+
+    
        
->>>>>>> bf759ae5f70893a8834f584a9893baea227bf02e
+
     }
-    void Update()
+      private void Update()
     {
       
         Move();
@@ -40,59 +35,35 @@ public class PlayerCon : MonoBehaviour
     void OnTriggerEnter2D(Collider2D collision)
     {
 
-        Debug.Log("ゲームオーバー");
+       
 
         if (collision.gameObject.tag == "Dead")
         {
             Debug.Log("ゲームオーバー");
             Destroy(this.gameObject);
-           
+
             SceneManager.LoadScene(sceneName);
 
         }
-<<<<<<< HEAD
 
-        if (collision.gameObject.tag == "item")
-        {
-            
-                nowAnime = stop1;
-            animator.Play(nowAnime);
-=======
-        else if(collision.gameObject.tag == "Enemy")
+        else if (collision.gameObject.tag == "Enemy")
         {
             Debug.Log("ゲームオーバー");
             Destroy(this.gameObject);
 
             SceneManager.LoadScene(sceneName);
         }
-<<<<<<< HEAD
-       
-=======
+
         if (collision.gameObject.tag == "item")
         {
-            cnt++;
-            if (cnt == 0)
-                nowAnime = stop3;
-            else if (cnt == 1)
-                nowAnime = stop3;
-            else if (cnt == 2)
-                nowAnime = stop1;
-            else if (cnt == 3)
-                nowAnime = stop2;
-            else if (cnt == 4)
-                nowAnime = stop3;
-            else if (cnt == 5)
-            {
-                nowAnime = stop4;
-                cnt = 0;
-            }
 
->>>>>>> 2d91bbd9660a7a16feb0dc40004433c5ec5ce343
+
+
 
         }
->>>>>>> bf759ae5f70893a8834f584a9893baea227bf02e
 
     }
+    
     public void Goal()
     {
         gameState = "gameclear";

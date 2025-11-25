@@ -21,5 +21,8 @@ public class ShellController_G : MonoBehaviour
     {
         Destroy(gameObject); //オブジェクトを消去
     }
-
+    private void OnBecameInvisible()//
+    {
+        Destroy(gameObject); //
+    }
 }

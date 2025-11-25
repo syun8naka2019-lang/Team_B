@@ -19,8 +19,5 @@ public class Music_con : MonoBehaviour
             speed = 0.0f;
         }
     }
-    private void OnBecameInvisible()//どのカメラにも映らないとき
-    {
-        Destroy(gameObject); //オブジェクトを消去
-    }
+  
 }

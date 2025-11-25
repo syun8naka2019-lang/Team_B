@@ -11,6 +11,7 @@ TagManager:
   - Enemy
   - BOSS
   - shougaibutu
+  - sho
   layers:
   - Default
   - TransparentFX
@@ -20,9 +21,9 @@ TagManager:
   - UI
   - Enemy
   - EnemyPassWall
-  - 
-  - 
-  - 
+  - shougaibutu
+  - sho
+  - Web
   - 
   - 
   - 

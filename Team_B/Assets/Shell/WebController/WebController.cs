@@ -85,7 +85,7 @@ public class WebController : MonoBehaviour
 
 using System.Collections.Generic;
 using UnityEngine;
-
+using System.Collections;
 /// <summary>
 /// 弾（Web）のコントローラ
 /// - 上方向（または自由方向）に移動
@@ -101,6 +101,14 @@ public class WebController : MonoBehaviour
     private bool isStopped = false;        // 弾が止まったか
     private bool hasHitEnemy = false;      // 1回ヒット済みか
 
+    [Header("弾の寿命")]
+    public float lifeTime = 3f;
+
+    [Header("消滅時エフェクト")]
+    public GameObject destroyEffectPrefab;
+
+    [Header("エフェクトの寿命")]
+    public float effectLifeTime = 0.5f;
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -118,11 +126,14 @@ public class WebController : MonoBehaviour
     void OnCollisionEnter2D(Collision2D collision)
     {
         CheckHitEnemy(collision.gameObject);
+        
+    
     }
 
     void OnTriggerEnter2D(Collider2D other)
     {
         CheckHitEnemy(other.gameObject);
+
     }
 
     /// <summary>
@@ -162,4 +173,35 @@ public class WebController : MonoBehaviour
             rb.linearVelocity = Vector2.zero;
         }
     }
+
+
+    void Start()
+    {
+        // 弾が一定時間後に消える処理をコルーチンで実行
+        StartCoroutine(DestroyBulletAfterTime());
+    }
+
+    IEnumerator DestroyBulletAfterTime()
+    {
+        // 弾の寿命待機
+        yield return new WaitForSeconds(lifeTime);
+
+        // エフェクト生成
+        if (destroyEffectPrefab != null)
+        {
+            GameObject effect = Instantiate(destroyEffectPrefab, transform.position, Quaternion.identity);
+
+            // エフェクトも一定時間後に消す
+            Destroy(effect, effectLifeTime);
+        }
+
+        // 弾を削除
+        Destroy(gameObject);
+    }
+    private void OnBecameInvisible()//
+    {
+        Destroy(gameObject); //
+    }
+  
+      
 }

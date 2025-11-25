@@ -1,23 +1,56 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+using System.Collections;
 
 public class ShellController_M : MonoBehaviour
 {
-    public float deleteTime = 3.0f;     //削除する時間指定
+    [Header("弾の寿命")]
+    public float lifeTime;
 
-    //Update is called once per frame
+    [Header("消滅時エフェクト")]
+    public GameObject destroyEffectPrefab;
+
+    [Header("エフェクトの寿命")]
+    public float effectLifeTime = 0.5f;
+
     void Start()
     {
-        Destroy(gameObject, deleteTime);     //削除設定
+        // 弾が一定時間後に消える処理をコルーチンで実行
+        StartCoroutine(DestroyBulletAfterTime());
     }
 
-    private void Update()
+    IEnumerator DestroyBulletAfterTime()
     {
+        // 弾の寿命待機
+        yield return new WaitForSeconds(lifeTime);
 
+        // エフェクト生成
+        if (destroyEffectPrefab != null)
+        {
+            GameObject effect = Instantiate(destroyEffectPrefab, transform.position, Quaternion.identity);
+
+            // エフェクトも一定時間後に消す
+            Destroy(effect, effectLifeTime);
+        }
+
+        // 弾を削除
+        Destroy(gameObject);
     }
-    private void OnBecameInvisible()//�ǂ̃J�����ɂ�f��Ȃ��Ƃ�
+
+    void OnTriggerEnter2D(Collider2D collision)
     {
-        Destroy(gameObject); //�I�u�W�F�N�g�����
+        if (collision.gameObject.tag == "Web")
+        {
+            Destroy(this.gameObject);
+           
+        }
+        if (collision.gameObject.tag == "shougaibutu")
+        {
+            Destroy(gameObject);
+        }
     }
+    private void OnBecameInvisible()//
+    {
+        Destroy(gameObject); //
+    }
+
 }
