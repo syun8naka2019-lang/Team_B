@@ -4,14 +4,13 @@
 TagManager:
   serializedVersion: 3
   tags:
+  - Dead
+  - BOSS
+  - Enemy
   - Web
   - Web_stop
-  - Dead
-  - item
-  - Enemy
-  - BOSS
   - shougaibutu
-  - sho
+  - nabe
   layers:
   - Default
   - TransparentFX
@@ -21,9 +20,9 @@ TagManager:
   - UI
   - Enemy
   - EnemyPassWall
-  - shougaibutu
-  - sho
   - Web
+  - Web_enemy
+  - 
   - 
   - 
   - 

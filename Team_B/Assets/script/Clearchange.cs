@@ -1,22 +1,49 @@
 
 using System.Collections;
+
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class ClearController : MonoBehaviour
 {
-    int hp = 3;
+
+   
     public string sceneName;
+
+  
+
+    int hp = 10;
+
+    void Update()
+    {
+        if (hp <= 0)
+        {
+            Destroy(gameObject);
+
+            if (Application.CanStreamedLevelBeLoaded(sceneName))
+            {
+                SceneManager.LoadScene(sceneName);
+            }
+            else
+            {
+                Debug.LogError($"Scene '{sceneName}' ‚ª Build Settings ‚É“o˜^‚³‚ê‚Ä‚¢‚Ü‚¹‚ñB");
+            }
+        }
+    }
+
+
     void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Web"))
         {
             hp--;
 
+
         }
         if(hp <= 0)
         {
             SceneManager.LoadScene(sceneName);
+
         }
     }
 }
