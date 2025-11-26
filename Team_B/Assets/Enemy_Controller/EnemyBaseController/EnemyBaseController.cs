@@ -1,10 +1,7 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-<<<<<<< HEAD
 
-=======
->>>>>>> 0fb69526b66a2bb27546f53eda0a77716bff54eb
 
 /// <summary>
 /// 共通の敵コントローラ
@@ -37,14 +34,7 @@ public class EnemyBaseController : MonoBehaviour
     public int blueRate = 10;
 
 
-    [Header("オーブ設定")]
-    public GameObject redOrbPrefab;
-    public GameObject greenOrbPrefab;
-    public GameObject blueOrbPrefab;
-
-    public int redRate = 70;
-    public int greenRate = 20;
-    public int blueRate = 10;
+   
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -103,52 +93,29 @@ public class EnemyBaseController : MonoBehaviour
                 Destroy(hit.gameObject);
             }
         }
-<<<<<<< HEAD
+
         SpawnOrb();
         // 自身も破壊
-=======
 
         // ランダムでオーブ生成
-        SpawnOrb();
+        
 
         // 自分を破壊
->>>>>>> 0fb69526b66a2bb27546f53eda0a77716bff54eb
+
         Destroy(gameObject);
     }
 
     /// <summary>
     /// ランダムオーブ生成
     /// </summary>
-    private void SpawnOrb()
-    {
-        int r = Random.Range(0, 100);
-        GameObject orb = null;
-
-        if (r < redRate)
-            orb = redOrbPrefab;
-        else if (r < redRate + greenRate)
-            orb = greenOrbPrefab;
-        else
-            orb = blueOrbPrefab;
-
-        if (orb != null)
-        {
-            Instantiate(orb, transform.position + Vector3.up * 1f, Quaternion.identity);
-        }
-    }
-
-    private void OnBecameInvisible()
-    {
-        Destroy(gameObject);
-    }
-
+ 
     // Sceneビューで爆発範囲可視化
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, explosionRadius);
     }
-<<<<<<< HEAD
+
 
  
     private void SpawnOrb()
@@ -288,6 +255,4 @@ public class EnemyBaseController : MonoBehaviour
     }
 }
 */
-=======
-}
->>>>>>> 0fb69526b66a2bb27546f53eda0a77716bff54eb
+

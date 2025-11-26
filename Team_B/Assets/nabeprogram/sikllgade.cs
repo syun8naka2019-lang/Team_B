@@ -12,11 +12,7 @@ public class skillgade : MonoBehaviour
     private int moveSpeed = 7;
 
     Animator animator;
-<<<<<<< HEAD
-  
-=======
 
->>>>>>> 0fb69526b66a2bb27546f53eda0a77716bff54eb
     public string stop1 = "gade1";
     public string stop2 = "gade2";
     public string stop3 = "gade3";
@@ -36,16 +32,11 @@ public class skillgade : MonoBehaviour
         animator = GetComponent<Animator>();
         nowAnime = stop10;
         oldAnime = stop10;
-<<<<<<< HEAD
+
 
 
     }
-      private void Update()
-    {
-=======
-    }
->>>>>>> 0fb69526b66a2bb27546f53eda0a77716bff54eb
-
+    
     private void Update()
     {
         Move();
@@ -53,22 +44,21 @@ public class skillgade : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-<<<<<<< HEAD
 
        
 
         if (collision.gameObject.tag == "Dead")
-=======
+
         if (collision.gameObject.CompareTag("Dead") ||
             collision.gameObject.CompareTag("Enemy"))
->>>>>>> 0fb69526b66a2bb27546f53eda0a77716bff54eb
+
         {
             Debug.Log("ゲームオーバー");
             Destroy(this.gameObject);
             SceneManager.LoadScene(sceneName);
         }
 
-<<<<<<< HEAD
+
 
         else if (collision.gameObject.tag == "Enemy")
         {
@@ -88,9 +78,7 @@ public class skillgade : MonoBehaviour
 
             }
 
-        }
-    
-=======
+
         if (collision.gameObject.CompareTag("item"))
         {
             nowAnime = stop1;
@@ -98,7 +86,7 @@ public class skillgade : MonoBehaviour
         }
     }
 
->>>>>>> 0fb69526b66a2bb27546f53eda0a77716bff54eb
+
     public void Goal()
     {
         gameState = "gameclear";

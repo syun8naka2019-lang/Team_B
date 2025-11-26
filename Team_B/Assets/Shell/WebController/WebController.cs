@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 /*using System.Collections.Generic;
 using UnityEngine;
 
@@ -362,6 +362,5 @@ public class WebController : MonoBehaviour
         isStopped = false;
         gameObject.layer = originalLayer;
     }
-=======
->>>>>>> 0fb69526b66a2bb27546f53eda0a77716bff54eb
+
 }

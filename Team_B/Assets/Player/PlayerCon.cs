@@ -9,25 +9,19 @@ public class PlayerCon : MonoBehaviour
     public string sceneName;
 
     private PlayerStatus status;
-<<<<<<< HEAD
+
     private Hp playerHp; // ← 追加
 
 
     int currentHp = 5;
-    private void Start()
-    {
-        status = GetComponent<PlayerStatus>();
-        playerHp = GetComponent<Hp>(); // PlayerHp を取得
-        
-    }
-        void Update()
-=======
-    private Hp playerHp;  // ←ここは実際のクラス名に合わせて！
+    
+     // ←ここは実際のクラス名に合わせて！
 
     void Start()
     {
         // PlayerStatus の取得チェック
         status = GetComponent<PlayerStatus>();
+        playerHp = GetComponent<Hp>(); // PlayerHp を取得
         if (status == null)
         {
             Debug.LogError("PlayerStatus が Player にアタッチされていません！");
@@ -42,18 +36,16 @@ public class PlayerCon : MonoBehaviour
     }
 
     void Update()
->>>>>>> 0fb69526b66a2bb27546f53eda0a77716bff54eb
     {
         Move();
     }
 
     private void Move()
     {
-<<<<<<< HEAD
-=======
+
         if (status == null) return;  // ← Null 防止
 
->>>>>>> 0fb69526b66a2bb27546f53eda0a77716bff54eb
+
         float x = Input.GetAxis("Horizontal") * status.moveSpeed;
         float y = Input.GetAxis("Vertical") * status.moveSpeed;
 
@@ -62,7 +54,7 @@ public class PlayerCon : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-<<<<<<< HEAD
+
         // 何かに当たったとき
         if (collision.CompareTag("Dead") || collision.CompareTag("Enemy"))
         {
@@ -82,14 +74,8 @@ public class PlayerCon : MonoBehaviour
         gameState = "gameover";
         GetComponent<CapsuleCollider2D>().enabled = false;
     }
-=======
-        if (collision.CompareTag("Dead") || collision.CompareTag("Enemy"))
-        {
-            if (playerHp != null)
-            {
-                playerHp.TakeDamage(1);
-            }
-        }
-    }
->>>>>>> 0fb69526b66a2bb27546f53eda0a77716bff54eb
+
+     
+    
+
 }
