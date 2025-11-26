@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /*using System.Collections.Generic;
 using UnityEngine;
 
@@ -85,44 +86,50 @@ public class WebController : MonoBehaviour
 /*
 using System.Collections.Generic;
 using UnityEngine;
+=======
+>>>>>>> 0fb69526b66a2bb27546f53eda0a77716bff54eb
 using System.Collections;
-/// <summary>
-/// 弾（Web）のコントローラ
-/// - 上方向（または自由方向）に移動
-/// - 1回ヒットした敵で止まる
-/// - 止まった弾は他の敵に影響しない
-/// </summary>
+using UnityEngine;
+
 public class WebController : MonoBehaviour
 {
     [Header("移動設定")]
-    public float speed = 10f;              // 弾の速度
+    public float speed = 10f;
 
+<<<<<<< HEAD
     private Rigidbody2D rb;                // Rigidbody2D
     private bool isStopped = false;        // 弾が止まったか
     private bool hasHitEnemy = false;      // 1回ヒット済みか
  
+=======
+    private Rigidbody2D rb;
+    private bool isStopped = false;
+    private bool hasCapturedEnemy = false;
+>>>>>>> 0fb69526b66a2bb27546f53eda0a77716bff54eb
 
-    [Header("弾の寿命")]
+    [Header("Webの寿命")]
     public float lifeTime = 3f;
 
-    [Header("消滅時エフェクト")]
+    [Header("消滅エフェクト")]
     public GameObject destroyEffectPrefab;
-
-    [Header("エフェクトの寿命")]
     public float effectLifeTime = 0.5f;
+
+    private int originalLayer;
+    private int inactiveLayer;
+
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
-    }
 
-    void Update()
-    {
-        // 停止していなければ上方向に移動
-        if (!isStopped)
+        originalLayer = gameObject.layer;
+        inactiveLayer = LayerMask.NameToLayer("InactiveWeb");
+
+        if (inactiveLayer == -1)
         {
-            transform.Translate(Vector2.up * speed * Time.deltaTime);
+            Debug.LogWarning("InactiveWeb レイヤーが存在しません。作成してください。");
         }
     }
+<<<<<<< HEAD
       
     void OnCollisionEnter2D(Collision2D collision)
         {
@@ -176,34 +183,90 @@ public class WebController : MonoBehaviour
     }
 <<<<<<< HEAD
 
+=======
+>>>>>>> 0fb69526b66a2bb27546f53eda0a77716bff54eb
 
     void Start()
     {
-        // 弾が一定時間後に消える処理をコルーチンで実行
-        StartCoroutine(DestroyBulletAfterTime());
+        // 寿命タイマー開始
+        StartCoroutine(DestroyAfterTime());
     }
 
-    IEnumerator DestroyBulletAfterTime()
+    void Update()
     {
-        // 弾の寿命待機
-        yield return new WaitForSeconds(lifeTime);
+        if (!isStopped)
+        {
+            transform.Translate(Vector2.up * speed * Time.deltaTime);
+        }
+    }
 
-        // エフェクト生成
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        CheckHitEnemy(other.gameObject);
+    }
+
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        CheckHitEnemy(collision.gameObject);
+    }
+
+    private void CheckHitEnemy(GameObject obj)
+    {
+        if (hasCapturedEnemy) return;
+
+        if (obj.CompareTag("Enemy"))
+        {
+            hasCapturedEnemy = true;
+            Stop();
+
+            if (inactiveLayer != -1)
+                gameObject.layer = inactiveLayer;
+
+            EnemyBaseController enemy = obj.GetComponent<EnemyBaseController>();
+            if (enemy != null)
+                enemy.Stop();
+
+            Debug.Log($"Web が敵 {obj.name} を捕まえました");
+        }
+    }
+
+    public void Stop()
+    {
+        isStopped = true;
+
+        if (rb != null)
+            rb.linearVelocity = Vector2.zero;
+    }
+
+    IEnumerator DestroyAfterTime()
+    {
+        yield return new WaitForSeconds(lifeTime);
+        CreateEffect();
+        Destroy(gameObject);
+    }
+
+    void OnBecameInvisible()
+    {
+        CreateEffect();
+        Destroy(gameObject);
+    }
+
+    private void CreateEffect()
+    {
         if (destroyEffectPrefab != null)
         {
             GameObject effect = Instantiate(destroyEffectPrefab, transform.position, Quaternion.identity);
-
-            // エフェクトも一定時間後に消す
             Destroy(effect, effectLifeTime);
         }
+    }
 
-        // 弾を削除
-        Destroy(gameObject);
-    }
-    private void OnBecameInvisible()//
+    public void Release()
     {
-        Destroy(gameObject); //
+        hasCapturedEnemy = false;
+        isStopped = false;
+        gameObject.layer = originalLayer;
     }
+<<<<<<< HEAD
   
       
 }
@@ -299,4 +362,6 @@ public class WebController : MonoBehaviour
         isStopped = false;
         gameObject.layer = originalLayer;
     }
+=======
+>>>>>>> 0fb69526b66a2bb27546f53eda0a77716bff54eb
 }

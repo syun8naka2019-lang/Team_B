@@ -1,26 +1,40 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+<<<<<<< HEAD
 
+=======
+>>>>>>> 0fb69526b66a2bb27546f53eda0a77716bff54eb
 
 /// <summary>
-/// 共通の敵コントローラスクリプト
-/// - 移動方向はInspectorで自由に設定可能
-/// - 弾（Web）が当たったら止まる
-/// - Lキーで爆発可能
+/// 共通の敵コントローラ
+/// ・移動（Inspectorで方向指定）
+/// ・Web で停止
+/// ・Lキーで爆発
+/// ・爆発で敵/Web破壊
+/// ・爆発時にランダムでオーブ生成
 /// </summary>
 public class EnemyBaseController : MonoBehaviour
 {
     [Header("移動設定")]
-    public float speed = 2f;                      // 移動速度
-    public Vector2 moveDirection = Vector2.down;  // Inspectorで設定できる移動方向
+    public float speed = 2f;
+    public Vector2 moveDirection = Vector2.down;
 
-    private bool isStopped = false;               // 敵が止まっているか
-    private Rigidbody2D rb;                       // Rigidbody2Dコンポーネント
+    private bool isStopped = false;
+    private Rigidbody2D rb;
 
     [Header("爆発設定")]
-    public GameObject explosionPrefab;            // 爆発Prefab
-    public float explosionRadius = 2f;            // 爆発範囲
+    public GameObject explosionPrefab;
+    public float explosionRadius = 2f;
+
+    [Header("オーブ設定")]
+    public GameObject redOrbPrefab;
+    public GameObject greenOrbPrefab;
+    public GameObject blueOrbPrefab;
+
+    public int redRate = 70;
+    public int greenRate = 20;
+    public int blueRate = 10;
 
 
     [Header("オーブ設定")]
@@ -38,7 +52,6 @@ public class EnemyBaseController : MonoBehaviour
 
     void FixedUpdate()
     {
-        // 停止していなければ指定方向に移動
         if (!isStopped)
         {
             rb.linearVelocity = moveDirection.normalized * speed;
@@ -50,8 +63,7 @@ public class EnemyBaseController : MonoBehaviour
     }
 
     /// <summary>
-    /// 弾が当たったときに呼ぶ
-    /// 敵を停止させる
+    /// Web が当たった時に呼ぶ → 敵を停止
     /// </summary>
     public void Stop()
     {
@@ -64,7 +76,7 @@ public class EnemyBaseController : MonoBehaviour
 
     void Update()
     {
-        // 停止中にLキーで爆発
+        // 停止中に L キーで爆発
         if (isStopped && Input.GetKeyDown(KeyCode.L))
         {
             Explode();
@@ -73,38 +85,70 @@ public class EnemyBaseController : MonoBehaviour
 
     /// <summary>
     /// 爆発処理
-    /// 範囲内のWebとEnemyを破壊
-    /// 自身も破壊
     /// </summary>
     private void Explode()
     {
-        // 見た目用の爆発Prefab生成
+        // 爆発エフェクト
         if (explosionPrefab != null)
         {
             Instantiate(explosionPrefab, transform.position, Quaternion.identity);
         }
 
-        // 爆発範囲内のCollider2Dを取得
+        // 範囲内の Enemy / Web を破壊
         Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position, explosionRadius);
         foreach (Collider2D hit in hits)
         {
             if (hit.CompareTag("Web") || hit.CompareTag("Enemy"))
             {
                 Destroy(hit.gameObject);
-                Debug.Log("爆発で破壊: " + hit.name);
             }
         }
+<<<<<<< HEAD
         SpawnOrb();
         // 自身も破壊
+=======
+
+        // ランダムでオーブ生成
+        SpawnOrb();
+
+        // 自分を破壊
+>>>>>>> 0fb69526b66a2bb27546f53eda0a77716bff54eb
         Destroy(gameObject);
     }
 
-    // Sceneビューで爆発範囲を可視化
+    /// <summary>
+    /// ランダムオーブ生成
+    /// </summary>
+    private void SpawnOrb()
+    {
+        int r = Random.Range(0, 100);
+        GameObject orb = null;
+
+        if (r < redRate)
+            orb = redOrbPrefab;
+        else if (r < redRate + greenRate)
+            orb = greenOrbPrefab;
+        else
+            orb = blueOrbPrefab;
+
+        if (orb != null)
+        {
+            Instantiate(orb, transform.position + Vector3.up * 1f, Quaternion.identity);
+        }
+    }
+
+    private void OnBecameInvisible()
+    {
+        Destroy(gameObject);
+    }
+
+    // Sceneビューで爆発範囲可視化
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, explosionRadius);
     }
+<<<<<<< HEAD
 
  
     private void SpawnOrb()
@@ -244,3 +288,6 @@ public class EnemyBaseController : MonoBehaviour
     }
 }
 */
+=======
+}
+>>>>>>> 0fb69526b66a2bb27546f53eda0a77716bff54eb
