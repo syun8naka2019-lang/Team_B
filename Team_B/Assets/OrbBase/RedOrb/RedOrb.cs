@@ -1,15 +1,18 @@
 using UnityEngine;
 
-// 赤のオーブ：スコアを増やす
 public class RedOrb : OrbBase
 {
-    // 増えるスコア（Inspectorで変更可能）
-    public int scoreValue = 10;
+    public int scoreValue = 10; // Inspector で設定可能
 
-    // 効果を適用する処理
     protected override void ApplyEffect(PlayerStatus player)
     {
-        player.score += scoreValue;
+        // シーン内の ScoreBoard を取得してスコア加算
+        ScoreBoard sb = FindObjectOfType<ScoreBoard>();
+        if (sb != null)
+        {
+            sb.AddScore(scoreValue);
+        }
+
         Debug.Log("Score Up! +" + scoreValue);
     }
 }
