@@ -1,23 +1,14 @@
-<<<<<<< HEAD
-
-using System.Collections;
-=======
->>>>>>> 0ef132ce225af06552d0bc802f3ac1f540cd7a66
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class ClearController : MonoBehaviour
 {
-<<<<<<< HEAD
-    int hp = 3;
-    public string sceneName;
-=======
-    public string sceneName;
-
-    int hp = 10;
+    public string sceneName;   // クリア後に読み込むシーン名
+    int hp = 10;               // 敵のHP（必要なら変更可能）
 
     void Update()
     {
+        // HP が 0 以下 → 自身を削除してシーン遷移
         if (hp <= 0)
         {
             Destroy(gameObject);
@@ -33,21 +24,12 @@ public class ClearController : MonoBehaviour
         }
     }
 
->>>>>>> 0ef132ce225af06552d0bc802f3ac1f540cd7a66
     void OnTriggerEnter2D(Collider2D collision)
     {
+        // Web に当たったら HP 減少
         if (collision.CompareTag("Web"))
         {
             hp--;
-<<<<<<< HEAD
-
-        }
-        if(hp <= 0)
-        {
-            SceneManager.LoadScene(sceneName);
-=======
->>>>>>> 0ef132ce225af06552d0bc802f3ac1f540cd7a66
         }
     }
 }
-
