@@ -120,11 +120,10 @@ public class Hp : MonoBehaviour
     {
         Debug.Log("プレイヤー死亡");
 
-      
-            // ゲームオーバー
-            mainImage.SetActive(true);      // 画像を表示する
-            SceneManager.LoadScene(sceneName);
-        
+
+        // ゲームオーバー
+        mainImage.SetActive(true);      // 画像を表示する
+        SceneManager.LoadScene(sceneName);
         // ゲームオーバー画面に移動したり、動きを止める処理をここに書く
         // 例: SceneManager.LoadScene("GameOver");
     }
