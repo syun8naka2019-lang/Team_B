@@ -28,12 +28,10 @@ public class Hp : MonoBehaviour
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
 
-
         if (spriteRenderer == null)
         {
             Debug.LogError("SpriteRenderer が取得できません！Hp.cs を付けた GameObject に SpriteRenderer を追加してください！");
         }
-
     }
 
     // ゲーム開始時に呼ばれる

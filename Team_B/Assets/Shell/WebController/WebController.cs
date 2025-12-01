@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 /*using System.Collections.Generic;
 using UnityEngine;
@@ -87,6 +88,8 @@ public class WebController : MonoBehaviour
 using System.Collections.Generic;
 using UnityEngine;
 
+=======
+>>>>>>> 3f693ca58de3b5d593ac4d6ce3cfa3cf3a5ccc49
 using System.Collections;
 using UnityEngine;
 
@@ -95,6 +98,7 @@ public class WebController : MonoBehaviour
     [Header("移動設定")]
     public float speed = 10f;
 
+<<<<<<< HEAD
 
     private Rigidbody2D rb;                // Rigidbody2D
     private bool isStopped = false;        // 弾が止まったか
@@ -105,6 +109,11 @@ public class WebController : MonoBehaviour
     private bool isStopped = false;
     private bool hasCapturedEnemy = false;
 
+=======
+    private Rigidbody2D rb;
+    private bool isStopped = false;
+    private bool hasCapturedEnemy = false;
+>>>>>>> 3f693ca58de3b5d593ac4d6ce3cfa3cf3a5ccc49
 
     [Header("Webの寿命")]
     public float lifeTime = 3f;
@@ -113,13 +122,15 @@ public class WebController : MonoBehaviour
     public GameObject destroyEffectPrefab;
     public float effectLifeTime = 0.5f;
 
+    [Header("敵1体あたりのスコア")]
+    public int scorePerEnemy = 50;
+
     private int originalLayer;
     private int inactiveLayer;
 
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
-
         originalLayer = gameObject.layer;
         inactiveLayer = LayerMask.NameToLayer("InactiveWeb");
 
@@ -128,66 +139,9 @@ public class WebController : MonoBehaviour
             Debug.LogWarning("InactiveWeb レイヤーが存在しません。作成してください。");
         }
     }
-<<<<<<< HEAD
-      
-    void OnCollisionEnter2D(Collision2D collision)
-        {
-        CheckHitEnemy(collision.gameObject);
-        
-    
-    }
-
-    void OnTriggerEnter2D(Collider2D other)
-    {
-        CheckHitEnemy(other.gameObject);
-
-    }
-
-    /// <summary>
-    /// 敵や壁との衝突処理
-    /// </summary>
-    private void CheckHitEnemy(GameObject obj)
-    {
-        if (isStopped) return; // 弾が止まっていれば無視
-
-        if (obj.CompareTag("Enemy"))
-        {
-            if (!hasHitEnemy)
-            {
-                hasHitEnemy = true;   // 1回ヒット済みに設定
-                Stop();
-
-                // 敵を止める
-                EnemyBaseController enemy = obj.GetComponent<EnemyBaseController>();
-                if (enemy != null)
-                {
-                    enemy.Stop();
-                }
-
-                Debug.Log("敵ヒット: " + obj.name);
-            }
-        }
-    }
-
-    /// <summary>
-    /// 弾を停止させる
-    /// </summary>
-    public void Stop()
-    {
-        isStopped = true;
-        if (rb != null)
-        {
-            rb.linearVelocity = Vector2.zero;
-        }
-    }
-<<<<<<< HEAD
-
-=======
->>>>>>> 0fb69526b66a2bb27546f53eda0a77716bff54eb
 
     void Start()
     {
-        // 寿命タイマー開始
         StartCoroutine(DestroyAfterTime());
     }
 
@@ -216,25 +170,36 @@ public class WebController : MonoBehaviour
         if (obj.CompareTag("Enemy"))
         {
             hasCapturedEnemy = true;
-            Stop();
 
+            // Webを止める
+            StopWeb();
+
+            // 衝突判定用のレイヤー変更
             if (inactiveLayer != -1)
                 gameObject.layer = inactiveLayer;
 
+            // 敵を停止させる
             EnemyBaseController enemy = obj.GetComponent<EnemyBaseController>();
             if (enemy != null)
                 enemy.Stop();
+
+            // スコア加算
+            PlayerStatus player = FindObjectOfType<PlayerStatus>();
+            if (player != null)
+            {
+                player.AddScore(scorePerEnemy);
+                Debug.Log($"スコア +{scorePerEnemy}");
+            }
 
             Debug.Log($"Web が敵 {obj.name} を捕まえました");
         }
     }
 
-    public void Stop()
+    private void StopWeb()
     {
         isStopped = true;
-
         if (rb != null)
-            rb.linearVelocity = Vector2.zero;
+            rb.velocity = Vector2.zero;
     }
 
     IEnumerator DestroyAfterTime()
@@ -265,6 +230,7 @@ public class WebController : MonoBehaviour
         isStopped = false;
         gameObject.layer = originalLayer;
     }
+<<<<<<< HEAD
 <<<<<<< HEAD
   
       
@@ -391,4 +357,6 @@ public class WebController : MonoBehaviour
             Destroy(effect, effectLifeTime);
         }
     }
+=======
+>>>>>>> 3f693ca58de3b5d593ac4d6ce3cfa3cf3a5ccc49
 }

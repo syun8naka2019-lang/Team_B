@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2592214454433840832}
   - component: {fileID: 448609699618756447}
   - component: {fileID: 8406490557338576308}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: WEB_0
   m_TagString: Web
   m_Icon: {fileID: 0}
@@ -165,7 +165,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3822fc1c29ba4124a8895bdf35c64289, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+<<<<<<< HEAD
   speed: 6
   lifeTime: 3
   destroyEffectPrefab: {fileID: 0}
+=======
+  speed: 4
+  lifeTime: 4
+  destroyEffectPrefab: {fileID: 6310724212718937216, guid: 83ec48bb26a009243ad7e1155143ef6c, type: 3}
+>>>>>>> 3f693ca58de3b5d593ac4d6ce3cfa3cf3a5ccc49
   effectLifeTime: 0.5

@@ -4,20 +4,19 @@ public abstract class OrbBase : MonoBehaviour
 {
     private void OnTriggerEnter2D(Collider2D other)
     {
-        // Player に触れたら効果を発動
+        // プレイヤーと接触したら
         if (other.CompareTag("Player"))
         {
             PlayerStatus player = other.GetComponent<PlayerStatus>();
             if (player != null)
             {
-                ApplyEffect(player);
+                ApplyEffect(player); // オーブの効果を発動
             }
 
-            // 取得したらオーブを消す
-            Destroy(gameObject);
+            Destroy(gameObject); // オーブは消える
         }
     }
 
-    // 個別オーブが実装する効果
+    // 個別オーブごとの効果をここで実装
     protected abstract void ApplyEffect(PlayerStatus player);
 }

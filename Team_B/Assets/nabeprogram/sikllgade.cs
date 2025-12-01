@@ -25,18 +25,11 @@ public class skillgade : MonoBehaviour
 
     private void Start()
     {
-
-    
-       
-
         animator = GetComponent<Animator>();
         nowAnime = stop10;
         oldAnime = stop10;
-
-
-
     }
-    
+
     private void Update()
     {
         Move();
@@ -44,40 +37,13 @@ public class skillgade : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-
-       
-
-        if (collision.gameObject.tag == "Dead")
-
         if (collision.gameObject.CompareTag("Dead") ||
             collision.gameObject.CompareTag("Enemy"))
-
         {
             Debug.Log("ゲームオーバー");
             Destroy(this.gameObject);
             SceneManager.LoadScene(sceneName);
         }
-
-
-
-        else if (collision.gameObject.tag == "Enemy")
-        {
-            Debug.Log("ゲームオーバー");
-            Destroy(this.gameObject);
-
-            SceneManager.LoadScene(sceneName);
-        }
-
-
-            if (collision.gameObject.tag == "item")
-            {
-
-                nowAnime = stop1;
-                animator.Play(nowAnime);
-
-
-            }
-
 
         if (collision.gameObject.CompareTag("item"))
         {
@@ -85,7 +51,6 @@ public class skillgade : MonoBehaviour
             animator.Play(nowAnime);
         }
     }
-
 
     public void Goal()
     {

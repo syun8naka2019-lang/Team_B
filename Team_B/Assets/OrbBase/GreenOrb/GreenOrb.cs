@@ -1,15 +1,24 @@
 using UnityEngine;
 
-// 緑のオーブ：HPを回復する
-public class GreenOrb : OrbBase
+/// <summary>
+/// 回復オーブ
+/// プレイヤーに触れると HP 回復
+/// </summary>
+public class GreenOrb : MonoBehaviour
 {
-    // 回復量（Inspectorで変更可能）
-    public int healAmount = 1;
+    public int healAmount = 1; // 回復量
 
-    // 効果を適用
-    protected override void ApplyEffect(PlayerStatus player)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        player.hp += healAmount;
-        Debug.Log("HP Heal +" + healAmount);
+        if (collision.CompareTag("Player"))
+        {
+            PlayerStatus ps = collision.GetComponent<PlayerStatus>();
+            if (ps != null)
+            {
+                ps.Heal(healAmount); // PlayerStatus 経由で回復
+            }
+
+            Destroy(gameObject);
+        }
     }
 }
