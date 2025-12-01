@@ -17,13 +17,15 @@ public class WebController : MonoBehaviour
     public GameObject destroyEffectPrefab;
     public float effectLifeTime = 0.5f;
 
+    [Header("敵1体あたりのスコア")]
+    public int scorePerEnemy = 50;
+
     private int originalLayer;
     private int inactiveLayer;
 
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
-
         originalLayer = gameObject.layer;
         inactiveLayer = LayerMask.NameToLayer("InactiveWeb");
 
@@ -35,7 +37,6 @@ public class WebController : MonoBehaviour
 
     void Start()
     {
-        // 寿命タイマー開始
         StartCoroutine(DestroyAfterTime());
     }
 
@@ -64,25 +65,36 @@ public class WebController : MonoBehaviour
         if (obj.CompareTag("Enemy"))
         {
             hasCapturedEnemy = true;
-            Stop();
 
+            // Webを止める
+            StopWeb();
+
+            // 衝突判定用のレイヤー変更
             if (inactiveLayer != -1)
                 gameObject.layer = inactiveLayer;
 
+            // 敵を停止させる
             EnemyBaseController enemy = obj.GetComponent<EnemyBaseController>();
             if (enemy != null)
                 enemy.Stop();
+
+            // スコア加算
+            PlayerStatus player = FindObjectOfType<PlayerStatus>();
+            if (player != null)
+            {
+                player.AddScore(scorePerEnemy);
+                Debug.Log($"スコア +{scorePerEnemy}");
+            }
 
             Debug.Log($"Web が敵 {obj.name} を捕まえました");
         }
     }
 
-    public void Stop()
+    private void StopWeb()
     {
         isStopped = true;
-
         if (rb != null)
-            rb.linearVelocity = Vector2.zero;
+            rb.velocity = Vector2.zero;
     }
 
     IEnumerator DestroyAfterTime()

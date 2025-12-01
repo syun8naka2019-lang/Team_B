@@ -589,9 +589,9 @@ GameObject:
   - component: {fileID: 690385660}
   - component: {fileID: 690385661}
   - component: {fileID: 690385664}
-  - component: {fileID: 690385665}
   - component: {fileID: 690385666}
   - component: {fileID: 690385667}
+  - component: {fileID: 690385668}
   m_Layer: 0
   m_Name: hero
   m_TagString: Player
@@ -745,26 +745,6 @@ MonoBehaviour:
   objPrefab: {fileID: 3135770134523692115, guid: c35532c26f048404b8a554987868af34, type: 3}
   delayTime: 1
   fireSpeed: 8
---- !u!114 &690385665
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 690385659}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 360db4e881400f94c8756433238c0225, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxHp: 3
-  invincibleTime: 2
-  HP_MAX: {fileID: 0}
-  HP_MID: {fileID: 0}
-  HP_MIN: {fileID: 0}
-  HP_ZERO: {fileID: 0}
-  mainImage: {fileID: 0}
-  sceneName: 
 --- !u!114 &690385666
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -772,13 +752,21 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 690385659}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3188ff10db643e840b60217bcb5aa224, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   score: 0
-  hp: 3
+  maxHp: 3
+  currentHp: 0
+  invincibleTime: 2
+  HP_MAX: {fileID: -2766341514475140686, guid: 16d4bbd63dc92944aafb87bc008ec695, type: 3}
+  HP_MID: {fileID: 6550135250714755889, guid: 2db43f9280fa8ad47b67d3c2dd3898a0, type: 3}
+  HP_MIN: {fileID: 7990416965072699213, guid: beb4c1268fcfea54db2fa753c237240c, type: 3}
+  HP_ZERO: {fileID: -33706536043377479, guid: 2b3334a04af949f4bb3c952fa3efe6dd, type: 3}
+  mainImage: {fileID: 2135400995038102316, guid: 1873693c4f9f2d74588d20acb932ccdc, type: 3}
+  sceneName: 
   moveSpeed: 7
 --- !u!50 &690385667
 Rigidbody2D:
@@ -807,6 +795,31 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &690385668
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 690385659}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ccf6e0f022788124b9010c6fb2ae7a38, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  score: 0
+  scoreText: {fileID: 0}
+  maxHp: 2
+  currentHp: 0
+  healInterval: 5
+  healAmount: 1
+  invincibleTime: 2
+  HP_FULL: {fileID: 6550135250714755889, guid: 2db43f9280fa8ad47b67d3c2dd3898a0, type: 3}
+  HP_HALF: {fileID: 7990416965072699213, guid: beb4c1268fcfea54db2fa753c237240c, type: 3}
+  HP_ZERO: {fileID: -33706536043377479, guid: 2b3334a04af949f4bb3c952fa3efe6dd, type: 3}
+  moveSpeed: 7
+  mainImage: {fileID: 0}
+  gameOverSceneName: 
 --- !u!1 &726509725 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2463274051270375526, guid: 2b146586aac49f345b493a40d9761358, type: 3}

@@ -8,23 +8,15 @@ public class PlayerCon : MonoBehaviour
     public static string gameState = "playing";
     public string sceneName;
 
-    private PlayerStatus status;
-    private Hp playerHp;  // ←ここは実際のクラス名に合わせて！
+    private PlayerStatus_M status; // ← ここを PlayerStatus_M に変更
 
     void Start()
     {
-        // PlayerStatus の取得チェック
-        status = GetComponent<PlayerStatus>();
+        // PlayerStatus_M の取得チェック
+        status = GetComponent<PlayerStatus_M>();
         if (status == null)
         {
-            Debug.LogError("PlayerStatus が Player にアタッチされていません！");
-        }
-
-        // HP管理の取得チェック
-        playerHp = GetComponent<Hp>(); // ←または PlayerHp
-        if (playerHp == null)
-        {
-            Debug.LogError("Hp（または PlayerHp） スクリプトが Player にアタッチされていません！");
+            Debug.LogError("PlayerStatus_M が Player にアタッチされていません！");
         }
     }
 
@@ -35,7 +27,7 @@ public class PlayerCon : MonoBehaviour
 
     private void Move()
     {
-        if (status == null) return;  // ← Null 防止
+        if (status == null) return;  // Null 防止
 
         float x = Input.GetAxis("Horizontal") * status.moveSpeed;
         float y = Input.GetAxis("Vertical") * status.moveSpeed;
@@ -47,9 +39,9 @@ public class PlayerCon : MonoBehaviour
     {
         if (collision.CompareTag("Dead") || collision.CompareTag("Enemy"))
         {
-            if (playerHp != null)
+            if (status != null)
             {
-                playerHp.TakeDamage(1);
+                status.TakeDamage(1); // 敵や死んだ場所に当たったらダメージ
             }
         }
     }

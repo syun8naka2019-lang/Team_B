@@ -43,7 +43,6 @@ public class EnemyBaseController : MonoBehaviour
 
     void Update()
     {
-        // 停止中に Lキーで爆発
         if (isStopped && Input.GetKeyDown(KeyCode.L))
             Explode();
     }
@@ -60,23 +59,23 @@ public class EnemyBaseController : MonoBehaviour
         {
             if (hit.CompareTag("Enemy"))
             {
-                // 敵撃破スコア加算
+                // スコア加算
                 ScoreBoard sb = FindObjectOfType<ScoreBoard>();
                 if (sb != null)
-                    sb.AddScore(50);
+                    sb.AddScore(50); // 50点加算
 
                 Destroy(hit.gameObject);
             }
             else if (hit.CompareTag("Web"))
             {
-                Destroy(hit.gameObject);
+                Destroy(hit.gameObject); // Web も破壊
             }
         }
 
         // ランダムでオーブ生成
         SpawnOrb();
 
-        Destroy(gameObject);
+        Destroy(gameObject); // 自分自身を破壊
     }
 
     private void SpawnOrb()
@@ -97,7 +96,6 @@ public class EnemyBaseController : MonoBehaviour
         Destroy(gameObject);
     }
 
-    // Sceneビューで爆発範囲を可視化
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;
