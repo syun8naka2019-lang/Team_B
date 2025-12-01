@@ -3,18 +3,14 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 3
-<<<<<<< HEAD
   tags:
   - Dead
   - BOSS
   - Enemy
   - Web
-  - Web_stop
-  - shougaibutu
   - nabe
-=======
-  tags: []
->>>>>>> 0fb69526b66a2bb27546f53eda0a77716bff54eb
+  - shougaibutu
+  - Web_stop
   layers:
   - Default
   - TransparentFX
@@ -22,18 +18,11 @@ TagManager:
   - 
   - Water
   - UI
-<<<<<<< HEAD
   - Enemy
   - EnemyPassWall
-  - Web
-  - Web_enemy
-=======
-  - 
-  - 
-  - 
-  - 
->>>>>>> 0fb69526b66a2bb27546f53eda0a77716bff54eb
-  - 
+  - WebEnemy
+  - InactiveWeb
+  - shougaibutu
   - 
   - 
   - 

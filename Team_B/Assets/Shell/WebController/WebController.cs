@@ -86,8 +86,7 @@ public class WebController : MonoBehaviour
 /*
 using System.Collections.Generic;
 using UnityEngine;
-=======
->>>>>>> 0fb69526b66a2bb27546f53eda0a77716bff54eb
+
 using System.Collections;
 using UnityEngine;
 
@@ -96,16 +95,16 @@ public class WebController : MonoBehaviour
     [Header("移動設定")]
     public float speed = 10f;
 
-<<<<<<< HEAD
+
     private Rigidbody2D rb;                // Rigidbody2D
     private bool isStopped = false;        // 弾が止まったか
     private bool hasHitEnemy = false;      // 1回ヒット済みか
  
-=======
+
     private Rigidbody2D rb;
     private bool isStopped = false;
     private bool hasCapturedEnemy = false;
->>>>>>> 0fb69526b66a2bb27546f53eda0a77716bff54eb
+
 
     [Header("Webの寿命")]
     public float lifeTime = 3f;
@@ -285,14 +284,29 @@ using UnityEngine;
 public class WebController : MonoBehaviour
 {
     [Header("移動設定")]
-    public float speed = 10f;              // 弾の速度
+    public float speed = 10f;
 
-    private Rigidbody2D rb;                // Rigidbody2D参照
-    private bool isStopped = false;        // Webが停止しているか
-    private bool hasCapturedEnemy = false; // 敵を捕まえたかどうか
-    private int originalLayer;             // 元のLayerを保存
-    private int inactiveLayer;             // 捕まえた後のLayer（敵と当たらない）
 
+    private Rigidbody2D rb;                // Rigidbody2D
+    private bool isStopped = false;        // 弾が止まったか
+    private bool hasHitEnemy = false;      // 1回ヒット済みか
+    private bool hasCapturedEnemy = false;
+
+
+    [Header("Webの寿命")]
+    public float lifeTime = 3f;
+
+    [Header("消滅エフェクト")]
+    public GameObject destroyEffectPrefab;
+    public float effectLifeTime = 0.5f;
+
+    private int originalLayer;
+    private int inactiveLayer;
+    void Start()
+    {
+        // 寿命タイマー開始
+     
+    }
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -363,4 +377,18 @@ public class WebController : MonoBehaviour
         gameObject.layer = originalLayer;
     }
 
+    void OnBecameInvisible()
+    {
+        CreateEffect();
+        Destroy(gameObject);
+    }
+
+    private void CreateEffect()
+    {
+        if (destroyEffectPrefab != null)
+        {
+            GameObject effect = Instantiate(destroyEffectPrefab, transform.position, Quaternion.identity);
+            Destroy(effect, effectLifeTime);
+        }
+    }
 }

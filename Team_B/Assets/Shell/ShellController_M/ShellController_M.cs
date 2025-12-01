@@ -16,6 +16,7 @@ public class ShellController_M : MonoBehaviour
     {
         // 弾が一定時間後に消える処理をコルーチンで実行
         StartCoroutine(DestroyBulletAfterTime());
+       GetComponent<Rigidbody2D>();
     }
 
     IEnumerator DestroyBulletAfterTime()

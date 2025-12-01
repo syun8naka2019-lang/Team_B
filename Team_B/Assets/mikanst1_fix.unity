@@ -132,7 +132,8 @@ GameObject:
   - component: {fileID: 54333285}
   - component: {fileID: 54333286}
   - component: {fileID: 54333287}
-  m_Layer: 8
+  - component: {fileID: 54333288}
+  m_Layer: 6
   m_Name: MIC_0
   m_TagString: Dead
   m_Icon: {fileID: 0}
@@ -289,14 +290,26 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 54333281}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 80c0e80ccb60b824bbb5048d801dec22, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lifeTime: 0
-  destroyEffectPrefab: {fileID: 0}
+  lifeTime: 5
+  destroyEffectPrefab: {fileID: 2728633384633779767, guid: 5257bb0cddc12c842b18f5f5a32fea3f, type: 3}
   effectLifeTime: 0.5
+--- !u!114 &54333288
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 54333281}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d6d98574110ce14a8819e7a85a910b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &143872716
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -883,7 +896,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3817231539787254508, guid: 8a8ca6cdafd8a5d4d88850d4404aa04c, type: 3}
       propertyPath: m_IsTrigger
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3817231539787254508, guid: 8a8ca6cdafd8a5d4d88850d4404aa04c, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.x
@@ -903,11 +916,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7330817313427024396, guid: 8a8ca6cdafd8a5d4d88850d4404aa04c, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.4945165
+      value: -2.12392
       objectReference: {fileID: 0}
     - target: {fileID: 7330817313427024396, guid: 8a8ca6cdafd8a5d4d88850d4404aa04c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.0600773
+      value: 0.35608017
       objectReference: {fileID: 0}
     - target: {fileID: 7330817313427024396, guid: 8a8ca6cdafd8a5d4d88850d4404aa04c, type: 3}
       propertyPath: m_LocalPosition.z
@@ -6353,6 +6366,10 @@ PrefabInstance:
     - target: {fileID: 5055820241348718883, guid: 37bac7a2df2c88043bb01e59b51f08c7, type: 3}
       propertyPath: m_Layer
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5055820241348718883, guid: 37bac7a2df2c88043bb01e59b51f08c7, type: 3}
+      propertyPath: m_TagString
+      value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 7614502899396074047, guid: 37bac7a2df2c88043bb01e59b51f08c7, type: 3}
       propertyPath: m_Enabled
