@@ -47,30 +47,23 @@ public class EnemyBaseController : MonoBehaviour
     }
 
     /// <summary>
-    /// 敵死亡（他スクリプトが呼ぶ用）
+    /// 敵死亡（ここで初めてスコア加算）
     /// </summary>
     public void Die()
     {
-        // スコア加算
         if (ScoreBoard.Instance != null)
             ScoreBoard.Instance.AddScore(50);
 
-        // オーブ生成
         SpawnOrb();
 
-        // エフェクト
         if (explosionPrefab != null)
             Instantiate(explosionPrefab, transform.position, Quaternion.identity);
 
         Destroy(gameObject);
     }
 
-    /// <summary>
-    /// 範囲爆発
-    /// </summary>
     private void Explode()
     {
-        // エフェクト
         if (explosionPrefab != null)
             Instantiate(explosionPrefab, transform.position, Quaternion.identity);
 
@@ -80,14 +73,12 @@ public class EnemyBaseController : MonoBehaviour
         {
             if (hit.CompareTag("Enemy"))
             {
-                // ★ 敵の Die を呼ぶ
                 EnemyBaseController e = hit.GetComponent<EnemyBaseController>();
-                if (e != null)
-                    e.Die();
+                if (e != null) e.Die();
             }
             else if (hit.CompareTag("Web"))
             {
-                Destroy(hit.gameObject);
+                hit.GetComponent<WebController>()?.ForceDestroy();
             }
         }
 
@@ -105,16 +96,5 @@ public class EnemyBaseController : MonoBehaviour
 
         if (orb != null)
             Instantiate(orb, transform.position + Vector3.up * 1f, Quaternion.identity);
-    }
-
-    void OnBecameInvisible()
-    {
-        Destroy(gameObject);
-    }
-
-    private void OnDrawGizmosSelected()
-    {
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, explosionRadius);
     }
 }

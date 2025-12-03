@@ -1,115 +1,57 @@
-/*using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public class CannonController : MonoBehaviour
-{
-    public GameObject objPrefab;        //”­¶‚³‚¹‚éPrefabƒf[ƒ^
-    public float delayTime = 0.5f;      //’x‰„ŠÔ
-    public float fireSpeed = 4.0f;      //”­Ë‘¬“x
-
-    Transform gateTransform;
-    float passedTimes = 0;              //Œo‰ßŠÔ
-    bool stopByWeb = false;
-
-    void Start()
-    {
-        //”­ËŒûƒIƒuƒWƒFƒNƒg‚ÌTransform‚ğæ“¾
-        gateTransform = transform.Find("gate");
-    }       
-    private void Update()
-    {
-        passedTimes += Time.deltaTime;
-        if (passedTimes > delayTime)
-        {
-            passedTimes = 0;
-
-            Vector2 pos = new Vector2(gateTransform.position.x, gateTransform.position.y);
-            //’e¶¬
-            GameObject obj = Instantiate(objPrefab, pos, Quaternion.identity);
-            //–C’e‚ªŒü‚¢‚Ä‚¢‚é•ûŒü‚É”­Ë
-            Rigidbody2D rbody = obj.GetComponent<Rigidbody2D>();
-            Vector2 v = new Vector2(0, -1) * fireSpeed;
-            rbody.AddForce(v, ForceMode2D.Impulse);
-        }
-    }
-    
-
-}*/
-
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class CannonController_M : MonoBehaviour
 {
-    public GameObject objPrefab;        // ”­Ë‚·‚é’e‚ÌPrefab
-    public float delayTime = 0.5f; // ’e‚ğ”­Ë‚·‚éŠÔŠui•bj
-    public float yTime = 0.0f;        //’e”­Ë
-    public float fireSpeed = 4.0f;      // ’e‚Ì”­Ë‘¬“x
+    public GameObject objPrefab;      // ”­Ë‚·‚é’e‚ÌPrefab
+    public float delayTime = 0.5f;    // ’e‚ğ”­Ë‚·‚éŠÔŠui•bj
+    public float yTime = 0.0f;        // ’e”­ËŠJn‚Ü‚Å‚Ì‘Ò‚¿ŠÔ
+    public float fireSpeed = 4.0f;    // ’e‚Ì”­Ë‘¬“x
 
-    Transform gateTransform;            // ”­ËŒû‚ÌTransform
-    float passedTimes = 0;    // Œo‰ßŠÔ‚ÌŒv‘ª—p
-
-
-
-    bool stopByWeb = false;             // Web‚ÉG‚ê‚Ä‚¢‚éŠÔ‚Ítrue
+    Transform gateTransform;          // ”­ËŒû‚ÌTransform
+    float passedTimes = 0;            // Œo‰ßŠÔ‚ÌŒv‘ª—p
 
     void Start()
     {
         // ”­ËŒûƒIƒuƒWƒFƒNƒg‚ÌTransform‚ğæ“¾
         gateTransform = transform.Find("gate_m");
+
+        if (gateTransform == null)
+            Debug.LogError("CannonController_M: gate_m ‚ªŒ©‚Â‚©‚è‚Ü‚¹‚ñI");
     }
 
     void Update()
     {
+        // ”­ËŠJn‚Ì‘Ò‚¿ŠÔ
+        if (Time.time < yTime) return;
 
-        // Web‚ÉG‚ê‚Ä‚¢‚È‚¢ê‡‚Ì‚İ’e‚ğ”­Ë
-        float remainingTime = yTime - Time.time;
-        if (remainingTime > 0)
+        // Œo‰ßŠÔ‚ğ‰ÁZ
+        passedTimes += Time.deltaTime;
+
+        // delayTime‚ğ’´‚¦‚½‚ç”­Ë
+        if (passedTimes > delayTime)
         {
-
+            FireCannon();
+            passedTimes = 0;
         }
-        else
-        {
-            if (!stopByWeb)
-            {
-                // Œo‰ßŠÔ‚ğ‰ÁZ
-                passedTimes += Time.deltaTime;
-
-                // delayTime‚ğ’´‚¦‚½‚ç’e‚ğ”­Ë
-                if (passedTimes > delayTime)
-                {
-                    FireCannon();       // ’e‚Ì”­Ë
-                    passedTimes = 0;    // Œo‰ßŠÔ‚ğƒŠƒZƒbƒg
-                }
-            }
-        }
-
-
     }
 
-    // ’e‚ğ¶¬‚µ‚Ä”­Ë‚·‚éˆ—
+    // ’e‚ğ¶¬‚µ‚Ä”­Ë
     void FireCannon()
     {
-
-        Vector2 pos = gateTransform.position;                        // ”­ËŒû‚ÌˆÊ’u
-        GameObject obj = Instantiate(objPrefab, pos, Quaternion.identity); // ’e‚ğ¶¬
-        Rigidbody2D rbody = obj.GetComponent<Rigidbody2D>();         // Rigidbody2D‚ğæ“¾
-        rbody.AddForce(Vector2.down * fireSpeed, ForceMode2D.Impulse);    // ‰º•ûŒü‚É—Í‚ğ‰Á‚¦‚Ä”­Ë
-
+        Vector2 pos = gateTransform.position; // ”­ËŒû‚ÌˆÊ’u
+        GameObject obj = Instantiate(objPrefab, pos, Quaternion.identity); // ’e¶¬
+        Rigidbody2D rbody = obj.GetComponent<Rigidbody2D>(); // Rigidbodyæ“¾
+        rbody.AddForce(Vector2.down * fireSpeed, ForceMode2D.Impulse); // ‰º•ûŒü‚É”­Ë
     }
 
-    // Web‚ÉG‚ê‚½uŠÔ‚ÉŒÄ‚Î‚ê‚éˆ—
+    // š Web ‚ÉG‚ê‚Ä‚à~‚Ü‚ç‚È‚¢
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Web"))
         {
-            stopByWeb = true;                 // ”­Ë‚ğ’â~
-            Debug.Log("Web‚ÉG‚ê‚½ ¨ ”­Ë’â~");
+            Debug.Log("CannonController_M: Web‚ÉG‚ê‚½‚ª”­Ë‚Í’â~‚µ‚Ü‚¹‚ñB");
         }
     }
-
-
-
 }
