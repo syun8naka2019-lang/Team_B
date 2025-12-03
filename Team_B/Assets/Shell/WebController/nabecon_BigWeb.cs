@@ -24,7 +24,7 @@ public class Nabecon_Big : MonoBehaviour
     {
         if (rb != null)
         {
-            rb.velocity = Vector2.up * speed;
+            rb.linearVelocity = Vector2.up * speed;
         }
     }
 
@@ -57,7 +57,7 @@ public class Nabecon_Big : MonoBehaviour
         isStopped = true;
         if (rb != null)
         {
-            rb.velocity = Vector2.zero;
+            rb.linearVelocity = Vector2.zero;
         }
     }
 

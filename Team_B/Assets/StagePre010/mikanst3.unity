@@ -283,6 +283,12 @@ MonoBehaviour:
   moveDirection: {x: -1, y: 0}
   explosionPrefab: {fileID: 6310724212718937216, guid: 83ec48bb26a009243ad7e1155143ef6c, type: 3}
   explosionRadius: 2
+  redOrbPrefab: {fileID: 0}
+  greenOrbPrefab: {fileID: 0}
+  blueOrbPrefab: {fileID: 0}
+  redRate: 70
+  greenRate: 20
+  blueRate: 10
 --- !u!50 &2424986
 Rigidbody2D:
   serializedVersion: 5
@@ -577,6 +583,12 @@ MonoBehaviour:
   moveDirection: {x: 0, y: -1}
   explosionPrefab: {fileID: 6310724212718937216, guid: 83ec48bb26a009243ad7e1155143ef6c, type: 3}
   explosionRadius: 2
+  redOrbPrefab: {fileID: 0}
+  greenOrbPrefab: {fileID: 0}
+  blueOrbPrefab: {fileID: 0}
+  redRate: 70
+  greenRate: 20
+  blueRate: 10
 --- !u!50 &90114877
 Rigidbody2D:
   serializedVersion: 5
@@ -899,6 +911,12 @@ MonoBehaviour:
   moveDirection: {x: -1, y: 0}
   explosionPrefab: {fileID: 6310724212718937216, guid: 83ec48bb26a009243ad7e1155143ef6c, type: 3}
   explosionRadius: 2
+  redOrbPrefab: {fileID: 0}
+  greenOrbPrefab: {fileID: 0}
+  blueOrbPrefab: {fileID: 0}
+  redRate: 70
+  greenRate: 20
+  blueRate: 10
 --- !u!50 &96346921
 Rigidbody2D:
   serializedVersion: 5
@@ -1055,6 +1073,12 @@ MonoBehaviour:
   moveDirection: {x: 0, y: -1}
   explosionPrefab: {fileID: 1733978244099935899, guid: 4936dc5c9927a3b45a5fc796a983a446, type: 3}
   explosionRadius: 2
+  redOrbPrefab: {fileID: 0}
+  greenOrbPrefab: {fileID: 0}
+  blueOrbPrefab: {fileID: 0}
+  redRate: 70
+  greenRate: 20
+  blueRate: 10
 --- !u!50 &134810761
 Rigidbody2D:
   serializedVersion: 5
@@ -1660,6 +1684,12 @@ MonoBehaviour:
   moveDirection: {x: -1, y: 0}
   explosionPrefab: {fileID: 6310724212718937216, guid: 83ec48bb26a009243ad7e1155143ef6c, type: 3}
   explosionRadius: 2
+  redOrbPrefab: {fileID: 0}
+  greenOrbPrefab: {fileID: 0}
+  blueOrbPrefab: {fileID: 0}
+  redRate: 70
+  greenRate: 20
+  blueRate: 10
 --- !u!114 &187126202
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1998,6 +2028,12 @@ MonoBehaviour:
   moveDirection: {x: -1, y: 0}
   explosionPrefab: {fileID: 6310724212718937216, guid: 83ec48bb26a009243ad7e1155143ef6c, type: 3}
   explosionRadius: 2
+  redOrbPrefab: {fileID: 0}
+  greenOrbPrefab: {fileID: 0}
+  blueOrbPrefab: {fileID: 0}
+  redRate: 70
+  greenRate: 20
+  blueRate: 10
 --- !u!50 &384910758
 Rigidbody2D:
   serializedVersion: 5
@@ -2107,6 +2143,12 @@ MonoBehaviour:
   moveDirection: {x: 0, y: -1}
   explosionPrefab: {fileID: 6310724212718937216, guid: 83ec48bb26a009243ad7e1155143ef6c, type: 3}
   explosionRadius: 2
+  redOrbPrefab: {fileID: 0}
+  greenOrbPrefab: {fileID: 0}
+  blueOrbPrefab: {fileID: 0}
+  redRate: 70
+  greenRate: 20
+  blueRate: 10
 --- !u!1 &465439720
 GameObject:
   m_ObjectHideFlags: 0
@@ -2348,6 +2390,12 @@ MonoBehaviour:
   moveDirection: {x: 0, y: -1}
   explosionPrefab: {fileID: 6310724212718937216, guid: 83ec48bb26a009243ad7e1155143ef6c, type: 3}
   explosionRadius: 2
+  redOrbPrefab: {fileID: 0}
+  greenOrbPrefab: {fileID: 0}
+  blueOrbPrefab: {fileID: 0}
+  redRate: 70
+  greenRate: 20
+  blueRate: 10
 --- !u!114 &550877788
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2604,6 +2652,12 @@ MonoBehaviour:
   moveDirection: {x: -1, y: 0}
   explosionPrefab: {fileID: 6310724212718937216, guid: 83ec48bb26a009243ad7e1155143ef6c, type: 3}
   explosionRadius: 2
+  redOrbPrefab: {fileID: 0}
+  greenOrbPrefab: {fileID: 0}
+  blueOrbPrefab: {fileID: 0}
+  redRate: 70
+  greenRate: 20
+  blueRate: 10
 --- !u!114 &648989283
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2927,11 +2981,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 452186646851448775, guid: a4a4acfa0bcb562429a31fc095065955, type: 3}
       propertyPath: m_LocalScale.x
-      value: 1.12
+      value: 3.1064322
       objectReference: {fileID: 0}
     - target: {fileID: 452186646851448775, guid: a4a4acfa0bcb562429a31fc095065955, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.6054594
+      value: 0.9569998
       objectReference: {fileID: 0}
     - target: {fileID: 452186646851448775, guid: a4a4acfa0bcb562429a31fc095065955, type: 3}
       propertyPath: m_LocalScale.z
@@ -2939,11 +2993,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 452186646851448775, guid: a4a4acfa0bcb562429a31fc095065955, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.006729126
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 452186646851448775, guid: a4a4acfa0bcb562429a31fc095065955, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.4004974
+      value: 206.8
       objectReference: {fileID: 0}
     - target: {fileID: 452186646851448775, guid: a4a4acfa0bcb562429a31fc095065955, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2991,7 +3045,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5273012397842634097, guid: a4a4acfa0bcb562429a31fc095065955, type: 3}
       propertyPath: m_Layer
-      value: 6
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 5897619119821299884, guid: a4a4acfa0bcb562429a31fc095065955, type: 3}
       propertyPath: m_Sprite
@@ -3003,7 +3057,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6328105079811794911, guid: a4a4acfa0bcb562429a31fc095065955, type: 3}
       propertyPath: m_Layer
-      value: 6
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 6328105079811794911, guid: a4a4acfa0bcb562429a31fc095065955, type: 3}
       propertyPath: m_TagString
@@ -3152,6 +3206,12 @@ MonoBehaviour:
   moveDirection: {x: 0, y: -1}
   explosionPrefab: {fileID: 1733978244099935899, guid: 4936dc5c9927a3b45a5fc796a983a446, type: 3}
   explosionRadius: 2
+  redOrbPrefab: {fileID: 0}
+  greenOrbPrefab: {fileID: 0}
+  blueOrbPrefab: {fileID: 0}
+  redRate: 70
+  greenRate: 20
+  blueRate: 10
 --- !u!50 &806801298
 Rigidbody2D:
   serializedVersion: 5
@@ -3551,6 +3611,12 @@ MonoBehaviour:
   moveDirection: {x: 0, y: -1}
   explosionPrefab: {fileID: 6310724212718937216, guid: 83ec48bb26a009243ad7e1155143ef6c, type: 3}
   explosionRadius: 2
+  redOrbPrefab: {fileID: 0}
+  greenOrbPrefab: {fileID: 0}
+  blueOrbPrefab: {fileID: 0}
+  redRate: 70
+  greenRate: 20
+  blueRate: 10
 --- !u!50 &892078326
 Rigidbody2D:
   serializedVersion: 5
@@ -3681,6 +3747,12 @@ MonoBehaviour:
   moveDirection: {x: 0, y: -1}
   explosionPrefab: {fileID: 6310724212718937216, guid: 83ec48bb26a009243ad7e1155143ef6c, type: 3}
   explosionRadius: 2
+  redOrbPrefab: {fileID: 0}
+  greenOrbPrefab: {fileID: 0}
+  blueOrbPrefab: {fileID: 0}
+  redRate: 70
+  greenRate: 20
+  blueRate: 10
 --- !u!50 &895957649
 Rigidbody2D:
   serializedVersion: 5
@@ -3948,6 +4020,12 @@ MonoBehaviour:
   moveDirection: {x: -1, y: 0}
   explosionPrefab: {fileID: 6310724212718937216, guid: 83ec48bb26a009243ad7e1155143ef6c, type: 3}
   explosionRadius: 2
+  redOrbPrefab: {fileID: 0}
+  greenOrbPrefab: {fileID: 0}
+  blueOrbPrefab: {fileID: 0}
+  redRate: 70
+  greenRate: 20
+  blueRate: 10
 --- !u!114 &901223771
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4201,6 +4279,12 @@ MonoBehaviour:
   moveDirection: {x: 0, y: -1}
   explosionPrefab: {fileID: 6310724212718937216, guid: 83ec48bb26a009243ad7e1155143ef6c, type: 3}
   explosionRadius: 2
+  redOrbPrefab: {fileID: 0}
+  greenOrbPrefab: {fileID: 0}
+  blueOrbPrefab: {fileID: 0}
+  redRate: 70
+  greenRate: 20
+  blueRate: 10
 --- !u!1001 &940041207
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4365,6 +4449,12 @@ MonoBehaviour:
   moveDirection: {x: -1, y: 0}
   explosionPrefab: {fileID: 6310724212718937216, guid: 83ec48bb26a009243ad7e1155143ef6c, type: 3}
   explosionRadius: 2
+  redOrbPrefab: {fileID: 0}
+  greenOrbPrefab: {fileID: 0}
+  blueOrbPrefab: {fileID: 0}
+  redRate: 70
+  greenRate: 20
+  blueRate: 10
 --- !u!50 &940041212
 Rigidbody2D:
   serializedVersion: 5
@@ -4670,6 +4760,12 @@ MonoBehaviour:
   moveDirection: {x: 0, y: -1}
   explosionPrefab: {fileID: 6310724212718937216, guid: 83ec48bb26a009243ad7e1155143ef6c, type: 3}
   explosionRadius: 2
+  redOrbPrefab: {fileID: 0}
+  greenOrbPrefab: {fileID: 0}
+  blueOrbPrefab: {fileID: 0}
+  redRate: 70
+  greenRate: 20
+  blueRate: 10
 --- !u!1001 &983585485
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4791,6 +4887,12 @@ MonoBehaviour:
   moveDirection: {x: 0, y: -1}
   explosionPrefab: {fileID: 6310724212718937216, guid: 83ec48bb26a009243ad7e1155143ef6c, type: 3}
   explosionRadius: 2
+  redOrbPrefab: {fileID: 0}
+  greenOrbPrefab: {fileID: 0}
+  blueOrbPrefab: {fileID: 0}
+  redRate: 70
+  greenRate: 20
+  blueRate: 10
 --- !u!1 &998947087
 GameObject:
   m_ObjectHideFlags: 0
@@ -4828,6 +4930,12 @@ MonoBehaviour:
   moveDirection: {x: 0, y: -1}
   explosionPrefab: {fileID: 1733978244099935899, guid: 4936dc5c9927a3b45a5fc796a983a446, type: 3}
   explosionRadius: 2
+  redOrbPrefab: {fileID: 0}
+  greenOrbPrefab: {fileID: 0}
+  blueOrbPrefab: {fileID: 0}
+  redRate: 70
+  greenRate: 20
+  blueRate: 10
 --- !u!50 &998947089
 Rigidbody2D:
   serializedVersion: 5
@@ -4998,7 +5106,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1037782308}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 10a23570814607642a78d46c07f1f2de, type: 3}
   m_Name: 
@@ -5007,6 +5115,12 @@ MonoBehaviour:
   moveDirection: {x: 0, y: -1}
   explosionPrefab: {fileID: 6310724212718937216, guid: 83ec48bb26a009243ad7e1155143ef6c, type: 3}
   explosionRadius: 2
+  redOrbPrefab: {fileID: 0}
+  greenOrbPrefab: {fileID: 0}
+  blueOrbPrefab: {fileID: 0}
+  redRate: 70
+  greenRate: 20
+  blueRate: 10
 --- !u!50 &1037782310
 Rigidbody2D:
   serializedVersion: 5
@@ -5102,7 +5216,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1037782308}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d1e82d5f60034bd4cb481719d9402734, type: 3}
   m_Name: 
@@ -5137,6 +5251,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sceneName: 
+  stopDistance: 0.3
+  moveSpeed: 2
 --- !u!114 &1037782318
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5149,7 +5265,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b6c61dec66e9474284614f4cba291f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneName: 
+  sceneName: Clear
+  stopDistance: 0.3
+  moveSpeed: 2
 --- !u!1 &1043359766
 GameObject:
   m_ObjectHideFlags: 0
@@ -5441,6 +5559,12 @@ MonoBehaviour:
   moveDirection: {x: -1, y: 0}
   explosionPrefab: {fileID: 6310724212718937216, guid: 83ec48bb26a009243ad7e1155143ef6c, type: 3}
   explosionRadius: 2
+  redOrbPrefab: {fileID: 0}
+  greenOrbPrefab: {fileID: 0}
+  blueOrbPrefab: {fileID: 0}
+  redRate: 70
+  greenRate: 20
+  blueRate: 10
 --- !u!50 &1056492360
 Rigidbody2D:
   serializedVersion: 5
@@ -5650,6 +5774,12 @@ MonoBehaviour:
   moveDirection: {x: 0, y: -1}
   explosionPrefab: {fileID: 6310724212718937216, guid: 83ec48bb26a009243ad7e1155143ef6c, type: 3}
   explosionRadius: 2
+  redOrbPrefab: {fileID: 0}
+  greenOrbPrefab: {fileID: 0}
+  blueOrbPrefab: {fileID: 0}
+  redRate: 70
+  greenRate: 20
+  blueRate: 10
 --- !u!1 &1061704458 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7559601641096968251, guid: fbe136725fda49e4ca76509d1a62058f, type: 3}
@@ -5687,6 +5817,12 @@ MonoBehaviour:
   moveDirection: {x: 0, y: -1}
   explosionPrefab: {fileID: 6310724212718937216, guid: 83ec48bb26a009243ad7e1155143ef6c, type: 3}
   explosionRadius: 2
+  redOrbPrefab: {fileID: 0}
+  greenOrbPrefab: {fileID: 0}
+  blueOrbPrefab: {fileID: 0}
+  redRate: 70
+  greenRate: 20
+  blueRate: 10
 --- !u!50 &1061704461
 Rigidbody2D:
   serializedVersion: 5
@@ -6058,6 +6194,12 @@ MonoBehaviour:
   moveDirection: {x: 0, y: -1}
   explosionPrefab: {fileID: 6310724212718937216, guid: 83ec48bb26a009243ad7e1155143ef6c, type: 3}
   explosionRadius: 2
+  redOrbPrefab: {fileID: 0}
+  greenOrbPrefab: {fileID: 0}
+  blueOrbPrefab: {fileID: 0}
+  redRate: 70
+  greenRate: 20
+  blueRate: 10
 --- !u!50 &1091209426
 Rigidbody2D:
   serializedVersion: 5
@@ -6253,6 +6395,12 @@ MonoBehaviour:
   moveDirection: {x: 0, y: -1}
   explosionPrefab: {fileID: 6310724212718937216, guid: 83ec48bb26a009243ad7e1155143ef6c, type: 3}
   explosionRadius: 2
+  redOrbPrefab: {fileID: 0}
+  greenOrbPrefab: {fileID: 0}
+  blueOrbPrefab: {fileID: 0}
+  redRate: 70
+  greenRate: 20
+  blueRate: 10
 --- !u!50 &1106640234
 Rigidbody2D:
   serializedVersion: 5
@@ -6733,6 +6881,12 @@ MonoBehaviour:
   moveDirection: {x: 0, y: -1}
   explosionPrefab: {fileID: 6310724212718937216, guid: 83ec48bb26a009243ad7e1155143ef6c, type: 3}
   explosionRadius: 2
+  redOrbPrefab: {fileID: 0}
+  greenOrbPrefab: {fileID: 0}
+  blueOrbPrefab: {fileID: 0}
+  redRate: 70
+  greenRate: 20
+  blueRate: 10
 --- !u!50 &1327016124
 Rigidbody2D:
   serializedVersion: 5
@@ -7044,6 +7198,12 @@ MonoBehaviour:
   moveDirection: {x: 0, y: -1}
   explosionPrefab: {fileID: 6310724212718937216, guid: 83ec48bb26a009243ad7e1155143ef6c, type: 3}
   explosionRadius: 2
+  redOrbPrefab: {fileID: 0}
+  greenOrbPrefab: {fileID: 0}
+  blueOrbPrefab: {fileID: 0}
+  redRate: 70
+  greenRate: 20
+  blueRate: 10
 --- !u!50 &1359041316
 Rigidbody2D:
   serializedVersion: 5
@@ -7174,6 +7334,12 @@ MonoBehaviour:
   moveDirection: {x: 0, y: -1}
   explosionPrefab: {fileID: 1733978244099935899, guid: 4936dc5c9927a3b45a5fc796a983a446, type: 3}
   explosionRadius: 2
+  redOrbPrefab: {fileID: 0}
+  greenOrbPrefab: {fileID: 0}
+  blueOrbPrefab: {fileID: 0}
+  redRate: 70
+  greenRate: 20
+  blueRate: 10
 --- !u!50 &1373410660
 Rigidbody2D:
   serializedVersion: 5
@@ -7404,6 +7570,12 @@ MonoBehaviour:
   moveDirection: {x: 0, y: -1}
   explosionPrefab: {fileID: 1733978244099935899, guid: 4936dc5c9927a3b45a5fc796a983a446, type: 3}
   explosionRadius: 2
+  redOrbPrefab: {fileID: 0}
+  greenOrbPrefab: {fileID: 0}
+  blueOrbPrefab: {fileID: 0}
+  redRate: 70
+  greenRate: 20
+  blueRate: 10
 --- !u!50 &1405511179
 Rigidbody2D:
   serializedVersion: 5
@@ -7703,6 +7875,12 @@ MonoBehaviour:
   moveDirection: {x: 0, y: -1}
   explosionPrefab: {fileID: 6310724212718937216, guid: 83ec48bb26a009243ad7e1155143ef6c, type: 3}
   explosionRadius: 2
+  redOrbPrefab: {fileID: 0}
+  greenOrbPrefab: {fileID: 0}
+  blueOrbPrefab: {fileID: 0}
+  redRate: 70
+  greenRate: 20
+  blueRate: 10
 --- !u!50 &1433824685
 Rigidbody2D:
   serializedVersion: 5
@@ -8072,6 +8250,12 @@ MonoBehaviour:
   moveDirection: {x: 0, y: -1}
   explosionPrefab: {fileID: 1733978244099935899, guid: 4936dc5c9927a3b45a5fc796a983a446, type: 3}
   explosionRadius: 4
+  redOrbPrefab: {fileID: 0}
+  greenOrbPrefab: {fileID: 0}
+  blueOrbPrefab: {fileID: 0}
+  redRate: 70
+  greenRate: 20
+  blueRate: 10
 --- !u!1 &1528594000
 GameObject:
   m_ObjectHideFlags: 0
@@ -8109,6 +8293,12 @@ MonoBehaviour:
   moveDirection: {x: 0, y: -1}
   explosionPrefab: {fileID: 1733978244099935899, guid: 4936dc5c9927a3b45a5fc796a983a446, type: 3}
   explosionRadius: 2
+  redOrbPrefab: {fileID: 0}
+  greenOrbPrefab: {fileID: 0}
+  blueOrbPrefab: {fileID: 0}
+  redRate: 70
+  greenRate: 20
+  blueRate: 10
 --- !u!50 &1528594002
 Rigidbody2D:
   serializedVersion: 5
@@ -8304,6 +8494,12 @@ MonoBehaviour:
   moveDirection: {x: 0, y: -1}
   explosionPrefab: {fileID: 6310724212718937216, guid: 83ec48bb26a009243ad7e1155143ef6c, type: 3}
   explosionRadius: 2
+  redOrbPrefab: {fileID: 0}
+  greenOrbPrefab: {fileID: 0}
+  blueOrbPrefab: {fileID: 0}
+  redRate: 70
+  greenRate: 20
+  blueRate: 10
 --- !u!50 &1565011728
 Rigidbody2D:
   serializedVersion: 5
@@ -8450,6 +8646,12 @@ MonoBehaviour:
   moveDirection: {x: -1, y: 0}
   explosionPrefab: {fileID: 6310724212718937216, guid: 83ec48bb26a009243ad7e1155143ef6c, type: 3}
   explosionRadius: 2
+  redOrbPrefab: {fileID: 0}
+  greenOrbPrefab: {fileID: 0}
+  blueOrbPrefab: {fileID: 0}
+  redRate: 70
+  greenRate: 20
+  blueRate: 10
 --- !u!50 &1601448264
 Rigidbody2D:
   serializedVersion: 5
@@ -8575,6 +8777,12 @@ MonoBehaviour:
   moveDirection: {x: 0, y: -1}
   explosionPrefab: {fileID: 6310724212718937216, guid: 83ec48bb26a009243ad7e1155143ef6c, type: 3}
   explosionRadius: 2
+  redOrbPrefab: {fileID: 0}
+  greenOrbPrefab: {fileID: 0}
+  blueOrbPrefab: {fileID: 0}
+  redRate: 70
+  greenRate: 20
+  blueRate: 10
 --- !u!50 &1634358400
 Rigidbody2D:
   serializedVersion: 5
@@ -9185,6 +9393,12 @@ MonoBehaviour:
   moveDirection: {x: 0, y: -1}
   explosionPrefab: {fileID: 1733978244099935899, guid: 4936dc5c9927a3b45a5fc796a983a446, type: 3}
   explosionRadius: 2
+  redOrbPrefab: {fileID: 0}
+  greenOrbPrefab: {fileID: 0}
+  blueOrbPrefab: {fileID: 0}
+  redRate: 70
+  greenRate: 20
+  blueRate: 10
 --- !u!50 &1776930968
 Rigidbody2D:
   serializedVersion: 5
@@ -9442,6 +9656,12 @@ MonoBehaviour:
   moveDirection: {x: -1, y: 0}
   explosionPrefab: {fileID: 6310724212718937216, guid: 83ec48bb26a009243ad7e1155143ef6c, type: 3}
   explosionRadius: 2
+  redOrbPrefab: {fileID: 0}
+  greenOrbPrefab: {fileID: 0}
+  blueOrbPrefab: {fileID: 0}
+  redRate: 70
+  greenRate: 20
+  blueRate: 10
 --- !u!50 &1784619112
 Rigidbody2D:
   serializedVersion: 5
@@ -9725,6 +9945,12 @@ MonoBehaviour:
   moveDirection: {x: 0, y: -1}
   explosionPrefab: {fileID: 2026414091333721628, guid: 81003e63f3b99e9419fdb2a6dd9f8830, type: 3}
   explosionRadius: 2
+  redOrbPrefab: {fileID: 0}
+  greenOrbPrefab: {fileID: 0}
+  blueOrbPrefab: {fileID: 0}
+  redRate: 70
+  greenRate: 20
+  blueRate: 10
 --- !u!1 &1790918380
 GameObject:
   m_ObjectHideFlags: 0
@@ -9920,6 +10146,12 @@ MonoBehaviour:
   moveDirection: {x: 0, y: -1}
   explosionPrefab: {fileID: 2026414091333721628, guid: 81003e63f3b99e9419fdb2a6dd9f8830, type: 3}
   explosionRadius: 2
+  redOrbPrefab: {fileID: 0}
+  greenOrbPrefab: {fileID: 0}
+  blueOrbPrefab: {fileID: 0}
+  redRate: 70
+  greenRate: 20
+  blueRate: 10
 --- !u!1001 &1800466084
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10250,6 +10482,12 @@ MonoBehaviour:
   moveDirection: {x: 0, y: -1}
   explosionPrefab: {fileID: 1733978244099935899, guid: 4936dc5c9927a3b45a5fc796a983a446, type: 3}
   explosionRadius: 2
+  redOrbPrefab: {fileID: 0}
+  greenOrbPrefab: {fileID: 0}
+  blueOrbPrefab: {fileID: 0}
+  redRate: 70
+  greenRate: 20
+  blueRate: 10
 --- !u!50 &1890828971
 Rigidbody2D:
   serializedVersion: 5
@@ -10503,6 +10741,12 @@ MonoBehaviour:
   moveDirection: {x: -1, y: 0}
   explosionPrefab: {fileID: 1733978244099935899, guid: 4936dc5c9927a3b45a5fc796a983a446, type: 3}
   explosionRadius: 2
+  redOrbPrefab: {fileID: 0}
+  greenOrbPrefab: {fileID: 0}
+  blueOrbPrefab: {fileID: 0}
+  redRate: 70
+  greenRate: 20
+  blueRate: 10
 --- !u!50 &1892603639
 Rigidbody2D:
   serializedVersion: 5
@@ -10628,6 +10872,12 @@ MonoBehaviour:
   moveDirection: {x: 0, y: -1}
   explosionPrefab: {fileID: 1733978244099935899, guid: 4936dc5c9927a3b45a5fc796a983a446, type: 3}
   explosionRadius: 2
+  redOrbPrefab: {fileID: 0}
+  greenOrbPrefab: {fileID: 0}
+  blueOrbPrefab: {fileID: 0}
+  redRate: 70
+  greenRate: 20
+  blueRate: 10
 --- !u!50 &1908967065
 Rigidbody2D:
   serializedVersion: 5
@@ -10871,6 +11121,12 @@ MonoBehaviour:
   moveDirection: {x: -1, y: 0}
   explosionPrefab: {fileID: 6310724212718937216, guid: 83ec48bb26a009243ad7e1155143ef6c, type: 3}
   explosionRadius: 2
+  redOrbPrefab: {fileID: 0}
+  greenOrbPrefab: {fileID: 0}
+  blueOrbPrefab: {fileID: 0}
+  redRate: 70
+  greenRate: 20
+  blueRate: 10
 --- !u!50 &2041875603
 Rigidbody2D:
   serializedVersion: 5
@@ -11208,6 +11464,12 @@ MonoBehaviour:
   moveDirection: {x: 0, y: -1}
   explosionPrefab: {fileID: 6310724212718937216, guid: 83ec48bb26a009243ad7e1155143ef6c, type: 3}
   explosionRadius: 2
+  redOrbPrefab: {fileID: 0}
+  greenOrbPrefab: {fileID: 0}
+  blueOrbPrefab: {fileID: 0}
+  redRate: 70
+  greenRate: 20
+  blueRate: 10
 --- !u!50 &2097488706
 Rigidbody2D:
   serializedVersion: 5
@@ -11338,6 +11600,12 @@ MonoBehaviour:
   moveDirection: {x: 0, y: -1}
   explosionPrefab: {fileID: 1733978244099935899, guid: 4936dc5c9927a3b45a5fc796a983a446, type: 3}
   explosionRadius: 2
+  redOrbPrefab: {fileID: 0}
+  greenOrbPrefab: {fileID: 0}
+  blueOrbPrefab: {fileID: 0}
+  redRate: 70
+  greenRate: 20
+  blueRate: 10
 --- !u!50 &2115841645
 Rigidbody2D:
   serializedVersion: 5
@@ -11468,6 +11736,12 @@ MonoBehaviour:
   moveDirection: {x: 0, y: -1}
   explosionPrefab: {fileID: 1733978244099935899, guid: 4936dc5c9927a3b45a5fc796a983a446, type: 3}
   explosionRadius: 4
+  redOrbPrefab: {fileID: 0}
+  greenOrbPrefab: {fileID: 0}
+  blueOrbPrefab: {fileID: 0}
+  redRate: 70
+  greenRate: 20
+  blueRate: 10
 --- !u!50 &2120293504
 Rigidbody2D:
   serializedVersion: 5
@@ -11626,6 +11900,71 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &2121953443
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 962056994347588299, guid: eaeed3d965d2f3c4d9ef2763f78f5372, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -3949045188414238094, guid: fd0bc1295594b5744bdf904d64154c33, type: 3}
+    - target: {fileID: 4166109326877260694, guid: eaeed3d965d2f3c4d9ef2763f78f5372, type: 3}
+      propertyPath: m_Name
+      value: nabetti 1_0 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5153759161032754071, guid: eaeed3d965d2f3c4d9ef2763f78f5372, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.18581343
+      objectReference: {fileID: 0}
+    - target: {fileID: 5153759161032754071, guid: eaeed3d965d2f3c4d9ef2763f78f5372, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -2.8786747
+      objectReference: {fileID: 0}
+    - target: {fileID: 5153759161032754071, guid: eaeed3d965d2f3c4d9ef2763f78f5372, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5153759161032754071, guid: eaeed3d965d2f3c4d9ef2763f78f5372, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5153759161032754071, guid: eaeed3d965d2f3c4d9ef2763f78f5372, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5153759161032754071, guid: eaeed3d965d2f3c4d9ef2763f78f5372, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5153759161032754071, guid: eaeed3d965d2f3c4d9ef2763f78f5372, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5153759161032754071, guid: eaeed3d965d2f3c4d9ef2763f78f5372, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5153759161032754071, guid: eaeed3d965d2f3c4d9ef2763f78f5372, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5153759161032754071, guid: eaeed3d965d2f3c4d9ef2763f78f5372, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7258110683176584331, guid: eaeed3d965d2f3c4d9ef2763f78f5372, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: eaeed3d965d2f3c4d9ef2763f78f5372, type: 3}
 --- !u!1001 &856958369197846617
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11715,71 +12054,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7aedb9cab4c1fc84db4567a17f251c33, type: 3}
---- !u!1001 &5653203447063154127
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 666193131512376100, guid: 8a8ca6cdafd8a5d4d88850d4404aa04c, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: -3949045188414238094, guid: fd0bc1295594b5744bdf904d64154c33, type: 3}
-    - target: {fileID: 2600446242984232152, guid: 8a8ca6cdafd8a5d4d88850d4404aa04c, type: 3}
-      propertyPath: m_Name
-      value: nabetti 1_0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4318804317915835550, guid: 8a8ca6cdafd8a5d4d88850d4404aa04c, type: 3}
-      propertyPath: objPrefab
-      value: 
-      objectReference: {fileID: 3135770134523692115, guid: c35532c26f048404b8a554987868af34, type: 3}
-    - target: {fileID: 7330817313427024396, guid: 8a8ca6cdafd8a5d4d88850d4404aa04c, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -0.038009644
-      objectReference: {fileID: 0}
-    - target: {fileID: 7330817313427024396, guid: 8a8ca6cdafd8a5d4d88850d4404aa04c, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -3.665839
-      objectReference: {fileID: 0}
-    - target: {fileID: 7330817313427024396, guid: 8a8ca6cdafd8a5d4d88850d4404aa04c, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7330817313427024396, guid: 8a8ca6cdafd8a5d4d88850d4404aa04c, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7330817313427024396, guid: 8a8ca6cdafd8a5d4d88850d4404aa04c, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7330817313427024396, guid: 8a8ca6cdafd8a5d4d88850d4404aa04c, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7330817313427024396, guid: 8a8ca6cdafd8a5d4d88850d4404aa04c, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7330817313427024396, guid: 8a8ca6cdafd8a5d4d88850d4404aa04c, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7330817313427024396, guid: 8a8ca6cdafd8a5d4d88850d4404aa04c, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7330817313427024396, guid: 8a8ca6cdafd8a5d4d88850d4404aa04c, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 8a8ca6cdafd8a5d4d88850d4404aa04c, type: 3}
 --- !u!1001 &8084654373601694944
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11862,7 +12136,6 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 1062559054}
-  - {fileID: 5653203447063154127}
   - {fileID: 1800466084}
   - {fileID: 1061621458}
   - {fileID: 983585485}
@@ -11924,3 +12197,4 @@ SceneRoots:
   - {fileID: 186327335}
   - {fileID: 717088584}
   - {fileID: 1227014509}
+  - {fileID: 2121953443}

@@ -30,15 +30,14 @@ public class EnemyBaseController : MonoBehaviour
     void FixedUpdate()
     {
         if (!isStopped)
-            rb.velocity = moveDirection.normalized * speed;
+            rb.linearVelocity = moveDirection.normalized * speed;
         else
-            rb.velocity = Vector2.zero;
+            rb.linearVelocity = Vector2.zero;
     }
 
     public void Stop()
     {
         isStopped = true;
-        rb.velocity = Vector2.zero;
     }
 
     void Update()
@@ -47,35 +46,52 @@ public class EnemyBaseController : MonoBehaviour
             Explode();
     }
 
-    private void Explode()
+    /// <summary>
+    /// 敵死亡（他スクリプトが呼ぶ用）
+    /// </summary>
+    public void Die()
     {
-        // 爆発エフェクト
+        // スコア加算
+        if (ScoreBoard.Instance != null)
+            ScoreBoard.Instance.AddScore(50);
+
+        // オーブ生成
+        SpawnOrb();
+
+        // エフェクト
         if (explosionPrefab != null)
             Instantiate(explosionPrefab, transform.position, Quaternion.identity);
 
-        // 範囲内の Enemy / Web を破壊
+        Destroy(gameObject);
+    }
+
+    /// <summary>
+    /// 範囲爆発
+    /// </summary>
+    private void Explode()
+    {
+        // エフェクト
+        if (explosionPrefab != null)
+            Instantiate(explosionPrefab, transform.position, Quaternion.identity);
+
+        // 範囲 damage
         Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position, explosionRadius);
         foreach (Collider2D hit in hits)
         {
             if (hit.CompareTag("Enemy"))
             {
-                // スコア加算
-                ScoreBoard sb = FindObjectOfType<ScoreBoard>();
-                if (sb != null)
-                    sb.AddScore(50); // 50点加算
-
-                Destroy(hit.gameObject);
+                // ★ 敵の Die を呼ぶ
+                EnemyBaseController e = hit.GetComponent<EnemyBaseController>();
+                if (e != null)
+                    e.Die();
             }
             else if (hit.CompareTag("Web"))
             {
-                Destroy(hit.gameObject); // Web も破壊
+                Destroy(hit.gameObject);
             }
         }
 
-        // ランダムでオーブ生成
-        SpawnOrb();
-
-        Destroy(gameObject); // 自分自身を破壊
+        Destroy(gameObject);
     }
 
     private void SpawnOrb()
@@ -91,7 +107,7 @@ public class EnemyBaseController : MonoBehaviour
             Instantiate(orb, transform.position + Vector3.up * 1f, Quaternion.identity);
     }
 
-    private void OnBecameInvisible()
+    void OnBecameInvisible()
     {
         Destroy(gameObject);
     }

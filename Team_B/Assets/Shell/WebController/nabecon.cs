@@ -1,35 +1,49 @@
-
-using System.Collections.Generic;
 using UnityEngine;
 
-/// <summary>
-/// ’eiWebj‚ÌƒRƒ“ƒgƒ[ƒ‰
-/// - ã•ûŒüi‚Ü‚½‚Í©—R•ûŒüj‚ÉˆÚ“®
-/// - 1‰ñƒqƒbƒg‚µ‚½“G‚Å~‚Ü‚é
-/// - ~‚Ü‚Á‚½’e‚Í‘¼‚Ì“G‚É‰e‹¿‚µ‚È‚¢
-/// </summary>
-public class nabecon : MonoBehaviour
+public class NabeCon : MonoBehaviour
 {
-    [Header("ˆÚ“®İ’è")]
-    public float speed = 10f;              // ’e‚Ì‘¬“x
+    [Header("’e‚ÌˆÚ“®‘¬“x")]
+    public float speed = 10f;
 
-    private Rigidbody2D rb;                // Rigidbody2D
-    private bool isStopped = false;        // ’e‚ª~‚Ü‚Á‚½‚©
-    private bool hasHitEnemy = false;      // 1‰ñƒqƒbƒgÏ‚İ‚©
-
-
-    void Awake()
-    {
-        rb = GetComponent<Rigidbody2D>();
-    }
+    [Header("“G 1 ‘Ì‚²‚Æ‚ÌƒXƒRƒA")]
+    public int scorePerEnemy = 10;
 
     void Update()
     {
-        // ’â~‚µ‚Ä‚¢‚È‚¯‚ê‚Îã•ûŒü‚ÉˆÚ“®
-        if (!isStopped)
-        {
-            transform.Translate(Vector2.up * speed * Time.deltaTime);
-        }
+        // ’e‚ğí‚Éã‚ÖˆÚ“®iŠÑ’Êj
+        transform.Translate(Vector2.up * speed * Time.deltaTime, Space.World);
     }
 
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (!collision.CompareTag("Enemy")) return;
+
+        HandleEnemyHit(collision.gameObject);
+    }
+
+    /// <summary>
+    /// “Gƒqƒbƒg‚Ìˆ—
+    /// </summary>
+    private void HandleEnemyHit(GameObject enemy)
+    {
+        // ¥ ƒXƒRƒA‰ÁZiScoreBoard ‚É“ˆêj
+        if (ScoreBoard.Instance != null)
+            ScoreBoard.Instance.AddScore(scorePerEnemy);
+
+        // ¥ EnemyBaseController ‚ğ‚Á‚Ä‚¢‚ê‚Î Die() ‚ğŒÄ‚Ô
+        EnemyBaseController enemyController = enemy.GetComponent<EnemyBaseController>();
+        if (enemyController != null)
+        {
+            enemyController.Die();
+            return;
+        }
+
+        // ¥ fallback ‚Æ‚µ‚Ä Destroy
+        Destroy(enemy);
+    }
+
+    private void OnBecameInvisible()
+    {
+        Destroy(gameObject);
+    }
 }

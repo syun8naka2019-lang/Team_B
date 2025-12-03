@@ -3,22 +3,45 @@ using UnityEngine.UI;
 
 public class ScoreBoard : MonoBehaviour
 {
+    public static ScoreBoard Instance;   // ★どこからでも参照できるシングルトン
+
     [Header("表示するテキスト")]
     public Text scoreText; // Inspector で ScoreTxt を設定
 
     private int score = 0; // 内部スコア管理用
 
-    // 現在スコアを取得するプロパティ（必要に応じて参照）
     public int Score => score;
 
-    // スコア加算メソッド
-    public void AddScore(int amount)
+    private void Awake()
     {
-        score += amount;      // スコアに加算
-        UpdateScoreText();    // UI に反映
+        // シングルトン化（重複防止）
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+            return;
+        }
+
+        // Text が未設定の場合に警告
+        if (scoreText == null)
+        {
+            Debug.LogError("ScoreBoard : scoreText が設定されていません！");
+        }
+
+        UpdateScoreText(); // 初期表示
     }
 
-    // UI のテキストを更新
+    // スコア加算
+    public void AddScore(int amount)
+    {
+        score += amount;
+        UpdateScoreText();
+    }
+
+    // UI 更新
     private void UpdateScoreText()
     {
         if (scoreText != null)

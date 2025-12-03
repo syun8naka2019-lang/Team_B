@@ -1,112 +1,169 @@
-using System.Collections;
+ï»¿using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;   // â† Text ã‚’ä½¿ã†ãŸã‚ã«å¿…è¦
 
 /// <summary>
-/// ƒvƒŒƒCƒ„[‚ÌƒXƒe[ƒ^ƒXŠÇ—
-/// HPEƒXƒRƒAEˆÚ“®‘¬“xE–³“GEƒQ[ƒ€ƒI[ƒo[ˆ—‚ğ“‡
+/// ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ã® HP / ã‚¹ã‚³ã‚¢ / ç„¡æ•µ / æ­»äº¡å‡¦ç†ãªã©ã‚’ç®¡ç†ã™ã‚‹ã‚¯ãƒ©ã‚¹
 /// </summary>
 public class PlayerStatus : MonoBehaviour
 {
-    [Header("ƒXƒe[ƒ^ƒX")]
-    public int score = 0;       // ƒvƒŒƒCƒ„[‚ÌƒXƒRƒA
-    public int maxHp = 5;       // Å‘åHP
-    public int currentHp;       // Œ»İ‚ÌHP
+    // ================================
+    // ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼åŸºæœ¬ã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹
+    // ================================
+    [Header("ã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹")]
+    public int score = 0;     // ç¾åœ¨ã®ã‚¹ã‚³ã‚¢
+    public int maxHp = 5;     // HPã®æœ€å¤§å€¤
+    public int currentHp;     // ç¾åœ¨ã®HP
 
-    [Header("–³“GŠÔ")]
-    public float invincibleTime = 2.0f; // ƒ_ƒ[ƒWŒã‚Ì–³“GŠÔ
-    private bool isInvincible = false;
-    private float invincibleTimer = 0f;
+    // ================================
+    // ã‚¹ã‚³ã‚¢ UI
+    // ================================
+    [Header("ã‚¹ã‚³ã‚¢UI")]
+    public Text scoreText;    // ç”»é¢ã«è¡¨ç¤ºã™ã‚‹ã‚¹ã‚³ã‚¢ç”¨ Text
 
-    [Header("HP‚²‚Æ‚ÌƒXƒvƒ‰ƒCƒg")]
-    public Sprite HP_MAX;  // HP‚ª3ˆÈã
-    public Sprite HP_MID;  // HP2
-    public Sprite HP_MIN;  // HP1
-    public Sprite HP_ZERO; // HP0i€–Sj
+    // ================================
+    // ç„¡æ•µæ™‚é–“
+    // ================================
+    [Header("ç„¡æ•µæ™‚é–“")]
+    public float invincibleTime = 2.0f; // ãƒ€ãƒ¡ãƒ¼ã‚¸å¾Œã®ç„¡æ•µæ™‚é–“
+    private bool isInvincible = false;  // ç„¡æ•µä¸­ã‹ã©ã†ã‹
+    private float invincibleTimer = 0f; // ç„¡æ•µæ®‹ã‚Šæ™‚é–“ã‚«ã‚¦ãƒ³ã‚¿
 
-    [Header("ƒQ[ƒ€ƒI[ƒo[İ’è")]
-    public GameObject mainImage; // ƒQ[ƒ€ƒI[ƒo[‚É•\¦‚·‚éUI
-    public string sceneName;     // ƒQ[ƒ€ƒI[ƒo[‚É‘JˆÚ‚·‚éƒV[ƒ“–¼
+    // ================================
+    // HP ã«ã‚ˆã£ã¦å¤‰ã‚ã‚‹ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ç”»åƒ
+    // ================================
+    [Header("HPã”ã¨ã®ã‚¹ãƒ—ãƒ©ã‚¤ãƒˆ")]
+    public Sprite HP_MAX;   // HP3ã€œ5 ã®ã¨ã
+    public Sprite HP_MID;   // HP2 ã®ã¨ã
+    public Sprite HP_MIN;   // HP1 ã®ã¨ã
+    public Sprite HP_ZERO;  // HP0ï¼ˆæ­»äº¡æ™‚ï¼‰
 
-    [Header("ˆÚ“®‘¬“x")]
-    public float moveSpeed = 7f; // ’ÊíˆÚ“®‘¬“x
-    private float baseSpeed;     // Œ³‚ÌˆÚ“®‘¬“x•Û
+    // ================================
+    // ã‚²ãƒ¼ãƒ ã‚ªãƒ¼ãƒãƒ¼
+    // ================================
+    [Header("ã‚²ãƒ¼ãƒ ã‚ªãƒ¼ãƒãƒ¼è¨­å®š")]
+    public GameObject mainImage; // ã‚²ãƒ¼ãƒ ã‚ªãƒ¼ãƒãƒ¼æ™‚ã«å‡ºã™ã‚¤ãƒ¡ãƒ¼ã‚¸
+    public string sceneName;     // ã‚²ãƒ¼ãƒ ã‚ªãƒ¼ãƒãƒ¼å¾Œã®é·ç§»å…ˆã‚·ãƒ¼ãƒ³
 
-    private SpriteRenderer spriteRenderer; // ƒvƒŒƒCƒ„[‚ÌƒXƒvƒ‰ƒCƒg•\¦
+    // ================================
+    // ç§»å‹•é€Ÿåº¦
+    // ================================
+    [Header("ç§»å‹•é€Ÿåº¦")]
+    public float moveSpeed = 7f; // é€šå¸¸ç§»å‹•é€Ÿåº¦
+    private float baseSpeed;     // å…ƒã®ç§»å‹•é€Ÿåº¦ã‚’ä¿æŒ
 
+    // ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ã®è¡¨ç¤ºã«ä½¿ã† SpriteRenderer
+    private SpriteRenderer spriteRenderer;
+
+
+    // ==========================================
+    // åˆæœŸåŒ–å‡¦ç†
+    // ==========================================
     private void Awake()
     {
-        // ƒXƒvƒ‰ƒCƒgæ“¾
+        // ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ã® SpriteRenderer ã‚’å–å¾—
         spriteRenderer = GetComponent<SpriteRenderer>();
         if (spriteRenderer == null)
-        {
-            Debug.LogError("SpriteRenderer ‚ª‚ ‚è‚Ü‚¹‚ñI’Ç‰Á‚µ‚Ä‚­‚¾‚³‚¢B");
-        }
+            Debug.LogError("SpriteRenderer ãŒã‚ã‚Šã¾ã›ã‚“ï¼");
     }
 
     private void Start()
     {
-        currentHp = maxHp;   // ‰ŠúHPƒZƒbƒg
+        currentHp = maxHp;    // HP ã‚’æœ€å¤§ã«ã‚»ãƒƒãƒˆ
         baseSpeed = moveSpeed;
-        UpdateHpSprite();    // HPƒXƒvƒ‰ƒCƒgXV
 
-        // ƒQ[ƒ€ƒI[ƒo[‰æ‘œ‚ªON‚É‚È‚Á‚Ä‚¢‚éê‡‚Í”ñ•\¦‚É
+        UpdateHpSprite();     // HPã«å¿œã˜ãŸã‚¹ãƒ—ãƒ©ã‚¤ãƒˆã«è¨­å®š
+
+        // ã‚²ãƒ¼ãƒ ã‚ªãƒ¼ãƒãƒ¼ç”»åƒãŒ ON ã«ãªã£ã¦ã„ã‚‹å ´åˆã¯æ¶ˆã™
         if (mainImage != null)
             mainImage.SetActive(false);
+
+        // ã‚¹ã‚³ã‚¢è¡¨ç¤ºã‚’åˆæœŸåŒ–
+        if (scoreText != null)
+            scoreText.text = "Score : " + score;
     }
 
+
+    // ==========================================
+    // æ¯ãƒ•ãƒ¬ãƒ¼ãƒ å‘¼ã°ã‚Œã‚‹ï¼ˆç„¡æ•µæ™‚é–“ç®¡ç†ï¼‰
+    // ==========================================
     private void Update()
     {
-        // –³“GŠÔˆ—
+        // ãƒ€ãƒ¡ãƒ¼ã‚¸å¾Œã®ç„¡æ•µæ™‚é–“å‡¦ç†
         if (isInvincible)
         {
             invincibleTimer -= Time.deltaTime;
+
+            // æ™‚é–“ãŒéããŸã‚‰ç„¡æ•µè§£é™¤
             if (invincibleTimer <= 0f)
                 isInvincible = false;
         }
     }
 
-    // --- ƒXƒRƒA‰ÁZ ---
+
+    // ==========================================
+    // ã‚¹ã‚³ã‚¢åŠ ç®—ï¼ˆUI ã‚‚æ›´æ–°ã™ã‚‹ï¼‰
+    // ==========================================
     public void AddScore(int value)
     {
-        score += value;
+        score += value; // ã‚¹ã‚³ã‚¢æ›´æ–°
         Debug.Log("Score: " + score);
+
+        // UIæ›´æ–°ï¼ˆå¿˜ã‚Œã‚‹ã¨ç”»é¢ã«åæ˜ ã•ã‚Œãªã„ï¼ï¼‰
+        if (scoreText != null)
+            scoreText.text = "Score : " + score;
     }
 
-    // --- HP‰ñ•œ ---
+
+    // ==========================================
+    // HP å›å¾©
+    // ==========================================
     public void Heal(int value)
     {
         currentHp += value;
-        if (currentHp > maxHp) currentHp = maxHp; // ‰ñ•œãŒÀ
+
+        // HP ã¯ maxHp ã‚’è¶…ãˆãªã„
+        if (currentHp > maxHp)
+            currentHp = maxHp;
+
         UpdateHpSprite();
         Debug.Log("HP: " + currentHp);
     }
 
-    // --- ƒ_ƒ[ƒWˆ— ---
+
+    // ==========================================
+    // ãƒ€ãƒ¡ãƒ¼ã‚¸å‡¦ç†
+    // ==========================================
     public void TakeDamage(int damage)
     {
+        // ç„¡æ•µä¸­ã¯ãƒ€ãƒ¡ãƒ¼ã‚¸ã‚’å—ã‘ãªã„
         if (isInvincible) return;
 
         currentHp -= damage;
+
         if (currentHp <= 0)
         {
             currentHp = 0;
             UpdateHpSprite();
-            Die(); // €–Sˆ—
+            Die(); // HP ãŒ 0 ã«ãªã£ãŸã‚‰æ­»äº¡å‡¦ç†
         }
         else
         {
             UpdateHpSprite();
+
+            // ãƒ€ãƒ¡ãƒ¼ã‚¸å¾Œã€å°‘ã—ã®é–“ã ã‘ç„¡æ•µã«ãªã‚‹
             isInvincible = true;
             invincibleTimer = invincibleTime;
         }
     }
 
-    // --- HPƒXƒvƒ‰ƒCƒgXV ---
+
+    // ==========================================
+    // HPã«ã‚ˆã£ã¦ã‚¹ãƒ—ãƒ©ã‚¤ãƒˆã‚’å¤‰æ›´
+    // ==========================================
     private void UpdateHpSprite()
     {
-        if (spriteRenderer == null) return;
-
         if (currentHp >= 3)
             spriteRenderer.sprite = HP_MAX;
         else if (currentHp == 2)
@@ -117,25 +174,37 @@ public class PlayerStatus : MonoBehaviour
             spriteRenderer.sprite = HP_ZERO;
     }
 
-    // --- ƒvƒŒƒCƒ„[€–Sˆ— ---
+
+    // ==========================================
+    // ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼æ­»äº¡å‡¦ç†
+    // ==========================================
     private void Die()
     {
-        Debug.Log("ƒvƒŒƒCƒ„[€–S");
-        if (mainImage != null)
-            mainImage.SetActive(true);  // ƒQ[ƒ€ƒI[ƒo[‰æ‘œ•\¦
+        Debug.Log("ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼æ­»äº¡");
 
+        // ã‚²ãƒ¼ãƒ ã‚ªãƒ¼ãƒãƒ¼ç”»åƒè¡¨ç¤º
+        if (mainImage != null)
+            mainImage.SetActive(true);
+
+        // æŒ‡å®šã®ã‚·ãƒ¼ãƒ³ã«é·ç§»
         if (!string.IsNullOrEmpty(sceneName))
-            SceneManager.LoadScene(sceneName); // ƒV[ƒ“‘JˆÚ
+            SceneManager.LoadScene(sceneName);
     }
 
-    // --- ‰i‘±ƒXƒs[ƒhƒAƒbƒv ---
+
+    // ==========================================
+    // æ°¸ç¶šã‚¹ãƒ”ãƒ¼ãƒ‰ã‚¢ãƒƒãƒ—
+    // ==========================================
     public void AddSpeed(float amount)
     {
         moveSpeed += amount;
-        Debug.Log("Speed Up! Œ»İ: " + moveSpeed);
+        Debug.Log("Speed Up! ç¾åœ¨: " + moveSpeed);
     }
 
-    // --- ˆê“IƒXƒs[ƒhƒAƒbƒv ---
+
+    // ==========================================
+    // ä¸€æ™‚çš„ã‚¹ãƒ”ãƒ¼ãƒ‰ã‚¢ãƒƒãƒ—
+    // ==========================================
     public void AddSpeedTemporary(float amount, float duration)
     {
         StartCoroutine(SpeedUpCoroutine(amount, duration));
@@ -144,14 +213,10 @@ public class PlayerStatus : MonoBehaviour
     private IEnumerator SpeedUpCoroutine(float amount, float duration)
     {
         moveSpeed += amount;
-        Debug.Log("Speed Up! Œ»İ: " + moveSpeed);
-
         yield return new WaitForSeconds(duration);
-
         moveSpeed -= amount;
-        Debug.Log("Speed Downc Œ»İ: " + moveSpeed);
     }
 
-    // --- ŠO•”‚©‚çŒ»İ‚ÌHPæ“¾ ---
+    // HP ã‚’å¤–éƒ¨ã‹ã‚‰å‚ç…§ã§ãã‚‹ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£
     public int CurrentHp => currentHp;
 }

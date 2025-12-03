@@ -94,7 +94,7 @@ public class WebController : MonoBehaviour
     {
         isStopped = true;
         if (rb != null)
-            rb.velocity = Vector2.zero;
+            rb.linearVelocity = Vector2.zero;
     }
 
     IEnumerator DestroyAfterTime()
