@@ -21,6 +21,9 @@ public class ClearChange : MonoBehaviour
         // HP が 0 以下 → 自身を削除してシーン遷移
         if (hp <= 0)
         {
+            PlayerPrefs.SetInt("StageScore", ScoreBoard.Instance.Score);
+            PlayerPrefs.Save();     //スコア保存
+
             Destroy(gameObject);
 
             if (Application.CanStreamedLevelBeLoaded(sceneName))
