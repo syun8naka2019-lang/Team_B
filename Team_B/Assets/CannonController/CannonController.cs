@@ -5,7 +5,7 @@ using UnityEngine;
 public class CannonController : MonoBehaviour
 {
     public GameObject objPrefab;      // ”­Ë‚·‚é’e‚ÌPrefab
-    public float delayTime = 0.5f;    // ’e‚ğ”­Ë‚·‚éŠÔŠui•bj
+    public float delayTime = 4f;    // ’e‚ğ”­Ë‚·‚éŠÔŠui•bj
     public float yTime = 0.0f;        // ’e”­ËŠJn‚Ü‚Å‚Ì‘Ò‚¿ŠÔ
     public float fireSpeed = 4.0f;    // ’e‚Ì”­Ë‘¬“x
 

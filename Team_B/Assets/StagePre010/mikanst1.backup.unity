@@ -751,7 +751,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b6c61dec66e9474284614f4cba291f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneName: mikanst2
+  sceneName: Nclear1
   stopDistance: 0.3
   moveSpeed: 1.6
 --- !u!1001 &276757035

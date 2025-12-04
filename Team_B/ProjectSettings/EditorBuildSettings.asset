@@ -33,7 +33,13 @@ EditorBuildSettings:
     path: Assets/Scenes/Gameover.unity
     guid: 2fbc0bd9fb2003142b2d5b58e0a6b174
   - enabled: 1
-    path: Assets/Scenes/Clear.unity
+    path: Assets/Clear/Nclear1.unity
     guid: 3029925b4bc805f40b08196616583a80
+  - enabled: 1
+    path: Assets/Clear/Nclear2.unity
+    guid: 9ce4bf5e3ed17d44da55705a716cd038
+  - enabled: 1
+    path: Assets/Clear/Nclear3.unity
+    guid: 96f36406a9dbfdb42bc8662e03523c2d
   m_configObjects: {}
   m_UseUCBPForAssetBundles: 0
