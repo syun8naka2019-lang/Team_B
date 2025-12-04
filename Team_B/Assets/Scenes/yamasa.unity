@@ -2776,7 +2776,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   score: 0
-  hp: 5
+  maxHp: 5
+  currentHp: 0
+  scoreText: {fileID: 0}
+  invincibleTime: 2
+  HP_MAX: {fileID: 0}
+  HP_MID: {fileID: 0}
+  HP_MIN: {fileID: 0}
+  HP_ZERO: {fileID: 0}
+  mainImage: {fileID: 0}
+  sceneName: 
   moveSpeed: 7
 --- !u!82 &705024992
 AudioSource:
@@ -2903,6 +2912,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sceneName: Clear
+  stopDistance: 0.3
+  moveSpeed: 2
 --- !u!114 &705024995
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2963,19 +2974,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6282329115402190047, guid: fbe136725fda49e4ca76509d1a62058f, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.9999156
       objectReference: {fileID: 0}
     - target: {fileID: 6282329115402190047, guid: fbe136725fda49e4ca76509d1a62058f, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 6282329115402190047, guid: fbe136725fda49e4ca76509d1a62058f, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 6282329115402190047, guid: fbe136725fda49e4ca76509d1a62058f, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: 0.012995027
       objectReference: {fileID: 0}
     - target: {fileID: 6282329115402190047, guid: fbe136725fda49e4ca76509d1a62058f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -2987,7 +2998,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6282329115402190047, guid: fbe136725fda49e4ca76509d1a62058f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
+      value: 1.489
       objectReference: {fileID: 0}
     - target: {fileID: 7559601641096968251, guid: fbe136725fda49e4ca76509d1a62058f, type: 3}
       propertyPath: m_Name
@@ -3468,6 +3479,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sceneName: Clear
+  stopDistance: 0.3
+  moveSpeed: 2
 --- !u!114 &955118053
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3611,7 +3624,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   score: 0
-  hp: 5
+  maxHp: 5
+  currentHp: 0
+  scoreText: {fileID: 0}
+  invincibleTime: 2
+  HP_MAX: {fileID: 0}
+  HP_MID: {fileID: 0}
+  HP_MIN: {fileID: 0}
+  HP_ZERO: {fileID: 0}
+  mainImage: {fileID: 0}
+  sceneName: 
   moveSpeed: 7
 --- !u!114 &955118072
 MonoBehaviour:
@@ -3801,6 +3823,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 10
+  scorePerEnemy: 10
 --- !u!58 &978488191
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -6486,7 +6509,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 4
-  lifeTime: 3
   destroyEffectPrefab: {fileID: 0}
   effectLifeTime: 0.5
 --- !u!1 &1972748536 stripped
