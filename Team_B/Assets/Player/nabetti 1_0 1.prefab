@@ -234,7 +234,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 2.03, y: 2.51}
+  m_Size: {x: 1.39, y: 3.03}
   m_EdgeRadius: 0
 --- !u!114 &2948379538480949329
 MonoBehaviour:
@@ -558,6 +558,22 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 957237317377690778, guid: 16859d34841111b4cad7e86f6d2e15f3, type: 3}
       propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2084017422361405981, guid: 16859d34841111b4cad7e86f6d2e15f3, type: 3}
+      propertyPath: m_Size.x
+      value: 1.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2084017422361405981, guid: 16859d34841111b4cad7e86f6d2e15f3, type: 3}
+      propertyPath: m_Size.y
+      value: 2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2084017422361405981, guid: 16859d34841111b4cad7e86f6d2e15f3, type: 3}
+      propertyPath: m_Offset.x
+      value: -2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2084017422361405981, guid: 16859d34841111b4cad7e86f6d2e15f3, type: 3}
+      propertyPath: m_Offset.y
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6391336956107234074, guid: 16859d34841111b4cad7e86f6d2e15f3, type: 3}

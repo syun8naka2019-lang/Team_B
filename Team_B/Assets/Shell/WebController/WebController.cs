@@ -117,4 +117,10 @@ public class WebController : MonoBehaviour
             Destroy(effect, effectLifeTime);
         }
     }
+    void OnBecameInvisible()
+    {
+      
+        Destroy(gameObject);
+
+    }
 }

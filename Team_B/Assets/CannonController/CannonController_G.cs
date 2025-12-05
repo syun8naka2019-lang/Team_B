@@ -4,33 +4,67 @@ using UnityEngine;
 
 public class CannonController_G : MonoBehaviour
 {
-    public GameObject objPrefab;        //発生させるPrefabデータ
-    public float delayTime = 8.0f;      //遅延時間
-    public float fireSpeed = 8.0f;      //発射速度
+    public GameObject objPrefab;
+    public float delayTime = 0.5f;
+    public float fireSpeed = 4.0f;
+
+    private float preFireOffset = 16.0f;  // カメラに入る手前の距離（上方向）
 
     Transform gateTransform;
-    float passedTimes = 0;              //経過時間
+    float passedTimes = 0;
+
+    Camera mainCam;
+    bool canFire = false;
 
     void Start()
     {
-        //発射口オブジェクトのTransformを取得
         gateTransform = transform.Find("gate_g");
+        mainCam = Camera.main;
+
+        if (gateTransform == null)
+            Debug.LogError("CannonController_M: gate_m が見つかりません！");
     }
 
-    private void Update()
+    void Update()
     {
+        // 発射条件チェック
+        if (!canFire)
+        {
+            if (IsJustBeforeEnterCamera())
+            {
+                canFire = true; // ここで初めて発射開始
+            }
+            else
+            {
+                return; // まだ撃たない
+            }
+        }
+
+        // ここから発射処理
         passedTimes += Time.deltaTime;
+
         if (passedTimes > delayTime)
         {
+            FireCannon();
             passedTimes = 0;
-
-            Vector2 pos = new Vector2(gateTransform.position.x, gateTransform.position.y);
-            //弾生成
-            GameObject obj = Instantiate(objPrefab, pos, Quaternion.identity);
-            //砲弾が向いている方向に発射
-            Rigidbody2D rbody = obj.GetComponent<Rigidbody2D>();
-            Vector2 v = new Vector2(0, -1) * fireSpeed;
-            rbody.AddForce(v, ForceMode2D.Impulse);
         }
+    }
+
+    // カメラに入る手前の位置をチェック
+    bool IsJustBeforeEnterCamera()
+    {
+        // カメラ上端
+        float camTop = mainCam.transform.position.y + mainCam.orthographicSize;
+
+        // 敵の位置が "カメラ上端 + preFireOffset" を下回ったら発射開始
+        return transform.position.y <= camTop + preFireOffset;
+    }
+
+    void FireCannon()
+    {
+        Vector2 pos = gateTransform.position;
+        GameObject obj = Instantiate(objPrefab, pos, Quaternion.identity);
+        Rigidbody2D rbody = obj.GetComponent<Rigidbody2D>();
+        rbody.AddForce(Vector2.down * fireSpeed, ForceMode2D.Impulse);
     }
 }

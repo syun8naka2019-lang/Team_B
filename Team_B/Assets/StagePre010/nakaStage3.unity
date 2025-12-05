@@ -277,7 +277,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objPrefab: {fileID: 2016738119401060962, guid: b12c94a642ddaf8429ab8109316e1b8a, type: 3}
   delayTime: 3
-  yTime: 0
   fireSpeed: 4
 --- !u!114 &2424984
 MonoBehaviour:
@@ -293,7 +292,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objPrefab: {fileID: 0}
   delayTime: 4
-  yTime: 5
   fireSpeed: 4
 --- !u!114 &2424985
 MonoBehaviour:
@@ -839,7 +837,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objPrefab: {fileID: 4983492102004163616, guid: 094f58909696d48459c99ac4f90dd6c1, type: 3}
   delayTime: 3
-  yTime: 0
   fireSpeed: 4
 --- !u!114 &96346919
 MonoBehaviour:
@@ -855,7 +852,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objPrefab: {fileID: 0}
   delayTime: 4
-  yTime: 5
   fireSpeed: 4
 --- !u!114 &96346920
 MonoBehaviour:
@@ -1048,7 +1044,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objPrefab: {fileID: 4983492102004163616, guid: 094f58909696d48459c99ac4f90dd6c1, type: 3}
   delayTime: 2
-  yTime: 10
   fireSpeed: 4
 --- !u!114 &134810760
 MonoBehaviour:
@@ -1144,7 +1139,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
@@ -1427,6 +1422,10 @@ PrefabInstance:
     - target: {fileID: 5661313765411105998, guid: 162bc56fde273a146b068feffbd3d610, type: 3}
       propertyPath: m_Name
       value: music_1_0 (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6877054461490193282, guid: 162bc56fde273a146b068feffbd3d610, type: 3}
+      propertyPath: explosionRadius
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1762,7 +1761,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objPrefab: {fileID: 0}
   delayTime: 5
-  yTime: 5
   fireSpeed: 4
 --- !u!114 &187126203
 MonoBehaviour:
@@ -1778,7 +1776,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objPrefab: {fileID: 3194707167382597870, guid: 10ae65bab486cae49a8d979793b013a5, type: 3}
   delayTime: 2
-  yTime: 0
   fireSpeed: 4
 --- !u!1 &242733611
 GameObject:
@@ -2307,7 +2304,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objPrefab: {fileID: 4983492102004163616, guid: 094f58909696d48459c99ac4f90dd6c1, type: 3}
   delayTime: 3
-  yTime: 0
   fireSpeed: 4
 --- !u!114 &384910756
 MonoBehaviour:
@@ -2323,7 +2319,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objPrefab: {fileID: 0}
   delayTime: 4
-  yTime: 5
   fireSpeed: 4
 --- !u!114 &384910757
 MonoBehaviour:
@@ -2814,7 +2809,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objPrefab: {fileID: 2016738119401060962, guid: b12c94a642ddaf8429ab8109316e1b8a, type: 3}
   delayTime: 4
-  yTime: 10
   fireSpeed: 5
 --- !u!1001 &566590117
 PrefabInstance:
@@ -3028,6 +3022,10 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Enemy
       objectReference: {fileID: 0}
+    - target: {fileID: 1812510005916467498, guid: b71f4b342a70fef4088691bf79abc23f, type: 3}
+      propertyPath: explosionPrefab
+      value: 
+      objectReference: {fileID: 6310724212718937216, guid: 83ec48bb26a009243ad7e1155143ef6c, type: 3}
     - target: {fileID: 2814161004400462207, guid: b71f4b342a70fef4088691bf79abc23f, type: 3}
       propertyPath: delayTime
       value: 3
@@ -3206,7 +3204,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objPrefab: {fileID: 0}
   delayTime: 4
-  yTime: 5
   fireSpeed: 4
 --- !u!114 &648989284
 MonoBehaviour:
@@ -3222,7 +3219,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objPrefab: {fileID: 3194707167382597870, guid: 10ae65bab486cae49a8d979793b013a5, type: 3}
   delayTime: 3
-  yTime: 0
   fireSpeed: 4
 --- !u!1 &649678553
 GameObject:
@@ -3442,11 +3438,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 452186646851448775, guid: a4a4acfa0bcb562429a31fc095065955, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.1
+      value: 19.17
       objectReference: {fileID: 0}
     - target: {fileID: 452186646851448775, guid: a4a4acfa0bcb562429a31fc095065955, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 204
+      value: 17.8
       objectReference: {fileID: 0}
     - target: {fileID: 452186646851448775, guid: a4a4acfa0bcb562429a31fc095065955, type: 3}
       propertyPath: m_LocalPosition.z
@@ -3980,7 +3976,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objPrefab: {fileID: 2016738119401060962, guid: b12c94a642ddaf8429ab8109316e1b8a, type: 3}
   delayTime: 2
-  yTime: 10
   fireSpeed: 4
 --- !u!114 &892078325
 MonoBehaviour:
@@ -4226,7 +4221,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objPrefab: {fileID: 0}
   delayTime: 4
-  yTime: 5
   fireSpeed: 4
 --- !u!114 &901223772
 MonoBehaviour:
@@ -4242,7 +4236,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objPrefab: {fileID: 4983492102004163616, guid: 094f58909696d48459c99ac4f90dd6c1, type: 3}
   delayTime: 3
-  yTime: 0
   fireSpeed: 4
 --- !u!1 &907517686
 GameObject:
@@ -4474,7 +4467,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objPrefab: {fileID: 2016738119401060962, guid: b12c94a642ddaf8429ab8109316e1b8a, type: 3}
   delayTime: 3
-  yTime: 0
   fireSpeed: 4
 --- !u!114 &940041210
 MonoBehaviour:
@@ -4490,7 +4482,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objPrefab: {fileID: 0}
   delayTime: 4
-  yTime: 5
   fireSpeed: 4
 --- !u!114 &940041211
 MonoBehaviour:
@@ -4825,9 +4816,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1e82d5f60034bd4cb481719d9402734, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objPrefab: {fileID: 7899162053347612854, guid: 90089484a8ae7564a818a75528148891, type: 3}
+  objPrefab: {fileID: 2016738119401060962, guid: b12c94a642ddaf8429ab8109316e1b8a, type: 3}
   delayTime: 5
-  yTime: 0
   fireSpeed: 4
 --- !u!114 &1037782316
 MonoBehaviour:
@@ -4836,7 +4826,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1037782308}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cb4f82621ea330d4e9e45481878bc69b, type: 3}
   m_Name: 
@@ -4855,8 +4845,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sceneName: Nclear3
+  appearDelay: 80
+  appearDuration: 5
+  maxHP: 10
   stopDistance: 0.3
-  moveSpeed: 2
+  moveSpeed: 30
+  stopYOffset: 1
 --- !u!1 &1043359766
 GameObject:
   m_ObjectHideFlags: 0
@@ -5114,7 +5108,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objPrefab: {fileID: 4983492102004163616, guid: 094f58909696d48459c99ac4f90dd6c1, type: 3}
   delayTime: 3
-  yTime: 0
   fireSpeed: 4
 --- !u!114 &1056492358
 MonoBehaviour:
@@ -5130,7 +5123,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objPrefab: {fileID: 0}
   delayTime: 4
-  yTime: 5
   fireSpeed: 4
 --- !u!114 &1056492359
 MonoBehaviour:
@@ -5261,7 +5253,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objPrefab: {fileID: 2016738119401060962, guid: b12c94a642ddaf8429ab8109316e1b8a, type: 3}
   delayTime: 5
-  yTime: 5
   fireSpeed: 4
 --- !u!114 &1061704460
 MonoBehaviour:
@@ -5638,7 +5629,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objPrefab: {fileID: 222231366991433644, guid: 5a155ade142845544b70aca0e7d2886e, type: 3}
   delayTime: 3
-  yTime: 10
   fireSpeed: 4
 --- !u!114 &1106640233
 MonoBehaviour:
@@ -6331,6 +6321,10 @@ PrefabInstance:
       value: Enemy
       objectReference: {fileID: 0}
     - target: {fileID: 2814161004400462207, guid: b71f4b342a70fef4088691bf79abc23f, type: 3}
+      propertyPath: yTime
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2814161004400462207, guid: b71f4b342a70fef4088691bf79abc23f, type: 3}
       propertyPath: delayTime
       value: 3
       objectReference: {fileID: 0}
@@ -6467,7 +6461,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objPrefab: {fileID: 2016738119401060962, guid: b12c94a642ddaf8429ab8109316e1b8a, type: 3}
   delayTime: 2
-  yTime: 10
   fireSpeed: 4
 --- !u!114 &1327016123
 MonoBehaviour:
@@ -6784,7 +6777,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objPrefab: {fileID: 2016738119401060962, guid: b12c94a642ddaf8429ab8109316e1b8a, type: 3}
   delayTime: 5
-  yTime: 5
   fireSpeed: 4
 --- !u!114 &1359041315
 MonoBehaviour:
@@ -6920,7 +6912,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objPrefab: {fileID: 4983492102004163616, guid: 094f58909696d48459c99ac4f90dd6c1, type: 3}
   delayTime: 2
-  yTime: 10
   fireSpeed: 4
 --- !u!114 &1373410659
 MonoBehaviour:
@@ -7016,7 +7007,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
@@ -7156,7 +7147,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objPrefab: {fileID: 4983492102004163616, guid: 094f58909696d48459c99ac4f90dd6c1, type: 3}
   delayTime: 2
-  yTime: 10
   fireSpeed: 4
 --- !u!114 &1405511178
 MonoBehaviour:
@@ -7252,7 +7242,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
@@ -7590,7 +7580,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objPrefab: {fileID: 2016738119401060962, guid: b12c94a642ddaf8429ab8109316e1b8a, type: 3}
   delayTime: 5
-  yTime: 5
   fireSpeed: 4
 --- !u!114 &1433824684
 MonoBehaviour:
@@ -7715,6 +7704,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1125756253382945955, guid: eaeed3d965d2f3c4d9ef2763f78f5372, type: 3}
+      propertyPath: m_Size.x
+      value: 1.14
+      objectReference: {fileID: 0}
+    - target: {fileID: 1125756253382945955, guid: eaeed3d965d2f3c4d9ef2763f78f5372, type: 3}
+      propertyPath: m_Offset.x
+      value: 0.16
+      objectReference: {fileID: 0}
+    - target: {fileID: 1125756253382945955, guid: eaeed3d965d2f3c4d9ef2763f78f5372, type: 3}
+      propertyPath: m_Offset.y
+      value: -0.45
+      objectReference: {fileID: 0}
     - target: {fileID: 4166109326877260694, guid: eaeed3d965d2f3c4d9ef2763f78f5372, type: 3}
       propertyPath: m_Name
       value: nabetti 1_0 1
@@ -7981,7 +7982,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objPrefab: {fileID: 3194707167382597870, guid: 10ae65bab486cae49a8d979793b013a5, type: 3}
   delayTime: 3
-  yTime: 0
   fireSpeed: 4
 --- !u!1001 &1524063858
 PrefabInstance:
@@ -8059,7 +8059,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objPrefab: {fileID: 2016738119401060962, guid: b12c94a642ddaf8429ab8109316e1b8a, type: 3}
   delayTime: 2
-  yTime: 30
   fireSpeed: 4
 --- !u!114 &1565011727
 MonoBehaviour:
@@ -8195,7 +8194,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objPrefab: {fileID: 2016738119401060962, guid: b12c94a642ddaf8429ab8109316e1b8a, type: 3}
   delayTime: 3
-  yTime: 0
   fireSpeed: 4
 --- !u!114 &1601448262
 MonoBehaviour:
@@ -8211,7 +8209,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objPrefab: {fileID: 0}
   delayTime: 4
-  yTime: 5
   fireSpeed: 4
 --- !u!114 &1601448263
 MonoBehaviour:
@@ -8342,7 +8339,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objPrefab: {fileID: 222231366991433644, guid: 5a155ade142845544b70aca0e7d2886e, type: 3}
   delayTime: 3
-  yTime: 10
   fireSpeed: 4
 --- !u!114 &1634358399
 MonoBehaviour:
@@ -8877,7 +8873,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objPrefab: {fileID: 4983492102004163616, guid: 094f58909696d48459c99ac4f90dd6c1, type: 3}
   delayTime: 2
-  yTime: 10
   fireSpeed: 4
 --- !u!114 &1776930967
 MonoBehaviour:
@@ -8973,7 +8968,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
@@ -9124,7 +9119,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objPrefab: {fileID: 2016738119401060962, guid: b12c94a642ddaf8429ab8109316e1b8a, type: 3}
   delayTime: 3
-  yTime: 0
   fireSpeed: 4
 --- !u!114 &1784619110
 MonoBehaviour:
@@ -9140,7 +9134,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objPrefab: {fileID: 0}
   delayTime: 4
-  yTime: 5
   fireSpeed: 4
 --- !u!114 &1784619111
 MonoBehaviour:
@@ -9628,7 +9621,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objPrefab: {fileID: 4983492102004163616, guid: 094f58909696d48459c99ac4f90dd6c1, type: 3}
   delayTime: 2
-  yTime: 10
   fireSpeed: 4
 --- !u!114 &1890828970
 MonoBehaviour:
@@ -9724,7 +9716,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
@@ -9871,7 +9863,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objPrefab: {fileID: 3194707167382597870, guid: 10ae65bab486cae49a8d979793b013a5, type: 3}
   delayTime: 3
-  yTime: 0
   fireSpeed: 4
 --- !u!114 &1892603637
 MonoBehaviour:
@@ -9887,7 +9878,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objPrefab: {fileID: 0}
   delayTime: 4
-  yTime: 5
   fireSpeed: 4
 --- !u!114 &1892603638
 MonoBehaviour:
@@ -10260,7 +10250,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objPrefab: {fileID: 0}
   delayTime: 5
-  yTime: 5
   fireSpeed: 4
 --- !u!114 &2041875602
 MonoBehaviour:
@@ -10386,7 +10375,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objPrefab: {fileID: 3194707167382597870, guid: 10ae65bab486cae49a8d979793b013a5, type: 3}
   delayTime: 1
-  yTime: 0
   fireSpeed: 4
 --- !u!1001 &2069294650
 PrefabInstance:
@@ -10603,7 +10591,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objPrefab: {fileID: 2016738119401060962, guid: b12c94a642ddaf8429ab8109316e1b8a, type: 3}
   delayTime: 2
-  yTime: 10
   fireSpeed: 4
 --- !u!114 &2097488705
 MonoBehaviour:
@@ -10739,7 +10726,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objPrefab: {fileID: 4983492102004163616, guid: 094f58909696d48459c99ac4f90dd6c1, type: 3}
   delayTime: 2
-  yTime: 10
   fireSpeed: 4
 --- !u!114 &2115841644
 MonoBehaviour:
@@ -10835,7 +10821,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
@@ -11073,7 +11059,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objPrefab: {fileID: 3194707167382597870, guid: 10ae65bab486cae49a8d979793b013a5, type: 3}
   delayTime: 0.5
-  yTime: 0
   fireSpeed: 4
 --- !u!1001 &856958369197846617
 PrefabInstance:
@@ -11187,6 +11172,10 @@ PrefabInstance:
     - target: {fileID: 1335339918941500409, guid: b71f4b342a70fef4088691bf79abc23f, type: 3}
       propertyPath: m_TagString
       value: Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 2814161004400462207, guid: b71f4b342a70fef4088691bf79abc23f, type: 3}
+      propertyPath: yTime
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 2814161004400462207, guid: b71f4b342a70fef4088691bf79abc23f, type: 3}
       propertyPath: delayTime
@@ -11356,7 +11345,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5180896604228780907, guid: a3a8dad7fd9e7ec4e89c7f8a1a2c2b83, type: 3}
       propertyPath: delayTime
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5180896604228780907, guid: a3a8dad7fd9e7ec4e89c7f8a1a2c2b83, type: 3}
       propertyPath: fireSpeed

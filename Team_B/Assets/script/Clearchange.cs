@@ -1,68 +1,218 @@
 using UnityEngine;
+
 using UnityEngine.SceneManagement;
 
+using System.Collections;
+
 public class ClearChange : MonoBehaviour
+
 {
-    public string sceneName;   // クリア後に読み込むシーン名
-    int hp = 3;                // 敵のHP
-    public float stopDistance = 0.3f; // 中心にどれだけ近づいたら止まるか
-    public float moveSpeed = 2f;      // 敵が中央に向かう速度
 
-    private bool stop = false; // 止まったかどうか
+    public string sceneName;
 
-    void Update()
+    public float appearDelay = 40f;
+
+    public float appearDuration = 5f;
+
+    public int maxHP = 6;
+
+    private int hp;
+
+    public float stopDistance = 0.3f;
+
+    public float moveSpeed = 30f;
+
+    public float stopYOffset = 1.0f;   // ★停止位置を少し上にする値
+
+    private SpriteRenderer sr;
+
+    private bool stop = false;
+
+    private bool isAppeared = false;
+
+    private bool isDead = false;  // ★演出中か判定
+
+    void Start()
+
     {
-        // ★中央に向かって移動（まだ止まっていなければ）
-        if (!stop)
-        {
-            MoveToCenter();
-        }
 
-        // HP が 0 以下 → 自身を削除してシーン遷移
-        if (hp <= 0)
-        {
-            PlayerPrefs.SetInt("StageScore", ScoreBoard.Instance.Score);
-            PlayerPrefs.Save();     //スコア保存
+        hp = maxHP;
 
-            Destroy(gameObject);
+        sr = GetComponent<SpriteRenderer>();
 
-            if (Application.CanStreamedLevelBeLoaded(sceneName))
-            {
-                SceneManager.LoadScene(sceneName);
-            }
-            else
-            {
-                Debug.LogError($"Scene '{sceneName}' が Build Settings に登録されていません。");
-            }
-        }
+        UpdateColor();
+
+        StartCoroutine(AppearBoss());
+
     }
 
-    void MoveToCenter()
+    void Update()
+
     {
-        // カメラ中心のワールド座標
-        Vector3 center = Camera.main.ViewportToWorldPoint(new Vector3(0.5f, 0.5f, 0));
-        center.z = 0; // 2DなのでZは0に
 
-        // 中心との距離
-        float dist = Vector3.Distance(transform.position, center);
+        if (!isAppeared || isDead) return;
 
-        // ★距離が規定値以下なら停止
-        if (dist <= stopDistance)
+        if (!stop)
+
         {
-            stop = true;
-            return;
+
+            MoveToUpperCenter();
+
         }
 
-        // ★中心に向かって移動
+    }
+
+    IEnumerator AppearBoss()
+
+    {
+
+        transform.localScale = Vector3.zero;
+
+        yield return new WaitForSeconds(appearDelay);
+
+        float t = 0;
+
+        while (t < appearDuration)
+
+        {
+
+            t += Time.deltaTime;
+
+            float p = t / appearDuration;
+
+            transform.localScale = Vector3.Lerp(Vector3.zero, Vector3.one, p);
+
+            yield return null;
+
+        }
+
+        transform.localScale = Vector3.one;
+
+        isAppeared = true;
+
+    }
+
+    // ★中央ではなく「中央より少し上」で止まる
+
+    void MoveToUpperCenter()
+
+    {
+
+        if (Camera.main == null) return;
+
+        Vector3 center = Camera.main.ViewportToWorldPoint(new Vector3(0.5f, 0.5f, 0));
+
+        center.z = 0;
+
+        center.y += stopYOffset;  // ★中央より上に補正
+
+        float dist = Vector3.Distance(transform.position, center);
+
+        if (dist <= stopDistance)
+
+        {
+
+            stop = true;
+
+            return;
+
+        }
+
         transform.position = Vector3.MoveTowards(transform.position, center, moveSpeed * Time.deltaTime);
+
     }
 
     void OnTriggerEnter2D(Collider2D collision)
+
     {
-        // Web に当たったら HP 減少
+
+        if (isDead) return;
+
         if (collision.CompareTag("Web"))
+
         {
+
             hp--;
+
+            UpdateColor();
+
+            if (hp <= 0)
+
+            {
+
+                StartCoroutine(BossDeath());
+
+            }
+
         }
+
     }
+
+    // ★HPに応じて白→赤の色変化
+
+    void UpdateColor()
+
+    {
+
+        if (sr == null) return;
+
+        float ratio = 1f - ((float)hp / maxHP);
+
+        sr.color = Color.Lerp(Color.white, Color.red, ratio);
+
+    }
+
+    // ★倒れる演出 → シーン遷移
+
+    IEnumerator BossDeath()
+
+    {
+
+        isDead = true;
+
+        // 演出：1秒かけて縮小
+
+        float duration = 1f;
+
+        float t = 0;
+
+        Vector3 startScale = transform.localScale;
+
+        while (t < duration)
+
+        {
+
+            t += Time.deltaTime;
+
+            float p = t / duration;
+
+            transform.localScale = Vector3.Lerp(startScale, Vector3.zero, p);
+
+            yield return null;
+
+        }
+
+        Destroy(gameObject);
+
+        // シーン遷移
+
+        if (Application.CanStreamedLevelBeLoaded(sceneName))
+
+        {
+
+            SceneManager.LoadScene(sceneName);
+
+        }
+
+        else
+
+        {
+
+            Debug.LogError($"Scene '{sceneName}' が Build Settings に登録されていません。");
+
+        }
+
+    }
+
 }
+
