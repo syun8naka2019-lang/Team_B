@@ -27,6 +27,7 @@ public class WebController : MonoBehaviour
 
         originalLayer = gameObject.layer;
         inactiveLayer = LayerMask.NameToLayer("InactiveWeb");
+
         if (inactiveLayer == -1)
             Debug.LogWarning("InactiveWeb レイヤーが存在しません。");
     }
@@ -65,7 +66,8 @@ public class WebController : MonoBehaviour
 
     private void CheckHitEnemy(GameObject obj)
     {
-        if (!obj.CompareTag("Enemy")) return;
+        if (!obj.CompareTag("Enemy"))
+            return;
 
         // Web を停止（スコアはここで与えない仕様）
         StopWeb();
@@ -84,7 +86,8 @@ public class WebController : MonoBehaviour
     private void StopWeb()
     {
         isStopped = true;
-        if (rb != null) rb.linearVelocity = Vector2.zero;
+        if (rb != null)
+            rb.linearVelocity = Vector2.zero;
     }
 
     /// <summary>
@@ -92,7 +95,9 @@ public class WebController : MonoBehaviour
     /// </summary>
     public void ForceDestroy()
     {
-        if (isDestroyed) return; // 二重呼び出しを無視
+        if (isDestroyed)
+            return; // 二重呼び出しを無視
+
         isDestroyed = true;
 
         CreateEffect();

@@ -167,9 +167,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 6
-  destroyEffectPrefab: {fileID: 0}
+  destroyEffectPrefab: {fileID: 6310724212718937216, guid: 83ec48bb26a009243ad7e1155143ef6c, type: 3}
   effectLifeTime: 0.5
-  scorePerEnemy: 50
 --- !u!114 &7321103313536813852
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -182,4 +181,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a278dfde040f1604a8cffcd979ee5a4f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  basePoint: 10

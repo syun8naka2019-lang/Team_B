@@ -16,7 +16,9 @@ public class ShellController_M : MonoBehaviour
     {
         // 弾が一定時間後に消える処理をコルーチンで実行
         StartCoroutine(DestroyBulletAfterTime());
-       GetComponent<Rigidbody2D>();
+
+        // Rigidbody2D の取得（今回は使っていないが残す）
+        GetComponent<Rigidbody2D>();
     }
 
     IEnumerator DestroyBulletAfterTime()
@@ -39,19 +41,22 @@ public class ShellController_M : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collision)
     {
+        // Web に当たると壊れる
         if (collision.gameObject.tag == "Web")
         {
-            Destroy(this.gameObject);
-           
+            Destroy(gameObject);
         }
+
+        // 障害物に当たると壊れる
         if (collision.gameObject.tag == "shougaibutu")
         {
             Destroy(gameObject);
         }
     }
-    private void OnBecameInvisible()//
-    {
-        Destroy(gameObject); //
-    }
 
+    private void OnBecameInvisible()
+    {
+        // 画面外に出たら破棄
+        Destroy(gameObject);
+    }
 }
