@@ -103,7 +103,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80c0e80ccb60b824bbb5048d801dec22, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lifeTime: 4
+  lifeTime: 20000
   destroyEffectPrefab: {fileID: 2728633384633779767, guid: 5257bb0cddc12c842b18f5f5a32fea3f, type: 3}
   effectLifeTime: 0.5
 --- !u!50 &1104103157193277060
