@@ -3,7 +3,7 @@ using System.Collections;
 
 public class ShellController_M : MonoBehaviour
 {
-    [Header("弾の寿命")]
+    [Header("※時間経過では壊れません")]
     public float lifeTime;
 
     [Header("消滅時エフェクト")]
@@ -14,44 +14,55 @@ public class ShellController_M : MonoBehaviour
 
     void Start()
     {
-        // 弾が一定時間後に消える処理をコルーチンで実行
-        StartCoroutine(DestroyBulletAfterTime());
-       GetComponent<Rigidbody2D>();
+        // Rigidbody2D の取得（未使用だが残しておく）
+        GetComponent<Rigidbody2D>();
+
+        // ★時間経過で壊す処理は削除（または無効化）
+        // StartCoroutine(DestroyBulletAfterTime());
     }
 
+    // ★このコルーチンはもう使わないが、念のため残す（必要なら再利用可能）
     IEnumerator DestroyBulletAfterTime()
     {
-        // 弾の寿命待機
         yield return new WaitForSeconds(lifeTime);
 
-        // エフェクト生成
-        if (destroyEffectPrefab != null)
-        {
-            GameObject effect = Instantiate(destroyEffectPrefab, transform.position, Quaternion.identity);
-
-            // エフェクトも一定時間後に消す
-            Destroy(effect, effectLifeTime);
-        }
-
-        // 弾を削除
+        CreateDestroyEffect();
         Destroy(gameObject);
     }
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Web")
+        // Web に当たったら破壊
+        if (collision.CompareTag("Web"))
         {
-            Destroy(this.gameObject);
-           
+            CreateDestroyEffect();
+            Destroy(gameObject);
         }
-        if (collision.gameObject.tag == "shougaibutu")
+
+        // 障害物に当たったら破壊
+        if (collision.CompareTag("shougaibutu"))
         {
+            CreateDestroyEffect();
             Destroy(gameObject);
         }
     }
-    private void OnBecameInvisible()//
+
+    private void OnBecameInvisible()
     {
-        Destroy(gameObject); //
+        // 画面外に出たら破壊
+        CreateDestroyEffect();
+        Destroy(gameObject);
     }
 
+    /// <summary>
+    /// 消滅時エフェクトの生成処理
+    /// </summary>
+    private void CreateDestroyEffect()
+    {
+        if (destroyEffectPrefab != null)
+        {
+            GameObject effect = Instantiate(destroyEffectPrefab, transform.position, Quaternion.identity);
+            Destroy(effect, effectLifeTime);
+        }
+    }
 }
