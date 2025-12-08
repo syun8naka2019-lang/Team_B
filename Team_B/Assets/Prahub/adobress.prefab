@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 6513569135872071923}
   - component: {fileID: 3508329524512995617}
   - component: {fileID: 3152585040281252655}
-  m_Layer: 6
+  m_Layer: 15
   m_Name: adobress
   m_TagString: Dead
   m_Icon: {fileID: 0}

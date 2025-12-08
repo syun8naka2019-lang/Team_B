@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2873653891701274893}
   - component: {fileID: 8780910649573743078}
   - component: {fileID: 4981824233391716998}
-  m_Layer: 6
+  m_Layer: 15
   m_Name: strongbress
   m_TagString: Dead
   m_Icon: {fileID: 0}

@@ -21,7 +21,7 @@ EditorBuildSettings:
     path: Assets/StagePre010/nakaStage1.unity
     guid: 3aca161a88baced4fb6df3c2d5a7875d
   - enabled: 1
-    path: Assets/StagePre010/nakaStage2.unity
+    path: Assets/StagePre010/bagu_nakaStage2.unity
     guid: d1779fbed5cd2c84d8ef9db3f9edcaeb
   - enabled: 1
     path: Assets/StagePre010/nakaStage3.unity

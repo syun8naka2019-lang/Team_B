@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4736328374721636434}
   - component: {fileID: 152361255292506037}
   - component: {fileID: 3755839443808989882}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: tekibaku
   m_TagString: Dead
   m_Icon: {fileID: 0}
