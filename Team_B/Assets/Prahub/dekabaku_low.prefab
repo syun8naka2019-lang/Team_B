@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 8152176063445171581}
   m_Layer: 0
   m_Name: dekabaku_low
-  m_TagString: Untagged
+  m_TagString: BOSSdamage
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -29,8 +29,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -48.293167, y: 56.085052, z: 0}
-  m_LocalScale: {x: 3.4198866, y: 3.4198837, z: 3.4200003}
-  m_ConstrainProportionsScale: 1
+  m_LocalScale: {x: 2.34, y: 2.34, z: 2.3400776}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -138,4 +138,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lifetime: 2
-  radius: 3
+  radius: 2

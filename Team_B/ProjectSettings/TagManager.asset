@@ -10,6 +10,7 @@ TagManager:
   - BOSS
   - shougaibutu
   - Web
+  - BOSSdamage
   layers:
   - Default
   - TransparentFX

@@ -1,3 +1,23 @@
+//using UnityEngine;
+//using TMPro;
+
+//public class GameplayScoreDisplay : MonoBehaviour
+//{
+//    public TextMeshProUGUI scoreText;
+
+//    void Start()
+//    {
+//        if (scoreText != null)
+//        {
+//            scoreText.text = "Score: " + ScoreBoard.Instance.Score;
+//        }
+//        else
+//        {
+//            Debug.LogError("Score: scoreText Ç™ê›íËÇ≥ÇÍÇƒÇ¢Ç‹ÇπÇÒÅI");
+//        }
+//    }
+//}
+
 using UnityEngine;
 using UnityEngine.UI;
 

@@ -10,9 +10,9 @@ public class ClearChange : MonoBehaviour
 
     public string sceneName;
 
-    public float appearDelay = 40f;
+    public float appearDelay = 0;
 
-    public float appearDuration = 5f;
+    private float appearDuration = 0f;
 
     public int maxHP = 6;
 
@@ -128,7 +128,7 @@ public class ClearChange : MonoBehaviour
 
         if (isDead) return;
 
-        if (collision.CompareTag("Web"))
+        if (collision.CompareTag("BOSSdamage"))
 
         {
 

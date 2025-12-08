@@ -167,7 +167,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 6
-  destroyEffectPrefab: {fileID: 6310724212718937216, guid: 83ec48bb26a009243ad7e1155143ef6c, type: 3}
+  destroyEffectPrefab: {fileID: 2728633384633779767, guid: 5257bb0cddc12c842b18f5f5a32fea3f, type: 3}
   effectLifeTime: 0.5
 --- !u!114 &7321103313536813852
 MonoBehaviour:

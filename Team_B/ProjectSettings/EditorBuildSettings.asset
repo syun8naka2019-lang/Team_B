@@ -9,20 +9,11 @@ EditorBuildSettings:
     path: Assets/Scenes/Title.unity
     guid: 92ca5deaf0ae1d34e99444b7b768f4d0
   - enabled: 1
-    path: Assets/StagePre010/mikanst1.backup.unity
-    guid: b68cb843ff1efad40b7a581817c3a2e5
-  - enabled: 1
-    path: Assets/StagePre010/mikanst2.unity
-    guid: 4e5a0afec0f38ee47bf732ca4aa20a8c
-  - enabled: 1
-    path: Assets/StagePre010/mikanst3.unity
-    guid: 7d92b7a9aac77ff46a0b02713d2436f1
-  - enabled: 1
     path: Assets/StagePre010/nakaStage1.unity
     guid: 3aca161a88baced4fb6df3c2d5a7875d
   - enabled: 1
-    path: Assets/StagePre010/bagu_nakaStage2.unity
-    guid: d1779fbed5cd2c84d8ef9db3f9edcaeb
+    path: Assets/StagePre010/nakaStage2.unity
+    guid: 4c8762f19484d1a4c93454e0eab71dbf
   - enabled: 1
     path: Assets/StagePre010/nakaStage3.unity
     guid: e7aef331214838a4db76e462e8e3177a
