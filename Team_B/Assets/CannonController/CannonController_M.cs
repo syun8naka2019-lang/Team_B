@@ -4,18 +4,22 @@ using UnityEngine;
 
 public class CannonController_M : MonoBehaviour
 {
-    public GameObject objPrefab;      // 発射する弾のPrefab
-    public float delayTime = 0.5f;    // 弾を発射する間隔（秒）
-    public float yTime = 0.0f;        // 弾発射開始までの待ち時間
-    public float fireSpeed = 4.0f;    // 弾の発射速度
+    public GameObject objPrefab;
+    public float delayTime = 0.5f;
+    public float fireSpeed = 4.0f;
 
-    Transform gateTransform;          // 発射口のTransform
-    float passedTimes = 0;            // 経過時間の計測用
+    private float preFireOffset = 16.0f;  // カメラに入る手前の距離（上方向）
+
+    Transform gateTransform;
+    float passedTimes = 0;
+
+    Camera mainCam;
+    bool canFire = false;
 
     void Start()
     {
-        // 発射口オブジェクトのTransformを取得
         gateTransform = transform.Find("gate_m");
+        mainCam = Camera.main;
 
         if (gateTransform == null)
             Debug.LogError("CannonController_M: gate_m が見つかりません！");
@@ -23,13 +27,22 @@ public class CannonController_M : MonoBehaviour
 
     void Update()
     {
-        // 発射開始の待ち時間
-        if (Time.time < yTime) return;
+        // 発射条件チェック
+        if (!canFire)
+        {
+            if (IsJustBeforeEnterCamera())
+            {
+                canFire = true; // ここで初めて発射開始
+            }
+            else
+            {
+                return; // まだ撃たない
+            }
+        }
 
-        // 経過時間を加算
+        // ここから発射処理
         passedTimes += Time.deltaTime;
 
-        // delayTimeを超えたら発射
         if (passedTimes > delayTime)
         {
             FireCannon();
@@ -37,21 +50,21 @@ public class CannonController_M : MonoBehaviour
         }
     }
 
-    // 弾を生成して発射
-    void FireCannon()
+    // カメラに入る手前の位置をチェック
+    bool IsJustBeforeEnterCamera()
     {
-        Vector2 pos = gateTransform.position; // 発射口の位置
-        GameObject obj = Instantiate(objPrefab, pos, Quaternion.identity); // 弾生成
-        Rigidbody2D rbody = obj.GetComponent<Rigidbody2D>(); // Rigidbody取得
-        rbody.AddForce(Vector2.down * fireSpeed, ForceMode2D.Impulse); // 下方向に発射
+        // カメラ上端
+        float camTop = mainCam.transform.position.y + mainCam.orthographicSize;
+
+        // 敵の位置が "カメラ上端 + preFireOffset" を下回ったら発射開始
+        return transform.position.y <= camTop + preFireOffset;
     }
 
-    // ★ Web に触れても止まらない
-    private void OnTriggerEnter2D(Collider2D collision)
+    void FireCannon()
     {
-        if (collision.gameObject.CompareTag("Web"))
-        {
-            Debug.Log("CannonController_M: Webに触れたが発射は停止しません。");
-        }
+        Vector2 pos = gateTransform.position;
+        GameObject obj = Instantiate(objPrefab, pos, Quaternion.identity);
+        Rigidbody2D rbody = obj.GetComponent<Rigidbody2D>();
+        rbody.AddForce(Vector2.down * fireSpeed, ForceMode2D.Impulse);
     }
 }

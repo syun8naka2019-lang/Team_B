@@ -16,11 +16,16 @@ public class shougaibutu1 : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-       
+
         if (collision.gameObject.tag == "Dead")
         {
             Destroy(gameObject);
         }
-    
+
+        if (collision.gameObject.tag == "shougaibutu")
+        {
+            Destroy(gameObject);
+        }
     }
+    
 }
