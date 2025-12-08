@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 7356810912144946711}
   - component: {fileID: 8450522269865503542}
   - component: {fileID: 7945373366195281003}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: WEB_peek
   m_TagString: Web
   m_Icon: {fileID: 0}
@@ -167,10 +167,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 0
-  lifeTime: 900
   destroyEffectPrefab: {fileID: 0}
   effectLifeTime: 0.5
-  scorePerEnemy: 50
 --- !u!114 &7945373366195281003
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -178,7 +176,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3135770134523692115}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8d6d98574110ce14a8819e7a85a910b6, type: 3}
   m_Name: 

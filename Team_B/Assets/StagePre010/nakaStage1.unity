@@ -132,7 +132,7 @@ GameObject:
   - component: {fileID: 54333285}
   - component: {fileID: 54333286}
   - component: {fileID: 54333287}
-  m_Layer: 6
+  m_Layer: 15
   m_Name: MIC_0
   m_TagString: Dead
   m_Icon: {fileID: 0}
@@ -2115,7 +2115,7 @@ GameObject:
   - component: {fileID: 1046738839}
   - component: {fileID: 1046738838}
   - component: {fileID: 1046738842}
-  m_Layer: 6
+  m_Layer: 15
   m_Name: Breath_0
   m_TagString: Dead
   m_Icon: {fileID: 0}
@@ -3964,10 +3964,18 @@ PrefabInstance:
     - target: {fileID: 4223322637698750530, guid: 162bc56fde273a146b068feffbd3d610, type: 3}
       propertyPath: objPrefab
       value: 
-      objectReference: {fileID: 54333281}
+      objectReference: {fileID: 3194707167382597870, guid: 10ae65bab486cae49a8d979793b013a5, type: 3}
+    - target: {fileID: 5290738708457078542, guid: 162bc56fde273a146b068feffbd3d610, type: 3}
+      propertyPath: m_Layer
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 5661313765411105998, guid: 162bc56fde273a146b068feffbd3d610, type: 3}
       propertyPath: m_Name
       value: music_1_0 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5661313765411105998, guid: 162bc56fde273a146b068feffbd3d610, type: 3}
+      propertyPath: m_Layer
+      value: 15
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
