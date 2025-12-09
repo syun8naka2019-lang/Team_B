@@ -155,7 +155,28 @@ public class EnemyBaseController : MonoBehaviour
 
         Destroy(gameObject);
     }
+        private void Explode()
+    {
+        if (explosionPrefab != null)
+            Instantiate(explosionPrefab, transform.position, Quaternion.identity);
 
+        // 範囲 damage
+        Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position, explosionRadius);
+        foreach (Collider2D hit in hits)
+        {
+            if (hit.CompareTag("Enemy"))
+            {
+                EnemyBaseController e = hit.GetComponent<EnemyBaseController>();
+                if (e != null) e.Die();
+            }
+            else if (hit.CompareTag("Web"))
+            {
+                hit.GetComponent<WebController>()?.ForceDestroy();
+            }
+        }
+
+        Destroy(gameObject);
+     }
     private void SpawnOrb()
     {
         int r = Random.Range(0, 100);

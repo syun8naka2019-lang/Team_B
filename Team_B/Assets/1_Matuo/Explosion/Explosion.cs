@@ -23,7 +23,7 @@ public class Explosion : MonoBehaviour
         foreach (Collider2D hit in hits)
         {
             // もし「Enemy」タグのついたオブジェクトが範囲内にあれば破壊
-            if (hit.CompareTag("Web_stop"))
+            if (hit.CompareTag("Enemy"))
             {
                 Destroy(hit.gameObject);
                 Debug.Log("爆風で敵を破壊！: " + hit.name);
