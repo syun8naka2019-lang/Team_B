@@ -20,7 +20,7 @@ public class Player_pic : MonoBehaviour
             Debug.LogError("PlayerStatus が Player にアタッチされていません！");
         }
 
-       // HP管理の取得チェック
+        // HP管理の取得チェック
         playerHp = GetComponent<Hp>(); // ←または PlayerHp
         if (playerHp == null)
         {
