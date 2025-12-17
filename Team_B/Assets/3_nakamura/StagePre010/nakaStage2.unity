@@ -2367,6 +2367,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1590944848}
     - target: {fileID: 6682606671188149610, guid: e83169a7f04116445b3b989a1c8e1397, type: 3}
+      propertyPath: changeInterval
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 6682606671188149610, guid: e83169a7f04116445b3b989a1c8e1397, type: 3}
       propertyPath: nabeSkillPrefab
       value: 
       objectReference: {fileID: 7684505211347955396, guid: 7e1686a0693677a48a5daf3d49ecb2ee, type: 3}
