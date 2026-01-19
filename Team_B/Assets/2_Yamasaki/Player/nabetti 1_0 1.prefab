@@ -588,6 +588,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: HP_MAX_0
       objectReference: {fileID: 0}
+    - target: {fileID: 7512810302105197103, guid: 16859d34841111b4cad7e86f6d2e15f3, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7512810302105197103, guid: 16859d34841111b4cad7e86f6d2e15f3, type: 3}
+      propertyPath: sceneName
+      value: Gameover
+      objectReference: {fileID: 0}
     - target: {fileID: 8991261429782328658, guid: 16859d34841111b4cad7e86f6d2e15f3, type: 3}
       propertyPath: m_LocalPosition.x
       value: 2.4210873
