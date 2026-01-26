@@ -1,98 +1,39 @@
-/*using System.Collections;
+using System.Collections;
 using UnityEngine;
 
-// ダメージ時に白フラッシュさせるクラス
+// 対象に当たったらスプライトを白フラッシュさせるクラス
 public class DamageWhiteFlash : MonoBehaviour
 {
-    // フラッシュする合計時間
+    // ===== フラッシュ演出の設定 =====
+    [Header("Flash Settings")]
     [SerializeField] private float flashDuration = 0.2f;
-
-    // フラッシュ間隔
     [SerializeField] private float flashInterval = 0.05f;
 
-    // 対象のSpriteRenderer（Inspectorで設定）
+    // ===== 白フラッシュさせる画像 =====
+    [Header("Target Sprite")]
     [SerializeField] private SpriteRenderer targetSprite;
 
-    // 白フラッシュ用マテリアル（Inspectorで設定）
+    // ===== マテリアル関連 =====
+    [Header("Material")]
     [SerializeField] private Material whiteFlashMaterial;
 
-    // 元のマテリアル保存用
+    // 元のマテリアル
     private Material originalMaterial;
 
     // 多重起動防止
     private bool isFlashing = false;
 
-    void Start()
-    {
-        if (targetSprite != null)
-        {
-            originalMaterial = targetSprite.material;
-        }
-        else
-        {
-            Debug.LogWarning("DamageWhiteFlash: targetSprite が設定されていません");
-        }
-    }
-
-    // ダメージ時に呼ぶ
-    public void TakeDamage()
-    {
-        if (!isFlashing && targetSprite != null && whiteFlashMaterial != null)
-        {
-            StartCoroutine(WhiteFlash());
-        }
-    }
-
-    IEnumerator WhiteFlash()
-    {
-        isFlashing = true;
-        float elapsed = 0f;
-
-        while (elapsed < flashDuration)
-        {
-            // 白フラッシュ
-            targetSprite.material = whiteFlashMaterial;
-            yield return new WaitForSeconds(flashInterval);
-
-            // 元に戻す
-            targetSprite.material = originalMaterial;
-            yield return new WaitForSeconds(flashInterval);
-
-            elapsed += flashInterval * 2;
-        }
-
-        // 念のため元に戻す
-        targetSprite.material = originalMaterial;
-        isFlashing = false;
-    }
-}*/
-
-using System.Collections;
-using UnityEngine;
-
-// 対象に当たったら白フラッシュさせるクラス
-public class DamageWhiteFlash : MonoBehaviour
-{
-    [Header("Flash Settings")]
-    [SerializeField] private float flashDuration = 0.2f;
-    [SerializeField] private float flashInterval = 0.05f;
-
-    [Header("Target Sprite")]
-    [SerializeField] private SpriteRenderer targetSprite;
-
-    [Header("Material")]
-    [SerializeField] private Material whiteFlashMaterial;
-
+    // ===== 当たり判定の設定 =====
     [Header("Hit Settings")]
-    [SerializeField] private string hitTargetTag = "Enemy"; // ← Inspectorで変更可
 
-    private Material originalMaterial;
-    private bool isFlashing = false;
+    // 白フラッシュを発生させる相手のタグ（複数設定可）
+    [SerializeField] private string[] hitTargetTags;
 
     void Awake()
     {
         if (targetSprite != null)
         {
+            // 元のマテリアル（共有）を保存
             originalMaterial = targetSprite.sharedMaterial;
         }
         else
@@ -101,25 +42,39 @@ public class DamageWhiteFlash : MonoBehaviour
         }
     }
 
-    // 何かに当たったら呼ばれる（Trigger）
+    // ===== Trigger による当たり判定 =====
     void OnTriggerEnter2D(Collider2D other)
     {
-        // Inspectorで指定したTagに当たったら
-        if (other.CompareTag(hitTargetTag))
+        if (IsHitTarget(other.gameObject))
         {
             TryFlash();
         }
     }
 
-    //通常の衝突を使いたい場合はこちら
+    // ===== 通常の衝突判定 =====
     void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag(hitTargetTag))
+        if (IsHitTarget(collision.gameObject))
         {
             TryFlash();
         }
     }
 
+    // ===== タグ判定処理 =====
+    bool IsHitTarget(GameObject obj)
+    {
+        // 設定された複数タグをチェック
+        foreach (string tag in hitTargetTags)
+        {
+            if (obj.CompareTag(tag))
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    // フラッシュ開始チェック
     void TryFlash()
     {
         if (!isFlashing && targetSprite != null && whiteFlashMaterial != null)
@@ -128,6 +83,7 @@ public class DamageWhiteFlash : MonoBehaviour
         }
     }
 
+    // ===== 白フラッシュ処理 =====
     IEnumerator WhiteFlash()
     {
         isFlashing = true;
@@ -135,9 +91,11 @@ public class DamageWhiteFlash : MonoBehaviour
 
         while (elapsed < flashDuration)
         {
+            // 白フラッシュ
             targetSprite.material = new Material(whiteFlashMaterial);
             yield return new WaitForSeconds(flashInterval);
 
+            // 元に戻す
             targetSprite.material = originalMaterial;
             yield return new WaitForSeconds(flashInterval);
 
