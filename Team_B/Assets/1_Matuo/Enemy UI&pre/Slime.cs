@@ -1,88 +1,152 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 
-// ‰¹•„ie‚Ì’ej‚ğ‰º•ûŒü‚É”ò‚Î‚µAˆê’èŠÔ’Ç”ö‚µ‚½Œã‚É’¼i‚µ‚ÄÁ‚¦‚éƒNƒ‰ƒX
+[RequireComponent(typeof(Rigidbody2D), typeof(SpriteRenderer))]
 public class Slime : MonoBehaviour
 {
     [Header("Target")]
-    public Transform target;          // ’Ç”ö‚·‚éƒvƒŒƒCƒ„[
+    public Transform target;
 
     [Header("Movement")]
-    public float speed = 5f;          // ’e‚ÌˆÚ“®ƒXƒs[ƒh
-    public float turnSpeed = 5f;      // ’Ç”ö‚Ì‹­‚³
+    public float speed = 5f;
+    public float turnSpeed = 5f;
+    public float homingTime = 5f;
 
-    [Header("Life")]
-    public float homingTime = 5f;     // ’Ç”ö‚·‚éŠÔ
-    public float lifeTime = 7f;       // š Á‚¦‚é‚Ü‚Å‚Ì‘ŠÔ
+    [Header("Explosion")]
+    public GameObject explosionPrefab;
+    public float explosionRadius = 2f;
 
     [Header("Visual")]
-    public Sprite bulletSprite;       // ’e‚Ì‰æ‘œ
+    public Sprite bulletSprite;
 
     private Rigidbody2D rb;
     private SpriteRenderer sr;
 
-    private float timer = 0f;         // Œo‰ßŠÔ
-    private bool isHoming = true;     // ’Ç”ö’†‚©‚Ç‚¤‚©
+    private float timer = 0f;
+    private bool isHoming = true;
+    private bool isStopped = false;
+    private bool hasExploded = false;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         sr = GetComponent<SpriteRenderer>();
 
-        // ’e‚Ì‰æ‘œ‚ğİ’è
-        if (sr != null && bulletSprite != null)
-        {
+        if (bulletSprite != null)
             sr.sprite = bulletSprite;
-        }
 
-        // Å‰‚Í‰º•ûŒü‚É”ò‚Î‚·
         rb.linearVelocity = Vector2.down * speed;
+    }
+
+    void Update()
+    {
+        if (hasExploded) return;
+
+        if (Input.GetKeyDown(KeyCode.L))
+        {
+            Die();
+        }
     }
 
     void FixedUpdate()
     {
-        // Œo‰ßŠÔ‚ğXV
-        timer += Time.fixedDeltaTime;
+        if (hasExploded) return;
 
-        // š õ–½‚ğ’´‚¦‚½‚çÁ‚·
-        if (timer >= lifeTime)
+        if (isStopped)
         {
-            Destroy(gameObject);
+            rb.linearVelocity = Vector2.zero;
+            rb.angularVelocity = 0f;
             return;
         }
 
-        // š ’Ç”öŠÔ‚ğ’´‚¦‚½‚ç’¼iƒ‚[ƒh‚Ö
-        if (timer >= homingTime)
-        {
-            isHoming = false;
-        }
+        timer += Time.fixedDeltaTime;
 
-        // ’Ç”ö’†‚Ì‚İ•ûŒü•â³‚ğs‚¤
+        if (timer >= homingTime)
+            isHoming = false;
+
         if (isHoming && target != null)
         {
-            // ƒvƒŒƒCƒ„[‚Ö‚Ì•ûŒü
             Vector2 toTarget = (target.position - transform.position).normalized;
-
-            // Œ»İ‚Ìis•ûŒü
             Vector2 currentDir = rb.linearVelocity.normalized;
 
-            // ­‚µ‚¸‚Âƒ^[ƒQƒbƒg•ûŒü‚ÖŒü‚¯‚é
-            Vector2 newDir = Vector2.Lerp(
-                currentDir,
-                toTarget,
-                turnSpeed * Time.fixedDeltaTime
-            );
-
-            // •ûŒü‚ğXV
+            Vector2 newDir = Vector2.Lerp(currentDir, toTarget, turnSpeed * Time.fixedDeltaTime);
             rb.linearVelocity = newDir.normalized * speed;
         }
-        // ’Ç”öI—¹Œã‚Í velocity ‚ğG‚ç‚È‚¢ ¨ ’¼i
     }
 
     void OnTriggerEnter2D(Collider2D other)
     {
+        if (hasExploded) return;
+
         if (other.CompareTag("Player"))
         {
-            Destroy(gameObject);
+            Die();
+        }
+        else if (other.CompareTag("Web"))
+        {
+            HandleWebCollision(other);
+        }
+    }
+
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (hasExploded) return;
+
+        if (collision.gameObject.CompareTag("Web"))
+        {
+            HandleWebCollision(collision.collider);
+        }
+    }
+
+    private void HandleWebCollision(Collider2D webCollider)
+    {
+        StopSelf();
+
+        WebController web = webCollider.GetComponent<WebController>();
+        if (web != null)
+            web.StopWeb();
+    }
+
+    private void StopSelf()
+    {
+        isStopped = true;
+        rb.linearVelocity = Vector2.zero;
+        rb.angularVelocity = 0f;
+        rb.bodyType = RigidbodyType2D.Kinematic;
+    }
+
+    // â˜… è‡ªåˆ†ãŒæ­»ã¬æ™‚ï¼ˆã‚¹ã‚³ã‚¢ã¯å…¥ã‚‰ãªã„ï¼‰
+    public void Die()
+    {
+        if (hasExploded) return;
+
+        Explode();
+        Destroy(gameObject);
+    }
+
+    private void Explode()
+    {
+        hasExploded = true;
+
+        if (explosionPrefab != null)
+            Instantiate(explosionPrefab, transform.position, Quaternion.identity);
+
+        Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position, explosionRadius);
+
+        foreach (var hit in hits)
+        {
+            // âœ… é€šå¸¸æ•µã‚’å€’ã™ â†’ ã“ã“ã§ã‚¹ã‚³ã‚¢åŠ ç®—
+            var enemy = hit.GetComponent<EnemyBaseController>();
+            if (enemy != null)
+            {
+                enemy.Die(true); // â† ã‚¹ã‚³ã‚¢åŠ ç®—ãƒ•ãƒ©ã‚°å¾©æ´»ï¼ï¼
+                continue;
+            }
+
+            // Webç ´å£Š
+            if (hit.CompareTag("Web"))
+            {
+                hit.GetComponent<WebController>()?.ForceDestroy();
+            }
         }
     }
 }

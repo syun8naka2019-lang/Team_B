@@ -64,6 +64,7 @@
 //    }
 //}
 
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -154,5 +155,6 @@ public class WebManager : MonoBehaviour
             if (web != null)
                 web.ForceDestroy();
     }
+
 }
 

@@ -133,10 +133,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1e82d5f60034bd4cb481719d9402734, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objPrefab: {fileID: 3194707167382597870, guid: 10ae65bab486cae49a8d979793b013a5, type: 3}
+  bulletPrefabA: {fileID: 2016738119401060962, guid: b12c94a642ddaf8429ab8109316e1b8a, type: 3}
+  bulletPrefabB: {fileID: 7770577632347047079, guid: 26f90c5558e001b47ade58b792d8b742, type: 3}
   delayTime: 2
-  yTime: 0
   fireSpeed: 4
+  seA: {fileID: 0}
+  seB: {fileID: 0}
 --- !u!114 &8152540749748024101
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -153,9 +155,4 @@ MonoBehaviour:
   moveDirection: {x: 0, y: -1}
   explosionPrefab: {fileID: 6310724212718937216, guid: 83ec48bb26a009243ad7e1155143ef6c, type: 3}
   explosionRadius: 2
-  redOrbPrefab: {fileID: 0}
-  greenOrbPrefab: {fileID: 0}
-  blueOrbPrefab: {fileID: 0}
-  redRate: 70
-  greenRate: 20
-  blueRate: 10
+  scoreValue: 50
