@@ -1,19 +1,10 @@
 fileFormatVersion: 2
-<<<<<<<< HEAD:Team_B/Assets/important folder/game_Images/view2.png.meta
-guid: 043c2f03bec67ab4cb8e12fa052e1146
+guid: d25480d326c6f7b4d86d7688c78b7d92
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 5455088505280642101
-    second: Image (19)_0
-========
-guid: 194c1006270e480418b09605a30b86ec
-TextureImporter:
-  internalIDToNameTable:
-  - first:
-      213: -2647964408561111832
-    second: Explain_0
->>>>>>>> 7099af3c3b1dba217d1069ad2174e7677836eb1c:Team_B/Assets/important folder/game_Images/Explain.png.meta
+      213: -5871486339787709239
+    second: phone_2_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -109,22 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-<<<<<<<< HEAD:Team_B/Assets/important folder/game_Images/view2.png.meta
-      name: Image (19)_0
-========
-      name: Explain_0
->>>>>>>> 7099af3c3b1dba217d1069ad2174e7677836eb1c:Team_B/Assets/important folder/game_Images/Explain.png.meta
+      name: phone_2_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 0
-<<<<<<<< HEAD:Team_B/Assets/important folder/game_Images/view2.png.meta
-        width: 1024
-        height: 1024
-========
+        y: 179
         width: 1000
-        height: 500
->>>>>>>> 7099af3c3b1dba217d1069ad2174e7677836eb1c:Team_B/Assets/important folder/game_Images/Explain.png.meta
+        height: 642
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -133,13 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-<<<<<<<< HEAD:Team_B/Assets/important folder/game_Images/view2.png.meta
-      spriteID: 53cb19fd71e54bb40800000000000000
-      internalID: 5455088505280642101
-========
-      spriteID: 8ec66d1666a804bd0800000000000000
-      internalID: -2647964408561111832
->>>>>>>> 7099af3c3b1dba217d1069ad2174e7677836eb1c:Team_B/Assets/important folder/game_Images/Explain.png.meta
+      spriteID: 9c4256d484a448ea0800000000000000
+      internalID: -5871486339787709239
       vertices: []
       indices: 
       edges: []
@@ -158,11 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-<<<<<<<< HEAD:Team_B/Assets/important folder/game_Images/view2.png.meta
-      Image (19)_0: 5455088505280642101
-========
-      Explain_0: -2647964408561111832
->>>>>>>> 7099af3c3b1dba217d1069ad2174e7677836eb1c:Team_B/Assets/important folder/game_Images/Explain.png.meta
+      phone_2_0: -5871486339787709239
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

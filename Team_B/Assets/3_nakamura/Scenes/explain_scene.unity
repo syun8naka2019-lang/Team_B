@@ -515,11 +515,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7167082456756711803, guid: a8a3a3f6897bda2408f19fdb1004cc3e, type: 3}
       propertyPath: m_AnchoredPosition.x
+<<<<<<< HEAD
       value: 218.1
       objectReference: {fileID: 0}
     - target: {fileID: 7167082456756711803, guid: a8a3a3f6897bda2408f19fdb1004cc3e, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -154.6
+=======
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 7167082456756711803, guid: a8a3a3f6897bda2408f19fdb1004cc3e, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -131
+>>>>>>> 7099af3c3b1dba217d1069ad2174e7677836eb1c
       objectReference: {fileID: 0}
     - target: {fileID: 7397320786011255788, guid: a8a3a3f6897bda2408f19fdb1004cc3e, type: 3}
       propertyPath: m_Camera
