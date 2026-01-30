@@ -2,124 +2,110 @@
 
 //public class WebController : MonoBehaviour
 //{
-//    [Header("移動設定")]
 //    public float speed = 10f;
-//    private Rigidbody2D rb;
-//    private bool isStopped = false;
-
-//    [Header("消滅エフェクト")]
 //    public GameObject destroyEffectPrefab;
 //    public float effectLifeTime = 1f;
+
+//    private Rigidbody2D rb;
+//    private bool isStopped = false;
+//    private bool isDestroyed = false;
 
 //    private int inactiveLayer;
 //    private int webEnemyLayer;
 
-//    private bool isDestroyed = false;
-
-//    // ★ 捕獲した敵
 //    private EnemyBaseController capturedEnemy;
+
 
 //    private void Awake()
 //    {
 //        rb = GetComponent<Rigidbody2D>();
-
 //        inactiveLayer = LayerMask.NameToLayer("InactiveWeb");
 //        webEnemyLayer = LayerMask.NameToLayer("WebEnemy");
-
-//        if (inactiveLayer == -1)
-//            Debug.LogWarning("InactiveWeb レイヤーが存在しません。");
-//        if (webEnemyLayer == -1)
-//            Debug.LogWarning("WebEnemy レイヤーが存在しません。");
 //    }
 
 //    private void OnEnable()
 //    {
-//        if (WebManager.Instance != null)
-//            WebManager.Instance.RegisterWeb(this);
+//        WebManager.Instance?.RegisterWeb(this);
 //    }
 
 //    private void OnDisable()
 //    {
-//        if (WebManager.Instance != null)
-//            WebManager.Instance.UnregisterWeb(this);
+//        WebManager.Instance?.UnregisterWeb(this);
 //    }
 
-//    void Update()
+//    private void Update()
 //    {
 //        if (!isStopped)
 //            transform.Translate(Vector2.up * speed * Time.deltaTime, Space.World);
 //    }
 
-//    void OnTriggerEnter2D(Collider2D other)
+//    private void OnTriggerEnter2D(Collider2D other)
 //    {
-//        CheckHitEnemy(other.gameObject);
+//        TryCaptureEnemy(other.gameObject);
 //    }
 
-//    void OnCollisionEnter2D(Collision2D collision)
+//    private void OnCollisionEnter2D(Collision2D collision)
 //    {
-//        CheckHitEnemy(collision.gameObject);
+//        TryCaptureEnemy(collision.gameObject);
 //    }
 
-//    private void CheckHitEnemy(GameObject obj)
+//    private void TryCaptureEnemy(GameObject obj)
 //    {
-//        if (!obj.CompareTag("Enemy"))
-//            return;
+//        if (capturedEnemy != null) return;
+//        if (!obj.CompareTag("Enemy")) return;
 
-//        // ★ 敵を WebEnemy レイヤーに変更
+//        var enemy = obj.GetComponent<EnemyBaseController>();
+//        if (enemy == null) return;
+
+//        capturedEnemy = enemy;
+//        enemy.Stop();
+
 //        obj.layer = webEnemyLayer;
 
-//        // ★ 敵を捕獲
-//        capturedEnemy = obj.GetComponent<EnemyBaseController>();
-//        if (capturedEnemy != null)
-//            capturedEnemy.Stop();
-
-//        // ★ Web を停止 & 無効レイヤーへ
 //        StopWeb();
 //        gameObject.layer = inactiveLayer;
 
-//        Debug.Log("Enemy captured by Web.");
+//        WebManager.Instance?.RegisterCapturedEnemy(enemy);
 //    }
 
 //    private void StopWeb()
 //    {
 //        isStopped = true;
-//        if (rb != null)
-//            rb.linearVelocity = Vector2.zero;
+//        if (rb != null) rb.linearVelocity = Vector2.zero;
 //    }
 
-//    /// <summary>
-//    /// WebManager などによる強制破壊
-//    /// </summary>
+//    // L爆発用
 //    public void ForceDestroy()
 //    {
-//        if (isDestroyed)
-//            return;
-
+//        if (isDestroyed) return;
 //        isDestroyed = true;
 
-//        // ★ 捕獲していた敵を倒す（スコア加算ここで発生）
+//        CreateEffect();
+//        Destroy(gameObject);
+//    }
+
+//    // 通常消滅時（巻き込み爆発など）
+//    private void OnDestroy()
+//    {
+//        if (isDestroyed) return;
+
 //        if (capturedEnemy != null)
 //        {
-//            capturedEnemy.Die();
+//            capturedEnemy.Die(true);
 //            capturedEnemy = null;
 //        }
-
-//        CreateEffect();
-
-//        gameObject.SetActive(false);
-//        Destroy(gameObject);
 //    }
 
 //    private void CreateEffect()
 //    {
 //        if (destroyEffectPrefab != null)
 //        {
-//            GameObject effect = Instantiate(destroyEffectPrefab, transform.position, Quaternion.identity);
+//            var effect = Instantiate(destroyEffectPrefab, transform.position, Quaternion.identity);
 //            Destroy(effect, effectLifeTime);
 //        }
 //    }
 
-//    void OnBecameInvisible()
+//    private void OnBecameInvisible()
 //    {
 //        Destroy(gameObject);
 //    }
@@ -128,9 +114,13 @@
 
 using UnityEngine;
 
+[RequireComponent(typeof(Rigidbody2D), typeof(Collider2D))]
 public class WebController : MonoBehaviour
 {
+    [Header("移動設定")]
     public float speed = 10f;
+
+    [Header("消滅エフェクト")]
     public GameObject destroyEffectPrefab;
     public float effectLifeTime = 1f;
 
@@ -146,6 +136,7 @@ public class WebController : MonoBehaviour
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+
         inactiveLayer = LayerMask.NameToLayer("InactiveWeb");
         webEnemyLayer = LayerMask.NameToLayer("WebEnemy");
     }
@@ -168,40 +159,61 @@ public class WebController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        TryCaptureEnemy(other.gameObject);
+        HandleCollision(other);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        TryCaptureEnemy(collision.gameObject);
+        HandleCollision(collision.collider);
     }
 
-    private void TryCaptureEnemy(GameObject obj)
+    private void HandleCollision(Collider2D other)
     {
-        if (capturedEnemy != null) return;
-        if (!obj.CompareTag("Enemy")) return;
+        if (isDestroyed) return;
 
-        var enemy = obj.GetComponent<EnemyBaseController>();
-        if (enemy == null) return;
+        // 🎯 通常の敵を捕獲
+        if (capturedEnemy == null && other.CompareTag("Enemy"))
+        {
+            var enemy = other.GetComponent<EnemyBaseController>();
+            if (enemy != null)
+            {
+                capturedEnemy = enemy;
+                enemy.Stop();
+                other.gameObject.layer = webEnemyLayer;
 
-        capturedEnemy = enemy;
-        enemy.Stop();
+                StopWeb();
+                gameObject.layer = inactiveLayer;
 
-        obj.layer = webEnemyLayer;
+                WebManager.Instance?.RegisterCapturedEnemy(enemy);
+                return;
+            }
+        }
 
-        StopWeb();
-        gameObject.layer = inactiveLayer;
-
-        WebManager.Instance?.RegisterCapturedEnemy(enemy);
+        // 🎵 音符敵（MusicalNoteBullet）と接触した場合も停止
+        var noteEnemy = other.GetComponent<MusicalNoteBullet>();
+        if (noteEnemy != null)
+        {
+            StopWeb();
+            return;
+        }
     }
 
-    private void StopWeb()
+    // 🎯 外部からも呼ばれる停止処理（重要）
+    public void StopWeb()
     {
+        if (isStopped) return;
+
         isStopped = true;
-        if (rb != null) rb.linearVelocity = Vector2.zero;
+
+        if (rb != null)
+        {
+            rb.linearVelocity = Vector2.zero;
+            rb.angularVelocity = 0f;
+            rb.bodyType = RigidbodyType2D.Kinematic; // 完全固定
+        }
     }
 
-    // L爆発用
+    // 💥 爆発などで強制破壊
     public void ForceDestroy()
     {
         if (isDestroyed) return;
@@ -211,7 +223,7 @@ public class WebController : MonoBehaviour
         Destroy(gameObject);
     }
 
-    // 通常消滅時（巻き込み爆発など）
+    // 🔥 通常破壊時（爆発巻き込みなど）
     private void OnDestroy()
     {
         if (isDestroyed) return;

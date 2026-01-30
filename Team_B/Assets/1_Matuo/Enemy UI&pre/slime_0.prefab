@@ -78,7 +78,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 3
   m_Sprite: {fileID: 368543389579951487, guid: 5028a40dce6a22347bae35f39652f7cd, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -106,7 +106,8 @@ MonoBehaviour:
   speed: 3
   turnSpeed: 5
   homingTime: 3
-  lifeTime: 7
+  explosionPrefab: {fileID: 0}
+  explosionRadius: 2
   bulletSprite: {fileID: 0}
 --- !u!50 &614904263937517014
 Rigidbody2D:
@@ -123,7 +124,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDamping: 0
   m_AngularDamping: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
