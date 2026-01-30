@@ -18,7 +18,7 @@ public class CannonController_G : MonoBehaviour
 
     void Start()
     {
-        gateTransform = transform.Find("gate_g");
+        gateTransform = transform.Find("gate_hero");
         mainCam = Camera.main;
 
         if (gateTransform == null)
