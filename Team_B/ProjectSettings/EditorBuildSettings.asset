@@ -9,6 +9,16 @@ EditorBuildSettings:
     path: Assets/3_nakamura/Scenes/Title.unity
     guid: 92ca5deaf0ae1d34e99444b7b768f4d0
   - enabled: 1
+<<<<<<< HEAD
+    path: Assets/3_nakamura/Scenes/explain_scene1.unity
+    guid: 7d8a7c566761f5b4da06e95959bc0b33
+  - enabled: 1
+    path: Assets/1_Matuo/Scenes_Matuo/Matuo_st2.unity
+    guid: 15e15afe12cc6f84db5d2f16bd32907a
+  - enabled: 1
+    path: Assets/1_Matuo/Scenes_Matuo/Matuo_st1.unity
+    guid: db179261e3993ea4eb7604254e2243d5
+=======
     path: Assets/3_nakamura/StagePre010/stage1.unity
     guid: c1df6f438b65ed34aa6b3b958b8a1564
   - enabled: 1
@@ -26,6 +36,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/3_nakamura/Scenes/Stageselect.unity
     guid: ec1dad8b366c4ca438c36ae4fa8e0086
+>>>>>>> f476ab40166cc99bab4988107e8792e5e7b5a277
   - enabled: 1
     path: Assets/3_nakamura/Scenes/Gameover.unity
     guid: 2fbc0bd9fb2003142b2d5b58e0a6b174
@@ -33,16 +44,10 @@ EditorBuildSettings:
     path: Assets/3_nakamura/Clear/Nclear1.unity
     guid: 3029925b4bc805f40b08196616583a80
   - enabled: 1
-    path: Assets/3_nakamura/Clear/Nclear2.unity
-    guid: 9ce4bf5e3ed17d44da55705a716cd038
-  - enabled: 1
     path: Assets/3_nakamura/Clear/Nclear3.unity
     guid: 96f36406a9dbfdb42bc8662e03523c2d
-  - enabled: 1
-    path: Assets/3_nakamura/Scenes/explain_scene1.unity
-    guid: 7d8a7c566761f5b4da06e95959bc0b33
   - enabled: 0
-    path: Assets/3_nakamura/Scenes/explain_scene.unity
-    guid: 64fdf9f59f730d94da6c735fc780f7f1
+    path: Assets/3_nakamura/Scenes/Stageselect.unity
+    guid: ec1dad8b366c4ca438c36ae4fa8e0086
   m_configObjects: {}
   m_UseUCBPForAssetBundles: 0
