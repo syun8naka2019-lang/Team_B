@@ -929,7 +929,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb4f82621ea330d4e9e45481878bc69b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneName: nakaStage1
+  sceneName: stage1
 --- !u!82 &3734153119224087170
 AudioSource:
   m_ObjectHideFlags: 0
